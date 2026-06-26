@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Sustainability — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+<div style="padding-top:72px">
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Our Commitment</span>
+    <h1>Building a Sustainable <em>Africa</em></h1>
+    <p>Sustainability is not a department at Edgar Global Ventures — it is woven into every sector, every project, and every decision we make for the future of East Africa.</p>
+  </div>
+</div>
+
+<!-- IMPACT BAND -->
+<div class="impact">
+  <div class="imp-inner">
+    <div class="imp"><div class="imp-n">2035<em></em></div><div class="imp-l">Carbon-neutral target</div></div>
+    <div class="imp"><div class="imp-n">2,000<em>+</em></div><div class="imp-l">Farmers using climate-smart methods</div></div>
+    <div class="imp"><div class="imp-n">85<em>%</em></div><div class="imp-l">Training completion rate</div></div>
+    <div class="imp"><div class="imp-n">15<em>+</em></div><div class="imp-l">Community partnerships</div></div>
+  </div>
+</div>
+
+<!-- COMMITMENT CARDS -->
+<section style="padding:96px 56px;background:var(--cream)">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="max-width:640px;margin:0 auto 60px;text-align:center">
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:12px">Our Pillars</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:16px">Four Pillars of Sustainable Growth</h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.72">Our sustainability strategy mirrors our four business sectors — ensuring every dimension of our work contributes to a better East Africa.</p>
+    </div>
+    <div class="sus-grid">
+      <div class="sus-card" style="background:#fff;border-left:4px solid #5B2FC9">
+        <span class="sus-icon" style="color:#5B2FC9"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <div class="sus-title">Green Technology</div>
+        <p class="sus-desc">We design and deploy technology solutions that reduce energy consumption, minimise e-waste, and empower communities with digital tools that improve efficiency. Our cloud-first approach significantly reduces the carbon footprint of the organisations we serve.</p>
+        <a href="{% url 'sectors' %}?tab=technology" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:#5B2FC9;text-decoration:none">Our Technology Work →</a>
+      </div>
+      <div class="sus-card" style="background:#fff;border-left:4px solid var(--green)">
+        <span class="sus-icon" style="color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+        <div class="sus-title">Climate-Smart Agriculture</div>
+        <p class="sus-desc">Every farmer we train receives instruction in climate-resilient crop varieties, water-efficient irrigation, and sustainable soil management. Our agri programs are certified under leading climate-smart agriculture frameworks and contribute directly to regional food security.</p>
+        <a href="{% url 'sectors' %}?tab=agriculture" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:var(--green);text-decoration:none">Our Agriculture Work →</a>
+      </div>
+      <div class="sus-card" style="background:#fff;border-left:4px solid var(--gold)">
+        <span class="sus-icon" style="color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
+        <div class="sus-title">Fair &amp; Inclusive Trade</div>
+        <p class="sus-desc">Our trade facilitation prioritises local producers, fair pricing mechanisms, and inclusive market access for small and medium enterprises. We build trade networks that ensure value is shared equitably across the supply chain — from the farmer to the global buyer.</p>
+        <a href="{% url 'sectors' %}?tab=trade" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:var(--gold);text-decoration:none">Our Trade Work →</a>
+      </div>
+      <div class="sus-card" style="background:#fff;border-left:4px solid var(--navy)">
+        <span class="sus-icon" style="color:var(--navy)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        <div class="sus-title">Green Infrastructure</div>
+        <p class="sus-desc">All EGV infrastructure projects follow environmental impact assessment best practices and are designed to minimise disruption to ecosystems. We use sustainable materials, community-first design principles, and quality standards that ensure our structures serve communities for generations.</p>
+        <a href="{% url 'sectors' %}?tab=infrastructure" style="display:inline-block;margin-top:16px;font-size:14px;font-weight:700;color:var(--navy);text-decoration:none">Our Infrastructure Work →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE: Our Approach -->
+<section class="feature">
+  <div class="ft-inner">
+    <div class="ft-text">
+      <div class="ft-ey eg">Our Approach</div>
+      <h2 class="ft-h2">Growing Responsibly for Generations to Come</h2>
+      <p class="ft-p">At Edgar Global Ventures, sustainability means thinking beyond the next contract — it means building solutions that serve communities long after project completion. From climate-smart agricultural practices to green infrastructure design, we invest in a future that works for everyone.</p>
+      <p class="ft-p">Our training programs equip farmers with sustainable techniques. Our infrastructure projects follow environmental best practices. Our trade networks prioritise local producers and fair value chains. And our technology solutions help the organisations we serve operate more efficiently with less waste.</p>
+      <a href="{% url 'contact' %}" class="btn btn-md btn-green" style="margin-top:16px">Partner on Sustainability</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=800&q=80" alt="Sustainable Agriculture">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="Community">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=80" alt="Green">
+      </div>
+      <div class="ft-stat" style="border-color:var(--green)"><div class="ft-sn" style="color:var(--green)">85<em style="color:var(--green)">%</em></div><div class="ft-sl">Training success rate</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Let's Build Sustainably Together</h2>
+    <p class="cta-p">Join a growing network of organisations committed to sustainable growth across East Africa. Partner with Edgar Global Ventures today.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Get In Touch</a>
+      <a href="{% url 'about' %}" class="btn btn-lg btn-on">About EGV</a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

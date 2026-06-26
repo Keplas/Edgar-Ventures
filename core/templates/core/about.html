@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}About Us — Edgar Global Ventures Ltd{% endblock %}
+
+{% block content %}
+<div style="padding-top:72px">
+
+<!-- PAGE HERO -->
+<div style="background:var(--navy);padding:80px 48px;text-align:center;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 48px)"></div>
+  <div style="max-width:760px;margin:0 auto;position:relative;z-index:1">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px">Who We Are</span>
+    <h1 style="font-family:'Playfair Display',serif;font-size:54px;font-weight:900;color:#fff;line-height:1.06;margin-bottom:20px">About Edgar Global<br><em style="color:var(--gold)">Ventures Ltd</em></h1>
+    <p style="color:rgba(255,255,255,.5);font-size:17px;line-height:1.78">A multi-sector company driving economic growth and sustainable development across East Africa through technology, agriculture, trade, and infrastructure.</p>
+  </div>
+</div>
+
+<!-- CASCADING IMAGE SECTION -->
+<section class="feature">
+  <div class="ft-inner">
+    <div class="ft-text">
+      <div class="ft-ey en">Our Story</div>
+      <h2 class="ft-h2">Built on Vision, Driven by Impact</h2>
+      <p class="ft-p">Edgar Global Ventures Ltd was founded with a singular vision: to unlock the immense potential of East Africa by connecting its most critical sectors. We believe that sustainable growth comes not from isolated efforts, but from an integrated approach that links technology, agriculture, trade, and infrastructure.</p>
+      <p class="ft-p">Over more than 15 years, we have built a reputation as a trusted partner for governments, NGOs, and private enterprises across the region, delivering solutions that create real, measurable impact.</p>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?w=800&q=80" alt="Africa City">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=600&q=80" alt="Team">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&q=80" alt="Meeting">
+      </div>
+      <div class="ft-stat">
+        <div class="ft-sn">15<em>+</em></div>
+        <div class="ft-sl">Years of excellence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT BAND -->
+<div class="impact">
+  <div class="imp-inner">
+    <div class="imp"><div class="imp-n">4<em>+</em></div><div class="imp-l">Integrated sectors</div></div>
+    <div class="imp"><div class="imp-n">500<em>+</em></div><div class="imp-l">Business partners</div></div>
+    <div class="imp"><div class="imp-n">2,000<em>+</em></div><div class="imp-l">Farmers trained</div></div>
+    <div class="imp"><div class="imp-n">15<em>+</em></div><div class="imp-l">Countries served</div></div>
+  </div>
+</div>
+
+<!-- MISSION & VISION -->
+<section class="feature alt">
+  <div class="ft-inner rev">
+    <div class="ft-text">
+      <div class="ft-ey eg">Mission &amp; Vision</div>
+      <h2 class="ft-h2">Our Purpose is Africa's Prosperity</h2>
+      <p class="ft-p"><strong style="color:var(--navy)">Mission:</strong> To deliver integrated, high-impact solutions across technology, agriculture, trade, and infrastructure that accelerate sustainable development in East Africa.</p>
+      <p class="ft-p"><strong style="color:var(--green)">Vision:</strong> To be East Africa's most trusted multi-sector venture, known for innovation, integrity, and transformative community impact.</p>
+      <p class="ft-p"><strong style="color:var(--gold)">Values:</strong> Excellence · Integrity · Innovation · Community · Sustainability</p>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80" alt="Community">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="Sustainability">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt="Innovation">
+      </div>
+      <div class="ft-stat">
+        <div class="ft-sn">85<em>%</em></div>
+        <div class="ft-sl">Program success rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Ready to Partner With Us?</h2>
+    <p class="cta-p">Join a growing network of partners, investors, and communities building a better East Africa together.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Get In Touch</a>
+      <a href="{% url 'sectors' %}" class="btn btn-lg btn-on">Our Sectors</a>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

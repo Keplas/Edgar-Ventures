@@ -1,0 +1,113 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Careers — Edgar Global Ventures Ltd{% endblock %}
+
+{% block content %}
+<div style="padding-top:72px">
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Join Our Team</span>
+    <h1>Careers at <em>Edgar Global</em><br>Ventures</h1>
+    <p>Build a career at the intersection of technology, agriculture, trade, and infrastructure — and be part of East Africa's growth story.</p>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<div class="impact">
+  <div class="imp-inner">
+    <div class="imp"><div class="imp-n">{{ total_jobs }}<em>+</em></div><div class="imp-l">Open positions</div></div>
+    <div class="imp"><div class="imp-n">4</div><div class="imp-l">Sectors to work across</div></div>
+    <div class="imp"><div class="imp-n">15<em>+</em></div><div class="imp-l">Countries to impact</div></div>
+    <div class="imp"><div class="imp-n">100<em>%</em></div><div class="imp-l">Growth-focused culture</div></div>
+  </div>
+</div>
+
+<!-- WHY JOIN EGV -->
+<section style="padding:80px 56px;background:#fff">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div>
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:12px">Why Edgar Global Ventures</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:20px">Work Where Your Impact is Real</h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.78;margin-bottom:20px">At Edgar Global Ventures, every team member contributes directly to East Africa's development. Whether you're writing code, training farmers, coordinating trade, or managing infrastructure — your work creates tangible change in communities across the region.</p>
+      <p style="color:var(--muted);font-size:16px;line-height:1.78;margin-bottom:32px">We are a diverse, ambitious team of professionals united by a shared commitment to integrity, innovation, and impact. We invest in your growth because your growth is Africa's growth.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Competitive compensation</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Professional development</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Multi-sector exposure</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Flexible work options</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Health &amp; wellness</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--text)"><span class="benefit-check"></span> Purpose-driven work</div>
+      </div>
+    </div>
+    <div style="position:relative;padding-bottom:20px;padding-right:20px">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=800&q=80" alt="EGV Team">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" alt="Meeting">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt="Work">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB LISTINGS -->
+<section style="padding:80px 56px;background:var(--cream)">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:20px">
+      <div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--navy);display:block;margin-bottom:8px">Open Positions</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:0">Current Opportunities</h2>
+      </div>
+    </div>
+
+    <!-- Sector filter tabs -->
+    <div class="career-tabs">
+      <a href="{% url 'careers' %}" class="career-tab {% if active_sector == 'all' %}active{% endif %}">All Sectors</a>
+      <a href="{% url 'careers' %}?sector=technology"   class="career-tab {% if active_sector == 'technology' %}active{% endif %}"><span class="ctab-dot" style="background:#5B2FC9"></span>Technology</a>
+      <a href="{% url 'careers' %}?sector=agriculture"  class="career-tab {% if active_sector == 'agriculture' %}active{% endif %}"><span class="ctab-dot" style="background:var(--green)"></span>Agriculture</a>
+      <a href="{% url 'careers' %}?sector=trade"        class="career-tab {% if active_sector == 'trade' %}active{% endif %}"><span class="ctab-dot" style="background:var(--gold)"></span>Trade</a>
+      <a href="{% url 'careers' %}?sector=infrastructure" class="career-tab {% if active_sector == 'infrastructure' %}active{% endif %}"><span class="ctab-dot" style="background:var(--navy)"></span>Infrastructure</a>
+    </div>
+
+    <!-- Jobs list -->
+    <div class="job-list">
+      {% for job in jobs %}
+      <div class="job-card">
+        <div style="flex:1;min-width:0">
+          <div class="job-badge jb-{{ job.sector_class }}">{{ job.sector }}</div>
+          <div class="job-title">{{ job.title }}</div>
+          <div class="job-meta">
+            <span class="job-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> {{ job.location }}</span>
+            <span class="job-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> {{ job.type }}</span>
+            <span class="job-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> {{ job.level }}</span>
+          </div>
+        </div>
+        <a href="{% url 'contact' %}?sector={{ job.sector_class }}" class="btn btn-md btn-navy" style="flex-shrink:0">Apply Now</a>
+      </div>
+      {% empty %}
+      <div style="text-align:center;padding:72px 20px;color:var(--muted)">
+        <div style="width:56px;height:56px;border-radius:12px;background:var(--cream);border:2px solid var(--border);margin:0 auto 16px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--text);margin-bottom:10px">No positions found</h3>
+        <p>No openings in this sector right now. <a href="{% url 'careers' %}" style="color:var(--navy);font-weight:600">View all openings →</a></p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Don't See Your Role?</h2>
+    <p class="cta-p">We're always looking for talented, motivated people. Send us your CV and tell us how you'd contribute to Edgar Global Ventures' mission.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Send Your CV</a>
+      <a href="{% url 'about' %}" class="btn btn-lg btn-on">Learn About EGV</a>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

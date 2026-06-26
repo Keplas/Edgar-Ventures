@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}News & Stories — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+<div style="padding-top:72px">
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Where We're Making News</span>
+    <h1>Latest Stories &amp; <em>Updates</em></h1>
+    <p>Stay informed on our work across technology, agriculture, trade, and infrastructure — and the impact we're creating across East Africa and beyond.</p>
+  </div>
+</div>
+
+<section style="padding:72px 56px;background:#fff">
+  <div style="max-width:1280px;margin:0 auto">
+
+    <!-- Category filter -->
+    <div class="news-filter">
+      <a href="{% url 'news' %}" class="ncat {% if active_category == 'all' %}active{% endif %}">All Stories</a>
+      <a href="{% url 'news' %}?category=technology" class="ncat {% if active_category == 'technology' %}active{% endif %}"> Technology</a>
+      <a href="{% url 'news' %}?category=agriculture" class="ncat {% if active_category == 'agriculture' %}active{% endif %}"> Agriculture</a>
+      <a href="{% url 'news' %}?category=trade" class="ncat {% if active_category == 'trade' %}active{% endif %}"> Trade</a>
+      <a href="{% url 'news' %}?category=infrastructure" class="ncat {% if active_category == 'infrastructure' %}active{% endif %}"> Infrastructure</a>
+    </div>
+
+    <!-- Results count -->
+    <p style="color:var(--muted);font-size:14px;margin-bottom:32px">
+      Showing <strong>{{ news_items|length }}</strong> stor{{ news_items|length|pluralize:"y,ies" }}
+      {% if active_category != 'all' %}in <strong>{{ active_category|title }}</strong>{% endif %}
+    </p>
+
+    {% if news_items %}
+    <div class="news-grid">
+      {% for item in news_items %}
+      <div class="nc {{ item.cat_class }}">
+        <div class="nc-img">
+          {% if item.cat_class == 'nt' %}
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="{{ item.category }}">
+          {% elif item.cat_class == 'ntr' %}
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80" alt="{{ item.category }}">
+          {% elif item.cat_class == 'ni' %}
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="{{ item.category }}">
+          {% else %}
+          <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=600&q=80" alt="{{ item.category }}">
+          {% endif %}
+        </div>
+        <div class="nc-img-bar"></div>
+        <div class="nc-body">
+          <div class="nc-src">{{ item.category }}</div>
+          <div class="nc-title">{{ item.title }}</div>
+          <p class="nc-exc">{{ item.excerpt }}</p>
+          <div class="nc-foot">
+            <span>{{ item.date }} · {{ item.read_time }} read</span>
+            <a href="#" class="nc-rm">Read more &rarr;</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:80px 20px;color:var(--muted)">
+      <div style="font-size:48px;margin-bottom:16px"></div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--text);margin-bottom:8px">No stories found</h3>
+      <p>No news available for this category yet. <a href="{% url 'news' %}" style="color:var(--navy);font-weight:600">View all stories</a></p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Stay Up to Date</h2>
+    <p class="cta-p">Subscribe to receive the latest news, insights, and updates from Edgar Global Ventures directly to your inbox.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Subscribe to Updates</a>
+      <a href="{% url 'sectors' %}" class="btn btn-lg btn-on">Our Sectors</a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

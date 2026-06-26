@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Edgar Global Ventures Ltd — Technology | Agriculture | Trade | Infrastructure{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════ -->
+{% with url_name=request.resolver_match.url_name %}
+<nav class="nav" id="mainNav">
+
+  <!-- Logo -->
+  <a href="{% url 'home' %}" class="nav-logo">
+    <img src="{% static 'core/images/logo_0.png' %}" alt="EGV Logo">
+    <div class="logo-wm">
+      <span class="logo-nm">EDGAR GLOBAL VENTURES LTD</span>
+      <span class="logo-tg">Technology · Agriculture · Trade · Infrastructure</span>
+    </div>
+  </a>
+
+  <!-- Desktop nav links -->
+  <ul class="nav-links">
+
+    <li class="{% if url_name == 'about' %}nav-active-li{% endif %}">
+      <a href="{% url 'about' %}">About Us</a>
+    </li>
+
+    <!-- Our Sectors — dropdown -->
+    <li class="has-drop {% if url_name == 'sectors' %}nav-active-li{% endif %}">
+      <a href="{% url 'sectors' %}">Our Sectors <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-section-label">Explore by Sector</span>
+        <a href="{% url 'sectors' %}?tab=technology">
+          <span class="drop-dot" style="background:#5B2FC9"></span>
+          <span class="drop-text">
+            <span class="drop-title">Technology</span>
+            <span class="drop-sub">Digital & IT Solutions</span>
+          </span>
+        </a>
+        <a href="{% url 'sectors' %}?tab=agriculture">
+          <span class="drop-dot" style="background:var(--green)"></span>
+          <span class="drop-text">
+            <span class="drop-title">Agriculture</span>
+            <span class="drop-sub">Farming & Agri Training</span>
+          </span>
+        </a>
+        <a href="{% url 'sectors' %}?tab=trade">
+          <span class="drop-dot" style="background:var(--gold)"></span>
+          <span class="drop-text">
+            <span class="drop-title">Trade</span>
+            <span class="drop-sub">Cross-Border Commerce</span>
+          </span>
+        </a>
+        <a href="{% url 'sectors' %}?tab=infrastructure">
+          <span class="drop-dot" style="background:var(--navy)"></span>
+          <span class="drop-text">
+            <span class="drop-title">Infrastructure</span>
+            <span class="drop-sub">Roads & Public Works</span>
+          </span>
+        </a>
+      </div>
+    </li>
+
+    <!-- Products & Services — dropdown -->
+    <li class="has-drop">
+      <a href="{% url 'sectors' %}">Products &amp; Services <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-section-label">Technology</span>
+        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Software Development</span></span></a>
+        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Cybersecurity</span></span></a>
+        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Cloud Services</span></span></a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-section-label">Agriculture</span>
+        <a href="{% url 'sectors' %}?tab=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Farmer Training</span></span></a>
+        <a href="{% url 'sectors' %}?tab=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Extension Services</span></span></a>
+        <div class="dropdown-divider"></div>
+        <span class="dropdown-section-label">Trade &amp; Infrastructure</span>
+        <a href="{% url 'sectors' %}?tab=trade"><span class="drop-dot" style="background:var(--gold)"></span><span class="drop-text"><span class="drop-title">Trade Facilitation</span></span></a>
+        <a href="{% url 'sectors' %}?tab=infrastructure"><span class="drop-dot" style="background:var(--navy)"></span><span class="drop-text"><span class="drop-title">Construction Projects</span></span></a>
+      </div>
+    </li>
+
+    <li class="{% if url_name == 'sustainability' %}nav-active-li{% endif %}">
+      <a href="{% url 'sustainability' %}">Sustainability</a>
+    </li>
+
+    <!-- News — dropdown -->
+    <li class="has-drop {% if url_name == 'news' %}nav-active-li{% endif %}">
+      <a href="{% url 'news' %}">News <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <a href="{% url 'news' %}"><span class="drop-dot" style="background:var(--muted)"></span><span class="drop-text"><span class="drop-title">All Stories</span></span></a>
+        <a href="{% url 'news' %}?category=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Technology News</span></span></a>
+        <a href="{% url 'news' %}?category=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Agriculture News</span></span></a>
+        <a href="{% url 'news' %}?category=trade"><span class="drop-dot" style="background:var(--gold)"></span><span class="drop-text"><span class="drop-title">Trade News</span></span></a>
+        <a href="{% url 'news' %}?category=infrastructure"><span class="drop-dot" style="background:var(--navy)"></span><span class="drop-text"><span class="drop-title">Infrastructure News</span></span></a>
+      </div>
+    </li>
+
+    <li class="{% if url_name == 'careers' %}nav-active-li{% endif %}">
+      <a href="{% url 'careers' %}">Careers</a>
+    </li>
+
+  </ul>
+
+  <!-- Mobile hamburger -->
+  <button class="mob-toggle" id="mobToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Desktop actions -->
+  <div class="nav-actions">
+    <a href="{% url 'contact' %}" class="btn btn-sm btn-on {% if url_name == 'contact' %}btn-navy{% endif %}">Contact Us</a>
+    <a href="{% url 'contact' %}" class="btn btn-sm btn-navy">Get Started</a>
+  </div>
+
+</nav>
+{% endwith %}
+
+<!-- ── Mobile overlay + slide-in panel ─────────────────── -->
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-nav" id="mobNav">
+  <div class="mob-nav-head">
+    <div class="mob-nav-logo">
+      <img src="{% static 'core/images/logo_0.png' %}" alt="EGV">
+    </div>
+    <button class="mob-close" id="mobClose" aria-label="Close menu">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+</button>
+  </div>
+
+  <ul class="mob-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About Us</a></li>
+    <div class="mob-divider"></div>
+    <span class="mob-section-label">Our Sectors</span>
+    <li><a href="{% url 'sectors' %}">All Sectors</a></li>
+    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=technology">Technology</a></li>
+    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=agriculture">Agriculture</a></li>
+    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=trade">Trade</a></li>
+    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=infrastructure">Infrastructure</a></li>
+    <div class="mob-divider"></div>
+    <li><a href="{% url 'sustainability' %}">Sustainability</a></li>
+    <li><a href="{% url 'news' %}">News</a></li>
+    <li><a href="{% url 'careers' %}">Careers</a></li>
+  </ul>
+
+  <div class="mob-ctas">
+    <a href="{% url 'contact' %}" class="btn btn-md btn-gold" style="justify-content:center;text-align:center">Contact Us</a>
+    <a href="{% url 'contact' %}" class="btn btn-md btn-ow" style="justify-content:center;text-align:center">Get Started</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE CONTENT
+══════════════════════════════════════════════ -->
+{% block content %}{% endblock %}
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="ftr">
+    <div class="ftr-top">
+      <div>
+        <div class="ftr-logo-row">
+          <img src="{% static 'core/images/logo_0.png' %}" alt="EGV Logo">
+          <div class="logo-wm">
+            <span class="logo-nm" style="color:rgba(255,255,255,.6)">EDGAR GLOBAL VENTURES LTD</span>
+            <span class="logo-tg">Technology · Agriculture · Trade · Infrastructure</span>
+          </div>
+        </div>
+        <p class="ftr-desc">A diversified ventures company connecting East Africa's key growth sectors — delivering technology solutions, agricultural training, trade facilitation, and infrastructure development.</p>
+        <div class="ftr-social">
+          <a href="#" class="fsoc" aria-label="LinkedIn">in</a>
+          <a href="#" class="fsoc" aria-label="Twitter">✕</a>
+          <a href="#" class="fsoc" aria-label="Facebook">f</a>
+          <a href="#" class="fsoc" aria-label="YouTube" style="font-size:11px;font-weight:700;letter-spacing:-.5px">YT</a>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-ch">Company</div>
+        <ul class="ftr-links">
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'about' %}#story">Our History</a></li>
+          <li><a href="{% url 'about' %}#mission">Leadership</a></li>
+          <li><a href="{% url 'sustainability' %}">Sustainability</a></li>
+          <li><a href="{% url 'careers' %}">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ftr-ch">Sectors</div>
+        <ul class="ftr-links">
+          <li><a href="{% url 'sectors' %}?tab=technology">Technology</a></li>
+          <li><a href="{% url 'sectors' %}?tab=agriculture">Agriculture</a></li>
+          <li><a href="{% url 'sectors' %}?tab=trade">Trade</a></li>
+          <li><a href="{% url 'sectors' %}?tab=infrastructure">Infrastructure</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ftr-ch">Resources</div>
+        <ul class="ftr-links">
+          <li><a href="{% url 'news' %}">News &amp; Stories</a></li>
+          <li><a href="{% url 'news' %}">Reports</a></li>
+          <li><a href="{% url 'about' %}">Partners</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-div"></div>
+    <div class="ftr-bot">
+      <span class="ftr-copy">&copy; 2026 Edgar Global Ventures Ltd. All rights reserved. East Africa.</span>
+      <div class="ftr-bl">
+        <a href="{% url 'privacy' %}">Privacy Policy</a>
+        <a href="{% url 'privacy' %}">Terms of Use</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════ -->
+<script>
+// Nav shadow on scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  nav.style.boxShadow = window.scrollY > 40
+    ? '0 4px 24px rgba(0,0,0,.13)' : '0 2px 12px rgba(0,0,0,.05)';
+});
+
+// Mobile menu
+const mobToggle  = document.getElementById('mobToggle');
+const mobNav     = document.getElementById('mobNav');
+const mobOverlay = document.getElementById('mobOverlay');
+const mobClose   = document.getElementById('mobClose');
+
+function openMob()  { mobNav.classList.add('open'); mobOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMob() { mobNav.classList.remove('open'); mobOverlay.classList.remove('open'); document.body.style.overflow=''; }
+
+mobToggle.addEventListener('click',  openMob);
+mobClose.addEventListener('click',   closeMob);
+mobOverlay.addEventListener('click', closeMob);
+
+// Scroll-reveal
+const rvl = document.querySelectorAll('.scd,.nc,.imp,.g-item,.sus-card,.job-card');
+if (rvl.length) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const idx = [...rvl].indexOf(e.target);
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, (idx % 4) * 90);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  rvl.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .55s ease, transform .55s ease';
+    io.observe(el);
+  });
+}
+
+// Feature section reveal
+document.querySelectorAll('.ft-text,.ft-vis').forEach((el,i) => {
+  const io2 = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      setTimeout(() => { el.style.opacity='1'; el.style.transform='translateY(0)'; }, i%2*110);
+      io2.unobserve(el);
+    }
+  }, { threshold: 0.1 });
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .6s ease, transform .6s ease';
+  io2.observe(el);
+});
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

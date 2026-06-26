@@ -1,0 +1,168 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Our Sectors — Edgar Global Ventures Ltd{% endblock %}
+
+{% block content %}
+<div style="padding-top:72px">
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-label">Our Four Pillars</span>
+    <h1>Products &amp; Services<br>Across Every <em>Sector</em></h1>
+    <p>Integrated solutions across technology, agriculture, trade, and infrastructure — purpose-built for East Africa's unique development needs and global opportunities.</p>
+  </div>
+</div>
+
+<!-- SECTOR TABS (sticky) -->
+<div class="sector-tabs">
+  <div class="sector-tabs-inner">
+    <a href="{% url 'sectors' %}?tab=all" class="stab {% if active_tab == 'all' %}active{% endif %}">
+      All Sectors
+    </a>
+    <a href="{% url 'sectors' %}?tab=technology" class="stab {% if active_tab == 'technology' %}active{% endif %}">
+      <span class="stab-dot" style="background:#5B2FC9"></span> Technology
+    </a>
+    <a href="{% url 'sectors' %}?tab=agriculture" class="stab {% if active_tab == 'agriculture' %}active{% endif %}">
+      <span class="stab-dot" style="background:var(--green)"></span> Agriculture
+    </a>
+    <a href="{% url 'sectors' %}?tab=trade" class="stab {% if active_tab == 'trade' %}active{% endif %}">
+      <span class="stab-dot" style="background:var(--gold)"></span> Trade
+    </a>
+    <a href="{% url 'sectors' %}?tab=infrastructure" class="stab {% if active_tab == 'infrastructure' %}active{% endif %}">
+      <span class="stab-dot" style="background:var(--navy)"></span> Infrastructure
+    </a>
+  </div>
+</div>
+
+<!-- ── TECHNOLOGY ── -->
+{% if active_tab == 'all' or active_tab == 'technology' %}
+<section class="feature" id="technology" style="scroll-margin-top:130px">
+  <div class="ft-inner">
+    <div class="ft-text">
+      <div class="ft-ey en" style="color:#5B2FC9;--tw-border:none">
+        <span style="width:28px;height:2px;background:#5B2FC9;display:block"></span>
+        Technology
+      </div>
+      <h2 class="ft-h2">Digital Innovation &amp; IT Solutions</h2>
+      <p class="ft-p">Our technology division delivers end-to-end digital transformation services to businesses, government agencies, and NGOs across East Africa. From bespoke software development to cloud infrastructure and cybersecurity, we power organisations to perform at their best in a rapidly evolving digital landscape.</p>
+      <ul class="sector-features">
+        <li>Custom Software Development &amp; Web Apps</li>
+        <li>Cybersecurity &amp; Data Protection</li>
+        <li>Cloud Services, Migration &amp; DevOps</li>
+        <li>IT Infrastructure &amp; Network Support</li>
+        <li>Digital Training &amp; Capacity Building</li>
+      </ul>
+      <a href="{% url 'contact' %}?sector=technology" class="btn btn-md" style="background:#5B2FC9;color:#fff">Inquire About Technology</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Technology">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="Digital Africa">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500&q=80" alt="Code">
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ── AGRICULTURE ── -->
+{% if active_tab == 'all' or active_tab == 'agriculture' %}
+<section class="feature alt" id="agriculture" style="scroll-margin-top:130px">
+  <div class="ft-inner rev">
+    <div class="ft-text">
+      <div class="ft-ey eg">Agriculture</div>
+      <h2 class="ft-h2">Sustainable Farming &amp; Agri Training</h2>
+      <p class="ft-p">Our agriculture division empowers smallholder and commercial farmers with the knowledge, techniques, and resources they need to thrive. Through structured training programs, extension services, and agribusiness development, we are transforming farming across East Africa — equipping communities with skills that create lasting food security and economic independence.</p>
+      <ul class="sector-features">
+        <li>Structured Farmer Training Programs</li>
+        <li>Climate-Smart Agriculture Techniques</li>
+        <li>Extension Services &amp; Expert Advisory</li>
+        <li>Agribusiness Development &amp; Market Linkages</li>
+        <li>Post-Harvest Management &amp; Value Addition</li>
+      </ul>
+      <a href="{% url 'contact' %}?sector=agriculture" class="btn btn-md btn-green">Inquire About Agriculture</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&q=80" alt="Agriculture">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=600&q=80" alt="Farming">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80" alt="Green Fields">
+      </div>
+      <div class="ft-stat"><div class="ft-sn">2,000<em>+</em></div><div class="ft-sl">Farmers trained</div></div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ── TRADE ── -->
+{% if active_tab == 'all' or active_tab == 'trade' %}
+<section class="feature" id="trade" style="scroll-margin-top:130px">
+  <div class="ft-inner">
+    <div class="ft-text">
+      <div class="ft-ey egold">Trade</div>
+      <h2 class="ft-h2">Cross-Border Commerce &amp; Market Access</h2>
+      <p class="ft-p">Our trade division facilitates seamless cross-border commerce across East Africa, providing market intelligence, logistics coordination, trade compliance support, and business matching services that open new economic corridors. We connect buyers and sellers across the region and beyond, creating opportunities that fuel growth at every scale.</p>
+      <ul class="sector-features">
+        <li>Import/Export Facilitation &amp; Documentation</li>
+        <li>Trade Compliance &amp; Regulatory Support</li>
+        <li>Market Intelligence &amp; Research Reports</li>
+        <li>Business Matching &amp; Buyer-Seller Platforms</li>
+        <li>Logistics Coordination &amp; Supply Chain</li>
+      </ul>
+      <a href="{% url 'contact' %}?sector=trade" class="btn btn-md btn-gold">Inquire About Trade</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80" alt="Trade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=600&q=80" alt="Commerce">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=500&q=80" alt="Market">
+      </div>
+      <div class="ft-stat"><div class="ft-sn">500<em>+</em></div><div class="ft-sl">Trade partners</div></div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ── INFRASTRUCTURE ── -->
+{% if active_tab == 'all' or active_tab == 'infrastructure' %}
+<section class="feature alt" id="infrastructure" style="scroll-margin-top:130px">
+  <div class="ft-inner rev">
+    <div class="ft-text">
+      <div class="ft-ey en">Infrastructure</div>
+      <h2 class="ft-h2">Construction, Roads &amp; Public Works</h2>
+      <p class="ft-p">Our infrastructure division delivers projects that lay the physical foundation for economic development — from road construction and utilities to building projects and public works. We bring professional project management, quality assurance, and community-centred design to every project, ensuring lasting value for the communities we serve.</p>
+      <ul class="sector-features">
+        <li>Road Construction &amp; Rehabilitation</li>
+        <li>Public Utilities &amp; Water Infrastructure</li>
+        <li>Building &amp; Civil Engineering Projects</li>
+        <li>Contractor Management &amp; Quality Assurance</li>
+        <li>Government Procurement &amp; Supply Services</li>
+      </ul>
+      <a href="{% url 'contact' %}?sector=infrastructure" class="btn btn-md btn-navy">Inquire About Infrastructure</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Infrastructure">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Construction">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=500&q=80" alt="Roads">
+      </div>
+      <div class="ft-stat"><div class="ft-sn">15<em>+</em></div><div class="ft-sl">Countries reached</div></div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Ready to Work With Us?</h2>
+    <p class="cta-p">Whether you need technology solutions, agricultural support, trade facilitation, or infrastructure — Edgar Global Ventures is ready to deliver.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Contact Our Team</a>
+      <a href="{% url 'about' %}" class="btn btn-lg btn-on">About EGV</a>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
