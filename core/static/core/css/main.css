@@ -1377,7 +1377,7 @@ footer{background:var(--navy-d);padding:72px 48px 40px}
 .out-desc  { color:var(--muted); font-size:13px; line-height:1.65; }
 
 /* ── Process steps (dark) ────────────────────────────────── */
-.prod-process { padding:88px 56px; background:var(--forest); position:relative; overflow:hidden; }
+.prod-process { padding:88px 56px; background:#0D2640; position:relative; overflow:hidden; }
 .prod-process::before {
   content:''; position:absolute; inset:0;
   background:radial-gradient(ellipse 600px 400px at 80% 50%, rgba(26,107,58,.14), transparent);
@@ -1391,14 +1391,15 @@ footer{background:var(--navy-d);padding:72px 48px 40px}
 }
 .pp-step { }
 .pp-num {
-  width:52px; height:52px; border-radius:13px;
-  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  width:56px; height:56px; border-radius:14px;
+  background:rgba(200,150,12,.15); border:1px solid rgba(200,150,12,.35);
   display:flex; align-items:center; justify-content:center;
-  font-family:'Playfair Display',serif; font-size:18px; font-weight:700;
-  color:var(--gold); margin-bottom:22px; position:relative; z-index:1;
+  font-family:'Playfair Display',serif; font-size:20px; font-weight:900;
+  color:var(--gold); margin-bottom:24px; position:relative; z-index:1;
+  box-shadow:0 0 0 6px rgba(200,150,12,.06);
 }
-.pp-title { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:#fff; margin-bottom:10px; }
-.pp-desc  { color:rgba(255,255,255,.42); font-size:14px; line-height:1.72; }
+.pp-title { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; color:#fff; margin-bottom:12px; letter-spacing:-.2px; }
+.pp-desc  { color:rgba(255,255,255,.72); font-size:15px; line-height:1.78; }
 
 /* ── Related sectors ─────────────────────────────────────── */
 .related-sec { padding:88px 56px; background:var(--cream); }
