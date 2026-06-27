@@ -138,5 +138,22 @@ def privacy(request):
     return render(request, 'core/privacy.html')
 
 
+# ── Products & Services views ──────────────────────────────
+def products_hub(request):
+    return render(request, 'core/products_hub.html')
+
+def products_technology(request):
+    return render(request, 'core/products_technology.html')
+
+def products_agriculture(request):
+    return render(request, 'core/products_agriculture.html')
+
+def products_trade(request):
+    return render(request, 'core/products_trade.html')
+
+def products_infrastructure(request):
+    return render(request, 'core/products_infrastructure.html')
+
+
 def handler404(request, exception):
     return render(request, 'core/404.html', status=404)

@@ -13,12 +13,6 @@
 </head>
 <body>
 
-<!-- ── Page preloader ─────────────────────────── -->
-<div class="preloader" id="preloader">
-  <img src="{% static 'core/images/logo_0.png' %}" alt="EGV" class="preloader-logo">
-  <div class="preloader-bar"><div class="preloader-fill"></div></div>
-</div>
-
 <!-- ── Scroll progress bar ─────────────────────── -->
 <div class="scroll-prog" id="scrollProg"></div>
 
@@ -98,20 +92,30 @@
 
     <!-- Products & Services — dropdown -->
     <li class="has-drop">
-      <a href="{% url 'sectors' %}">Products &amp; Services <span class="caret">▾</span></a>
+      <a href="{% url 'products_hub' %}">Products &amp; Services <span class="caret">▾</span></a>
       <div class="dropdown">
-        <span class="dropdown-section-label">Technology</span>
-        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Software Development</span></span></a>
-        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Cybersecurity</span></span></a>
-        <a href="{% url 'sectors' %}?tab=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Cloud Services</span></span></a>
+        <a href="{% url 'products_hub' %}">
+          <span class="drop-dot" style="background:var(--muted)"></span>
+          <span class="drop-text"><span class="drop-title">All Products &amp; Services</span><span class="drop-sub">View everything we offer</span></span>
+        </a>
         <div class="dropdown-divider"></div>
-        <span class="dropdown-section-label">Agriculture</span>
-        <a href="{% url 'sectors' %}?tab=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Farmer Training</span></span></a>
-        <a href="{% url 'sectors' %}?tab=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Extension Services</span></span></a>
-        <div class="dropdown-divider"></div>
-        <span class="dropdown-section-label">Trade &amp; Infrastructure</span>
-        <a href="{% url 'sectors' %}?tab=trade"><span class="drop-dot" style="background:var(--gold)"></span><span class="drop-text"><span class="drop-title">Trade Facilitation</span></span></a>
-        <a href="{% url 'sectors' %}?tab=infrastructure"><span class="drop-dot" style="background:var(--navy)"></span><span class="drop-text"><span class="drop-title">Construction Projects</span></span></a>
+        <span class="dropdown-section-label">By Sector</span>
+        <a href="{% url 'products_technology' %}">
+          <span class="drop-dot" style="background:#5B2FC9"></span>
+          <span class="drop-text"><span class="drop-title">Technology Solutions</span><span class="drop-sub">Software, Cloud, Cybersecurity</span></span>
+        </a>
+        <a href="{% url 'products_agriculture' %}">
+          <span class="drop-dot" style="background:var(--green)"></span>
+          <span class="drop-text"><span class="drop-title">Agriculture Services</span><span class="drop-sub">Training, Extension, Agribusiness</span></span>
+        </a>
+        <a href="{% url 'products_trade' %}">
+          <span class="drop-dot" style="background:var(--gold)"></span>
+          <span class="drop-text"><span class="drop-title">Trade Facilitation</span><span class="drop-sub">Import/Export, Compliance, Logistics</span></span>
+        </a>
+        <a href="{% url 'products_infrastructure' %}">
+          <span class="drop-dot" style="background:var(--navy)"></span>
+          <span class="drop-text"><span class="drop-title">Infrastructure Services</span><span class="drop-sub">Roads, Buildings, Procurement</span></span>
+        </a>
       </div>
     </li>
 
@@ -278,14 +282,6 @@ function closeMob() { mobNav.classList.remove('open'); mobOverlay.classList.remo
 mobToggle.addEventListener('click',  openMob);
 mobClose.addEventListener('click',   closeMob);
 mobOverlay.addEventListener('click', closeMob);
-
-// ── Preloader ──────────────────────────────────────────────
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const pl = document.getElementById('preloader');
-    if (pl) pl.classList.add('done');
-  }, 1500);
-});
 
 // ── Scroll progress bar ────────────────────────────────────
 const prog = document.getElementById('scrollProg');
