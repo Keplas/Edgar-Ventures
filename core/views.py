@@ -136,3 +136,7 @@ def careers(request):
 
 def privacy(request):
     return render(request, 'core/privacy.html')
+
+
+def handler404(request, exception):
+    return render(request, 'core/404.html', status=404)
