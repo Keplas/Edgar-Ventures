@@ -1,0 +1,589 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO — CASCADING BACKGROUND SLIDESHOW + SVG WAVE CASCADE
+══════════════════════════════════════════════════════════ -->
+<section class="hcw" id="hcw">
+
+  <!-- ── Background slideshow (4 sector photos) ── -->
+  <div class="hcw-bg">
+    <div class="hcw-slide hcw-s1 active"></div>
+    <div class="hcw-slide hcw-s2"></div>
+    <div class="hcw-slide hcw-s3"></div>
+    <div class="hcw-slide hcw-s4"></div>
+  </div>
+
+  <!-- ── Gradient overlay ── -->
+  <div class="hcw-ov"></div>
+
+  <!-- ══════════════════════════════════════════════
+       SVG WAVE CASCADE
+       — shadow depth wave (behind)
+       — main navy wave
+       — inner lighter layer for depth
+       — gold accent line
+       — white shimmer above gold
+  ══════════════════════════════════════════════ -->
+  <div class="hcw-wave">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 1440 700"
+         preserveAspectRatio="none">
+
+      <!-- Layer 1 — shadow depth -->
+      <path d="M0,510 C240,480 520,545 820,425
+               C1040,335 1260,295 1440,275
+               L1440,700 L0,700 Z"
+            fill="rgba(4,12,32,.45)"/>
+
+      <!-- Layer 2 — main navy cascade wave -->
+      <path d="M0,468 C240,438 520,504 820,384
+               C1040,294 1260,255 1440,235
+               L1440,700 L0,700 Z"
+            fill="#163A63"/>
+
+      <!-- Layer 3 — inner lighter sheen -->
+      <path d="M0,468 C240,438 520,504 820,384
+               C1040,294 1260,255 1440,235
+               L1440,330 C1260,348 1040,385 820,470
+               C520,580 240,518 0,542 Z"
+            fill="rgba(31,79,138,.28)"/>
+
+      <!-- Layer 4 — gold accent line (top edge of wave) -->
+      <path d="M0,468 C240,438 520,504 820,384
+               C1040,294 1260,255 1440,235"
+            fill="none"
+            stroke="#C8960C"
+            stroke-width="3.5"
+            opacity=".9"/>
+
+      <!-- Layer 5 — white shimmer above gold -->
+      <path d="M0,466 C240,436 520,502 820,382
+               C1040,292 1260,253 1440,233"
+            fill="none"
+            stroke="rgba(255,255,255,.22)"
+            stroke-width="1.2"/>
+
+    </svg>
+  </div>
+
+  <!-- ── Main headline (bottom-left · inside navy wave) ── -->
+  <div class="hcw-txt">
+    <div class="hcw-ey">Edgar Global Ventures Ltd &nbsp;<span class="live-badge"><span class="live-dot"></span>We're Active</span></div>
+    <h1 class="hcw-h1">
+      Building a More<br>
+      <em>Prosperous</em> Africa
+    </h1>
+    <div class="hcw-sub">One venture at a time</div>
+    <div class="hcw-btns">
+      <a href="{% url 'sectors' %}" class="btn btn-lg btn-gold">Explore Our Work</a>
+      <a href="{% url 'about' %}" class="btn btn-lg btn-ow">Learn More</a>
+    </div>
+  </div>
+
+  <!-- ── Sector nav (bottom-right · navy area · Cargill-style) ── -->
+  <nav class="hcw-snav" aria-label="Sector navigation">
+    <a href="{% url 'sectors' %}?tab=technology" class="hcw-sitem active" data-slide="1">
+      <span class="hcw-sitem-dot" style="background:#B89AFF"></span>
+      <span class="hcw-sitem-body">
+        <span class="hcw-sitem-label">Technology</span>
+        <span class="hcw-sitem-desc">Digital Innovation &amp; IT Solutions</span>
+      </span>
+      <span class="hcw-sitem-arr">→</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=agriculture" class="hcw-sitem" data-slide="2">
+      <span class="hcw-sitem-dot" style="background:#7FCC9B"></span>
+      <span class="hcw-sitem-body">
+        <span class="hcw-sitem-label">Agriculture</span>
+        <span class="hcw-sitem-desc">Sustainable Farming &amp; Agri Training</span>
+      </span>
+      <span class="hcw-sitem-arr">→</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=trade" class="hcw-sitem" data-slide="3">
+      <span class="hcw-sitem-dot" style="background:#C8960C"></span>
+      <span class="hcw-sitem-body">
+        <span class="hcw-sitem-label">Trade</span>
+        <span class="hcw-sitem-desc">Cross-Border Commerce &amp; Market Access</span>
+      </span>
+      <span class="hcw-sitem-arr">→</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=infrastructure" class="hcw-sitem" data-slide="4">
+      <span class="hcw-sitem-dot" style="background:#88B8FF"></span>
+      <span class="hcw-sitem-body">
+        <span class="hcw-sitem-label">Infrastructure</span>
+        <span class="hcw-sitem-desc">Construction, Roads &amp; Public Works</span>
+      </span>
+      <span class="hcw-sitem-arr">→</span>
+    </a>
+  </nav>
+
+  <!-- ── Progress bar ── -->
+  <div class="hcw-prog">
+    <div class="hcw-prog-bar running" id="hcwProgBar"></div>
+  </div>
+
+  <!-- ── Scroll indicator ── -->
+  <a href="#main-content" class="hcw-scroll">
+    <span class="hcw-scroll-lbl">Scroll</span>
+    <span class="hcw-scroll-line"></span>
+  </a>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     EVERYTHING BELOW THE HERO (unchanged)
+══════════════════════════════════════════════════════════ -->
+<div id="main-content">
+
+<!-- ══ SECTOR STRIP ══ -->
+<div class="sec-strip">
+  <div class="sec-strip-inner">
+    <a href="{% url 'sectors' %}?tab=technology" class="scol sct">
+      <div class="scol-label">Technology<div class="scol-div"></div></div>
+      <div class="scol-h">Digital Innovation &amp; IT Solutions</div>
+      <span class="scol-lnk">Explore &rarr;</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=agriculture" class="scol sca">
+      <div class="scol-label">Agriculture<div class="scol-div"></div></div>
+      <div class="scol-h">Sustainable Farming &amp; Agri Training</div>
+      <span class="scol-lnk">Explore &rarr;</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=trade" class="scol sctr">
+      <div class="scol-label">Trade<div class="scol-div"></div></div>
+      <div class="scol-h">Cross-Border Commerce &amp; Market Access</div>
+      <span class="scol-lnk">Explore &rarr;</span>
+    </a>
+    <a href="{% url 'sectors' %}?tab=infrastructure" class="scol sci">
+      <div class="scol-label">Infrastructure<div class="scol-div"></div></div>
+      <div class="scol-h">Construction, Roads &amp; Public Works</div>
+      <span class="scol-lnk">Explore &rarr;</span>
+    </a>
+  </div>
+</div>
+
+
+<!-- ══ PARTNERS TICKER ══ -->
+<div class="partners">
+  <div class="partners-label">Trusted By Organisations Across East Africa</div>
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <!-- Set 1 -->
+      <div class="ticker-item"><span class="ticker-dot" style="background:#5B2FC9"></span><span class="ticker-name">Ministry of ICT Uganda</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--green)"></span><span class="ticker-name">FAO East Africa</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--gold)"></span><span class="ticker-name">Uganda Development Bank</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--navy)"></span><span class="ticker-name">UNRA</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:#5B2FC9"></span><span class="ticker-name">Kenya Revenue Authority</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--green)"></span><span class="ticker-name">Agri-Uganda Initiative</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--gold)"></span><span class="ticker-name">EAC Trade Council</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--navy)"></span><span class="ticker-name">NEMA Uganda</span></div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="ticker-item"><span class="ticker-dot" style="background:#5B2FC9"></span><span class="ticker-name">Ministry of ICT Uganda</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--green)"></span><span class="ticker-name">FAO East Africa</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--gold)"></span><span class="ticker-name">Uganda Development Bank</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--navy)"></span><span class="ticker-name">UNRA</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:#5B2FC9"></span><span class="ticker-name">Kenya Revenue Authority</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--green)"></span><span class="ticker-name">Agri-Uganda Initiative</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--gold)"></span><span class="ticker-name">EAC Trade Council</span></div>
+      <div class="ticker-item"><span class="ticker-dot" style="background:var(--navy)"></span><span class="ticker-name">NEMA Uganda</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FEATURE 1: About ══ -->
+<section class="feature">
+  <div class="ft-inner">
+    <div class="ft-text">
+      <div class="ft-ey en">About Edgar Global Ventures</div>
+      <h2 class="ft-h2">A Diversified Venture at the Heart of Africa's Growth</h2>
+      <p class="ft-p">Edgar Global Ventures Ltd is a multi-sector company dedicated to driving economic growth and sustainable development across East Africa. By integrating technology, agriculture, trade, and infrastructure, we provide holistic solutions that create lasting value for communities, businesses, and governments.</p>
+      <p class="ft-p">Our integrated approach means growth in one sector amplifies the others — tech solutions boost agricultural productivity, improved infrastructure opens new trade routes, and growing trade creates demand for the services that sustain a thriving economy.</p>
+      <a href="{% url 'about' %}" class="btn btn-md btn-navy" style="margin-top:16px">Read About EGV</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?auto=format&fit=crop&w=800&q=80" alt="East Africa Skyline">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?auto=format&fit=crop&w=600&q=80" alt="Business Meeting Africa">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80" alt="Technology">
+      </div>
+      <div class="ft-stat">
+        <div class="ft-sn">15<em>+</em></div>
+        <div class="ft-sl">Countries served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMPACT NUMBERS ══ -->
+<div class="impact">
+  <div class="imp-inner">
+    <div class="imp"><div class="imp-n">4<em>+</em></div><div class="imp-l">Integrated sectors driving growth</div></div>
+    <div class="imp"><div class="imp-n">500<em>+</em></div><div class="imp-l">Business &amp; trade partners</div></div>
+    <div class="imp"><div class="imp-n">2,000<em>+</em></div><div class="imp-l">Farmers trained &amp; supported</div></div>
+    <div class="imp"><div class="imp-n">15<em>+</em></div><div class="imp-l">Years of operational excellence</div></div>
+  </div>
+</div>
+
+<!-- ══ FEATURE 2: Sustainability ══ -->
+<section class="feature alt">
+  <div class="ft-inner rev">
+    <div class="ft-text">
+      <div class="ft-ey eg">Sustainability &amp; Community</div>
+      <h2 class="ft-h2">Growing Responsibly for Generations to Come</h2>
+      <p class="ft-p">At Edgar Global Ventures, sustainability isn't a checkbox — it's woven into every sector we operate in. From climate-smart agricultural practices and green infrastructure to digital solutions that empower rural communities, we invest in a future that works for everyone.</p>
+      <p class="ft-p">Our training programs equip farmers with modern, sustainable techniques. Our infrastructure projects follow environmental best practices. Our trade networks prioritize local producers and fair value chains.</p>
+      <a href="{% url 'sustainability' %}" class="btn btn-md btn-green" style="margin-top:16px">Our Sustainability Approach</a>
+    </div>
+    <div class="ft-vis">
+      <div class="ft-cascade">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=800&q=80" alt="Sustainable Agriculture">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80" alt="Green Farming">
+        <img class="fc-img" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500&q=80" alt="Rural Community">
+      </div>
+      <div class="ft-stat">
+        <div class="ft-sn">85<em>%</em></div>
+        <div class="ft-sl">Training completion rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOUR SECTORS ══ -->
+<section class="secs">
+  <div class="secs-head">
+    <span class="secs-ey">Our Four Pillars</span>
+    <h2 class="secs-h2">Products &amp; Services Across Every Sector</h2>
+    <p class="secs-p">Each of our four divisions operates with deep sector expertise, delivering solutions built for East Africa's unique development context.</p>
+  </div>
+  <div class="secs-grid">
+    <div class="scd tech">
+      <div class="scd-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Technology">
+        <div class="scd-img-overlay"></div>
+        <div class="scd-img-label">Digital Innovation</div>
+      </div>
+      <div class="scd-top-bar"></div>
+      <div class="scd-body">
+        <div class="scd-icon" style="color:#5B2FC9"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="scd-title">Technology</div>
+        <p class="scd-desc">Software development, cybersecurity, cloud services, and IT infrastructure solutions tailored for businesses, government agencies, and NGOs in East Africa.</p>
+        <a href="{% url 'sectors' %}?tab=technology" class="scd-lnk">Learn more &rarr;</a>
+      </div>
+    </div>
+    <div class="scd agri">
+      <div class="scd-img-wrap">
+        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80" alt="Agriculture">
+        <div class="scd-img-overlay"></div>
+        <div class="scd-img-label">Sustainable Farming</div>
+      </div>
+      <div class="scd-top-bar"></div>
+      <div class="scd-body">
+        <div class="scd-icon" style="color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+        <div class="scd-title">Agriculture</div>
+        <p class="scd-desc">Farmer training programs, modern agricultural techniques, extension services, and agribusiness development for smallholder and commercial farmers.</p>
+        <a href="{% url 'sectors' %}?tab=agriculture" class="scd-lnk">Learn more &rarr;</a>
+      </div>
+    </div>
+    <div class="scd trade">
+      <div class="scd-img-wrap">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Trade">
+        <div class="scd-img-overlay"></div>
+        <div class="scd-img-label">Cross-Border Commerce</div>
+      </div>
+      <div class="scd-top-bar"></div>
+      <div class="scd-body">
+        <div class="scd-icon" style="color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
+        <div class="scd-title">Trade</div>
+        <p class="scd-desc">Cross-border trade facilitation, import/export logistics, market intelligence, business matching platforms, and trade compliance support across the region.</p>
+        <a href="{% url 'sectors' %}?tab=trade" class="scd-lnk">Learn more &rarr;</a>
+      </div>
+    </div>
+    <div class="scd infra">
+      <div class="scd-img-wrap">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" alt="Infrastructure">
+        <div class="scd-img-overlay"></div>
+        <div class="scd-img-label">Roads &amp; Public Works</div>
+      </div>
+      <div class="scd-top-bar"></div>
+      <div class="scd-body">
+        <div class="scd-icon" style="color:var(--navy)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="scd-title">Infrastructure</div>
+        <p class="scd-desc">Road construction, public utilities, building projects, contractor management, and procurement services that lay the foundation for lasting economic development.</p>
+        <a href="{% url 'sectors' %}?tab=infrastructure" class="scd-lnk">Learn more &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PURPOSE ══ -->
+<section class="purpose">
+  <div class="pur-inner">
+    <span class="pur-label">Our Purpose</span>
+    <h2 class="pur-h2">To nourish growth across every sector — <em>responsibly</em></h2>
+    <p class="pur-p">Edgar Global Ventures exists to connect Africa's most essential industries: the technology that powers progress, the agriculture that feeds people, the trade that creates opportunity, and the infrastructure that holds it all together. When these four pillars work in harmony, communities thrive.</p>
+    <a href="{% url 'about' %}" class="btn btn-lg btn-gold">Our Story</a>
+    <div class="pur-icons">
+      <div class="pi2"><span class="pi2-ic" style="color:#5B2FC9"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="pi2-l">Technology</span></div>
+      <div class="pi2"><span class="pi2-ic" style="color:var(--green)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="pi2-l">Agriculture</span></div>
+      <div class="pi2"><span class="pi2-ic" style="color:var(--gold)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span><span class="pi2-l">Trade</span></div>
+      <div class="pi2"><span class="pi2-ic" style="color:var(--navy)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="pi2-l">Infrastructure</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY STRIP ══ -->
+<section class="gallery-strip">
+  <div class="gallery-strip-inner">
+    <div class="gallery-title">
+      <span class="gallery-ey">Our Work in Action</span>
+      <h2 class="gallery-h2">Impact Across East Africa</h2>
+    </div>
+    <div class="gallery-row">
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" alt="East Africa">
+        <div class="g-overlay"></div>
+        <div class="g-label">Community Development</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=600&q=80" alt="Agriculture">
+        <div class="g-overlay"></div>
+        <div class="g-label">Agricultural Training</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=700&q=80" alt="Technology">
+        <div class="g-overlay"></div>
+        <div class="g-label">Technology Solutions</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Trade">
+        <div class="g-overlay"></div>
+        <div class="g-label">Trade Facilitation</div>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=700&q=80" alt="Infrastructure">
+        <div class="g-overlay"></div>
+        <div class="g-label">Infrastructure Projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="testi-inner">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">What They Say</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.1;margin-bottom:0">Trusted by Partners Across East Africa</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-text">Edgar Global Ventures transformed our farm's productivity through their agri training programme. Within one season, our yields increased by over 60% using the climate-smart methods we learned.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JO</div>
+          <div>
+            <div class="testi-name">James Okello</div>
+            <div class="testi-role">Smallholder Farmer, Soroti District</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-text">Their technology team delivered our entire IT infrastructure upgrade on time and within budget. The cybersecurity framework they deployed has been invaluable. Highly professional outfit.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--gold);color:var(--navy)">RN</div>
+          <div>
+            <div class="testi-name">Rebecca Nakato</div>
+            <div class="testi-role">IT Director, Regional Government Agency</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-quote">"</span>
+        <p class="testi-text">Working with EGV on our cross-border trade operations was seamless. They cut our clearance time in half and opened market connections we couldn't have reached on our own.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#5B2FC9">DM</div>
+          <div>
+            <div class="testi-name">David Mugisha</div>
+            <div class="testi-role">CEO, East Africa Export Company</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWS ══ -->
+<section class="news">
+  <div class="news-head">
+    <div>
+      <span class="news-ey">Where We're Making News</span>
+      <h2 class="news-h2">Latest Stories &amp; Updates</h2>
+    </div>
+    <a href="{% url 'news' %}" class="btn btn-md btn-on">All News</a>
+  </div>
+  <div class="news-grid">
+    {% for item in news_items %}
+    <div class="nc {{ item.cat_class }}">
+      <div class="nc-img">
+        {% if item.cat_class == 'nt' %}
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="{{ item.category }}">
+        {% elif item.cat_class == 'ntr' %}
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="{{ item.category }}">
+        {% elif item.cat_class == 'ni' %}
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" alt="{{ item.category }}">
+        {% else %}
+        <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=600&q=80" alt="{{ item.category }}">
+        {% endif %}
+      </div>
+      <div class="nc-img-bar"></div>
+      <div class="nc-body">
+        <div class="nc-src">{{ item.category }}</div>
+        <div class="nc-title">{{ item.title }}</div>
+        <p class="nc-exc">{{ item.excerpt }}</p>
+        <div class="nc-foot">
+          <span>{{ item.date }}</span>
+          <a href="{% url 'news' %}" class="nc-rm">Read more &rarr;</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:12px">Common Questions</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:16px">Frequently Asked Questions</h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;max-width:560px;margin:0 auto">Everything you need to know about working with Edgar Global Ventures.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          What sectors does Edgar Global Ventures operate in?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a">We operate across four integrated sectors: Technology, Agriculture, Trade, and Infrastructure. Our strength lies in how these four areas reinforce each other — for example, digital tools boosting farm productivity, or new roads unlocking trade corridors.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Which countries does EGV operate in?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a">Our primary base is Uganda, but we serve clients across East Africa including Kenya, Tanzania, Rwanda, and South Sudan. We have active trade partnerships extending into the broader African continent and internationally.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          How do I start a partnership with Edgar Global Ventures?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a">Simply reach out through our Contact page or send us a WhatsApp message. Our team will schedule an initial consultation to understand your needs and propose how EGV can deliver value for your organisation or project.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Does EGV work with government agencies and NGOs?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a">Yes — government agencies, NGOs, development organisations, private businesses, and individual entrepreneurs are all welcome. We tailor our approach to fit the scale and requirements of each client.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          How does the Agri Training programme work?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="faq-a">Farmers enroll in structured cohorts that run each planting season. Training covers climate-smart practices, modern crop management, post-harvest handling, and market linkages. Sessions are held on-site in farming communities across Uganda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<div class="cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">Partner with Edgar Global Ventures</h2>
+    <p class="cta-p">Whether you're an investor, government agency, NGO, or local business — we want to work with you to build a stronger East Africa.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Contact Us Today</a>
+      <a href="{% url 'sectors' %}" class="btn btn-lg btn-on">Explore Our Sectors</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /#main-content -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO SLIDESHOW JAVASCRIPT
+══════════════════════════════════════════════════════════ -->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+  const slides   = document.querySelectorAll('.hcw-slide');
+  const sitems   = document.querySelectorAll('.hcw-sitem');
+  const progBar  = document.getElementById('hcwProgBar');
+  const DURATION = 8000; // ms per slide
+  let current    = 0;
+  let autoTimer  = null;
+
+  /* ── Activate a specific slide ── */
+  function goTo(n) {
+    // Deactivate current
+    slides[current].classList.remove('active');
+    sitems[current].classList.remove('active');
+
+    current = (n + slides.length) % slides.length;
+
+    // Activate new
+    slides[current].classList.add('active');
+    sitems[current].classList.add('active');
+
+    // Reset Ken Burns by force-reflow
+    slides[current].style.animation = 'none';
+    void slides[current].offsetWidth;
+    slides[current].style.animation = '';
+
+    // Restart progress bar
+    progBar.classList.remove('running');
+    void progBar.offsetWidth;
+    progBar.classList.add('running');
+  }
+
+  /* ── Auto-cycle ── */
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), DURATION);
+  }
+
+  /* ── Hover over sector nav: preview that slide ── */
+  sitems.forEach((item, i) => {
+    item.addEventListener('mouseenter', () => {
+      clearInterval(autoTimer);
+      goTo(i);
+    });
+    item.addEventListener('mouseleave', () => {
+      startAuto();
+    });
+    /* Click still navigates to sector page via the <a href> */
+  });
+
+  /* ── Init ── */
+  startAuto();
+
+  /* ── Pause on hero focus (accessibility) ── */
+  const hcw = document.getElementById('hcw');
+  hcw.addEventListener('focusin',  () => clearInterval(autoTimer));
+  hcw.addEventListener('focusout', () => startAuto());
+
+  /* ── Pause when tab is hidden ── */
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? clearInterval(autoTimer) : startAuto();
+  });
+})();
+</script>
+{% endblock %}

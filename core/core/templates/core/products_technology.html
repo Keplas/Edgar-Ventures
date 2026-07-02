@@ -1,0 +1,157 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Technology Solutions — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+<div style="padding-top:72px">
+
+<!-- HERO -->
+<section class="prod-hero">
+  <div class="prod-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=85')"></div>
+  <div class="prod-hero-ov" style="background:linear-gradient(110deg,rgba(22,58,99,.97) 45%,rgba(91,47,201,.55) 100%)"></div>
+  <div class="prod-hero-inner">
+    <div>
+      <nav class="breadcrumb">
+        <a href="{% url 'products_hub' %}">Products &amp; Services</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-cur">Technology</span>
+      </nav>
+      <div class="prod-hero-eyebrow">Technology Solutions</div>
+      <h1 class="prod-hero-h1">Digital Innovation for<br><em>East Africa's Future</em></h1>
+      <p class="prod-hero-p">From custom software to enterprise cybersecurity, EGV's technology division delivers end-to-end digital transformation for businesses, government agencies, and NGOs across the region.</p>
+      <div class="prod-mini-stats">
+        <div class="pms"><div class="pms-n">50<em>+</em></div><div class="pms-l">Clients served</div></div>
+        <div class="pms"><div class="pms-n">99.9<em>%</em></div><div class="pms-l">System uptime</div></div>
+        <div class="pms"><div class="pms-n">12<em>+</em></div><div class="pms-l">Gov agencies secured</div></div>
+        <div class="pms"><div class="pms-n">5<em>+</em></div><div class="pms-l">Years of delivery</div></div>
+      </div>
+      <div class="prod-hero-ctas">
+        <a href="{% url 'contact' %}?sector=technology" class="btn btn-lg" style="background:#5B2FC9;color:#fff">Get a Technology Quote</a>
+        <a href="#services" class="btn btn-lg btn-ow">View All Services</a>
+      </div>
+    </div>
+    <div class="prod-hero-right">
+      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(91,47,201,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><div class="ppc-title">Custom Software Development</div><div class="ppc-sub">Web, mobile &amp; enterprise systems</div></div><span class="ppc-arr">→</span></div>
+      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(91,47,201,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="ppc-title">Cybersecurity Services</div><div class="ppc-sub">Audits, frameworks &amp; protection</div></div><span class="ppc-arr">→</span></div>
+      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(91,47,201,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div><div><div class="ppc-title">Cloud &amp; DevOps</div><div class="ppc-sub">Migration, hosting &amp; CI/CD pipelines</div></div><span class="ppc-arr">→</span></div>
+      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(91,47,201,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div><div><div class="ppc-title">IT Infrastructure</div><div class="ppc-sub">Networks, servers &amp; support</div></div><span class="ppc-arr">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="svc-section cream" id="services">
+  <div class="svc-head">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5B2FC9;display:block;margin-bottom:12px">What We Offer</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:14px">Technology Services</h2>
+    <p style="color:var(--muted);font-size:16px;line-height:1.72;max-width:580px">Comprehensive digital solutions engineered for reliability, security, and scale in East Africa's unique technology environment.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=700&q=80" alt="Software Development"><div class="svc-img-ov"></div><span class="svc-badge">Core Service</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="svc-title">Custom Software Development</div>
+        <p class="svc-desc">Bespoke web applications, enterprise management systems, and mobile apps built specifically for your workflows and users — designed to scale as your organisation grows.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">Web &amp; mobile application development</li><li style="color:#5B2FC9">Enterprise resource planning (ERP) systems</li><li style="color:#5B2FC9">API integrations &amp; third-party connections</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Request a Quote →</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80" alt="Cybersecurity"><div class="svc-img-ov"></div><span class="svc-badge">High Priority</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="svc-title">Cybersecurity Services</div>
+        <p class="svc-desc">Comprehensive security audits, penetration testing, and framework deployment that protect your data, systems, and users from modern threats — tailored for East African regulatory environments.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">Penetration testing &amp; vulnerability assessments</li><li style="color:#5B2FC9">Security framework deployment</li><li style="color:#5B2FC9">Staff security awareness training</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Get a Security Audit →</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=700&q=80" alt="Cloud Services"><div class="svc-img-ov"></div><span class="svc-badge">Infrastructure</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <div class="svc-title">Cloud Services &amp; DevOps</div>
+        <p class="svc-desc">Cloud migration strategy, infrastructure setup, and DevOps pipeline implementation that reduce costs, improve reliability, and accelerate your software delivery cycle.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">Cloud migration &amp; architecture design</li><li style="color:#5B2FC9">CI/CD pipeline implementation</li><li style="color:#5B2FC9">24/7 cloud monitoring &amp; management</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Explore Cloud Options →</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80" alt="IT Infrastructure"><div class="svc-img-ov"></div><span class="svc-badge">Foundation</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
+        <div class="svc-title">IT Infrastructure &amp; Support</div>
+        <p class="svc-desc">End-to-end network design, server setup, and helpdesk support ensuring your physical and digital IT infrastructure is always performing at its best with minimal downtime.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">LAN/WAN network design &amp; installation</li><li style="color:#5B2FC9">Server setup &amp; data centre management</li><li style="color:#5B2FC9">Managed IT helpdesk support</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Get IT Support →</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Digital Training"><div class="svc-img-ov"></div><span class="svc-badge">Capacity Building</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="svc-title">Digital Training &amp; Capacity Building</div>
+        <p class="svc-desc">Structured training programmes that build digital literacy across your organisation — from basic computer skills to advanced software use, delivered in-person and remotely across East Africa.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">Digital literacy &amp; productivity training</li><li style="color:#5B2FC9">Software-specific team training</li><li style="color:#5B2FC9">ICT policy &amp; governance workshops</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Book a Training →</a>
+      </div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-img"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=700&q=80" alt="Mobile Development"><div class="svc-img-ov"></div><span class="svc-badge">Mobile First</span></div>
+      <div class="svc-body">
+        <div class="svc-icon-wrap" style="background:rgba(91,47,201,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="svc-title">Mobile App Development</div>
+        <p class="svc-desc">Native and cross-platform mobile applications designed for Africa's mobile-first market — with offline capability, USSD integration, and mobile money support built in from day one.</p>
+        <ul class="svc-feats"><li style="color:#5B2FC9">Android &amp; iOS native apps</li><li style="color:#5B2FC9">Offline-first &amp; low-bandwidth design</li><li style="color:#5B2FC9">Mobile money &amp; USSD integration</li></ul>
+        <a href="{% url 'contact' %}?sector=technology" class="svc-lnk" style="color:#5B2FC9">Build Your App →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="prod-process">
+  <div class="pp-inner">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">How We Deliver</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:-.5px">Our Technology Delivery Process</h2>
+    <div class="pp-grid">
+      <div class="pp-step"><div class="pp-num">01</div><div class="pp-title">Discovery &amp; Scoping</div><p class="pp-desc">We begin with a thorough needs assessment — mapping your current systems, identifying gaps, and defining the technical scope, timeline, and budget before a single line of code is written.</p></div>
+      <div class="pp-step"><div class="pp-num">02</div><div class="pp-title">Design &amp; Development</div><p class="pp-desc">Our engineers design, prototype, and build your solution using industry best practices — with regular check-ins so you see progress throughout the development cycle.</p></div>
+      <div class="pp-step"><div class="pp-num">03</div><div class="pp-title">Deployment &amp; Support</div><p class="pp-desc">We deploy your solution, train your team, and stay on as your long-term technical partner — providing ongoing maintenance, upgrades, and responsive support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="outcomes" style="background:#fff">
+  <div style="max-width:1280px;margin:0 auto;margin-bottom:48px">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5B2FC9;display:block;margin-bottom:12px">Proven Results</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--text);letter-spacing:-.5px">What Our Technology Clients Achieve</h2>
+  </div>
+  <div class="out-grid">
+    <div class="out-card"><div class="out-n" style="color:#5B2FC9">40<em style="color:#5B2FC9">%</em></div><div class="out-label">Average Cost Reduction</div><div class="out-desc">Organisations that migrate to cloud infrastructure with EGV's guidance typically reduce their IT operational costs by 40% within the first year.</div></div>
+    <div class="out-card"><div class="out-n" style="color:#5B2FC9">99.9<em style="color:#5B2FC9">%</em></div><div class="out-label">System Uptime Guarantee</div><div class="out-desc">Our infrastructure and managed services are backed by a 99.9% uptime SLA, ensuring your critical business systems stay available around the clock.</div></div>
+    <div class="out-card"><div class="out-n" style="color:#5B2FC9">3<em style="color:#5B2FC9">x</em></div><div class="out-label">Faster Software Delivery</div><div class="out-desc">Teams that adopt our DevOps frameworks ship features and updates up to 3x faster than their previous release cadence, with fewer defects.</div></div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related-sec">
+  <div style="max-width:1280px;margin:0 auto">
+    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:12px">Explore More</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--text);letter-spacing:-.5px">Other EGV Divisions</h2>
+    <div class="rel-grid">
+      <a href="{% url 'products_agriculture' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=600&q=80" alt="Agriculture"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Agriculture</div><div class="rel-title">Farming &amp; Agri Training</div><div class="rel-sub">Explore services →</div></div></a>
+      <a href="{% url 'products_trade' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80" alt="Trade"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Trade</div><div class="rel-title">Cross-Border Commerce</div><div class="rel-sub">Explore services →</div></div></a>
+      <a href="{% url 'products_infrastructure' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" alt="Infrastructure"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Infrastructure</div><div class="rel-title">Roads &amp; Construction</div><div class="rel-sub">Explore services →</div></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="cta"><div class="cta-inner">
+  <h2 class="cta-h">Ready to Transform Your Digital Capabilities?</h2>
+  <p class="cta-p">Talk to our technology team and let's design the right solution for your organisation — on time, on budget, and built to last.</p>
+  <div class="cta-btns"><a href="{% url 'contact' %}?sector=technology" class="btn btn-lg btn-navy">Request a Technology Consultation</a><a href="{% url 'products_hub' %}" class="btn btn-lg btn-on">All Services</a></div>
+</div></div>
+</div>
+{% endblock %}
