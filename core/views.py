@@ -157,3 +157,144 @@ def products_infrastructure(request):
 
 def handler404(request, exception):
     return render(request, 'core/404.html', status=404)
+
+
+# ════════════════════════════════════════════════════════════
+# AGRICULTURE SHOP VIEWS
+# ════════════════════════════════════════════════════════════
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from .models import Category, Product, Order, OrderItem
+from .cart import Cart
+from decimal import Decimal
+
+
+def agri_shop(request):
+    categories = Category.objects.prefetch_related('products')
+    cat_slug   = request.GET.get('category', 'all')
+    search     = request.GET.get('q', '').strip()
+
+    products = Product.objects.filter(is_available=True).select_related('category')
+    if cat_slug != 'all':
+        products = products.filter(category__slug=cat_slug)
+    if search:
+        products = products.filter(name__icontains=search)
+
+    featured = Product.objects.filter(is_available=True, is_featured=True).select_related('category')[:6]
+
+    return render(request, 'core/agri_shop.html', {
+        'categories':      categories,
+        'products':        products,
+        'featured':        featured,
+        'active_category': cat_slug,
+        'search_query':    search,
+    })
+
+
+def agri_product(request, slug):
+    product = get_object_or_404(Product, slug=slug, is_available=True)
+    related = Product.objects.filter(
+        category=product.category, is_available=True
+    ).exclude(pk=product.pk)[:4]
+    return render(request, 'core/agri_product.html', {
+        'product': product,
+        'related': related,
+    })
+
+
+def agri_cart(request):
+    cart = Cart(request)
+    return render(request, 'core/agri_cart.html', {'cart': cart})
+
+
+def agri_cart_add(request, pk):
+    product  = get_object_or_404(Product, pk=pk, is_available=True)
+    cart     = Cart(request)
+    qty      = int(request.POST.get('quantity', 1))
+    override = request.POST.get('override') == '1'
+    cart.add(product, quantity=qty, override=override)
+    return redirect(request.POST.get('next') or 'agri_cart')
+
+
+def agri_cart_remove(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    Cart(request).remove(product)
+    return redirect('agri_cart')
+
+
+def agri_cart_update(request):
+    cart = Cart(request)
+    for key, val in request.POST.items():
+        if key.startswith('qty_'):
+            pid = key[4:]
+            try:
+                qty = int(val)
+                if qty > 0:
+                    cart.cart[pid]['quantity'] = qty
+                else:
+                    cart.remove_by_id(pid)
+            except (ValueError, KeyError):
+                pass
+    cart._save()
+    return redirect('agri_cart')
+
+
+def agri_checkout(request):
+    cart = Cart(request)
+    if len(cart) == 0:
+        return redirect('agri_shop')
+
+    if request.method == 'POST':
+        p = request.POST
+        # Validate required fields
+        required = ['first_name', 'last_name', 'email', 'phone',
+                    'delivery_address', 'district', 'payment_method']
+        errors = {f: 'This field is required.' for f in required if not p.get(f, '').strip()}
+
+        if not errors:
+            subtotal = cart.subtotal()
+            delivery = cart.DELIVERY_FEE
+            total    = subtotal + delivery
+
+            order = Order.objects.create(
+                first_name       = p['first_name'].strip(),
+                last_name        = p['last_name'].strip(),
+                email            = p['email'].strip(),
+                phone            = p['phone'].strip(),
+                delivery_address = p['delivery_address'].strip(),
+                district         = p['district'].strip(),
+                payment_method   = p['payment_method'],
+                payment_phone    = p.get('payment_phone', '').strip(),
+                subtotal         = subtotal,
+                delivery_fee     = delivery,
+                total            = total,
+                notes            = p.get('notes', '').strip(),
+            )
+            for item in cart:
+                OrderItem.objects.create(
+                    order        = order,
+                    product      = item['product'],
+                    product_name = item['name'],
+                    quantity     = item['quantity'],
+                    unit_price   = item['unit_price'],
+                )
+            cart.clear()
+            return redirect('agri_order_success', order_number=order.order_number)
+
+        return render(request, 'core/agri_checkout.html', {
+            'cart': cart, 'errors': errors, 'post': p,
+        })
+
+    districts = [
+        'Kampala','Wakiso','Mukono','Jinja','Mbale','Gulu','Lira',
+        'Mbarara','Fort Portal','Kabale','Soroti','Arua','Masaka',
+        'Entebbe','Kasese','Hoima','Tororo','Iganga','Mityana','Other',
+    ]
+    return render(request, 'core/agri_checkout.html', {
+        'cart': cart, 'districts': districts, 'errors': {}, 'post': {},
+    })
+
+
+def agri_order_success(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    return render(request, 'core/agri_order_success.html', {'order': order})

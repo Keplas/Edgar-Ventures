@@ -10,6 +10,15 @@ urlpatterns = [
     path('sustainability/', views.sustainability, name='sustainability'),
     path('careers/', views.careers, name='careers'),
     path('privacy/', views.privacy, name='privacy'),
+    # Agriculture Shop
+    path('agriculture/shop/', views.agri_shop, name='agri_shop'),
+    path('agriculture/shop/<slug:slug>/', views.agri_product, name='agri_product'),
+    path('agriculture/cart/', views.agri_cart, name='agri_cart'),
+    path('agriculture/cart/add/<int:pk>/', views.agri_cart_add, name='agri_cart_add'),
+    path('agriculture/cart/remove/<int:pk>/', views.agri_cart_remove, name='agri_cart_remove'),
+    path('agriculture/cart/update/', views.agri_cart_update, name='agri_cart_update'),
+    path('agriculture/checkout/', views.agri_checkout, name='agri_checkout'),
+    path('agriculture/order/success/<str:order_number>/', views.agri_order_success, name='agri_order_success'),
     # Products & Services
     path('products/', views.products_hub, name='products_hub'),
     path('products/technology/', views.products_technology, name='products_technology'),
