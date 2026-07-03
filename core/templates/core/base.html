@@ -3,7 +3,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EGV">
+<meta name="theme-color" content="#163A63">
+<meta name="format-detection" content="telephone=no">
 <title>{% block title %}Edgar Global Ventures Ltd — Technology | Agriculture | Trade | Infrastructure{% endblock %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,28 +199,28 @@
 </button>
   </div>
 
-  <ul class="mob-links">
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'about' %}">About Us</a></li>
+  <ul class="mob-links" id="mobLinks">
+    <li><a onclick="closeMob()" href="{% url 'home' %}" onclick="closeMob()">Home</a></li>
+    <li><a onclick="closeMob()" href="{% url 'about' %}" onclick="closeMob()">About Us</a></li>
     <div class="mob-divider"></div>
     <span class="mob-section-label">Our Sectors</span>
-    <li><a href="{% url 'sectors' %}">All Sectors</a></li>
-    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=technology">Technology</a></li>
-    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=agriculture">Agriculture</a></li>
-    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=trade">Trade</a></li>
-    <li class="mob-sub"><a href="{% url 'sectors' %}?tab=infrastructure">Infrastructure</a></li>
+    <li><a onclick="closeMob()" href="{% url 'sectors' %}">All Sectors</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=technology">Technology</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=agriculture">Agriculture</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=trade">Trade</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=infrastructure">Infrastructure</a></li>
     <div class="mob-divider"></div>
-    <li><a href="{% url 'sustainability' %}">Sustainability</a></li>
-    <li><a href="{% url 'news' %}">News</a></li>
-    <li><a href="{% url 'careers' %}">Careers</a></li>
+    <li><a onclick="closeMob()" href="{% url 'sustainability' %}">Sustainability</a></li>
+    <li><a onclick="closeMob()" href="{% url 'news' %}">News</a></li>
+    <li><a onclick="closeMob()" href="{% url 'careers' %}">Careers</a></li>
     <div class="mob-divider"></div>
     <span class="mob-section-label">Agriculture Shop</span>
-    <li><a href="{% url 'agri_shop' %}">🛒 Shop All Products</a></li>
-    <li class="mob-sub"><a href="{% url 'agri_shop' %}?category=coffee">☕ Coffee</a></li>
-    <li class="mob-sub"><a href="{% url 'agri_shop' %}?category=grains-cereals">🌾 Grains &amp; Cereals</a></li>
-    <li class="mob-sub"><a href="{% url 'agri_shop' %}?category=beans-legumes">🫘 Beans &amp; Legumes</a></li>
-    <li class="mob-sub"><a href="{% url 'agri_shop' %}?category=fresh-produce">🍍 Fresh Produce</a></li>
-    <li><a href="{% url 'agri_cart' %}">🛒 Shopping Cart {% if cart_item_count > 0 %}({{ cart_item_count }}){% endif %}</a></li>
+    <li><a onclick="closeMob()" href="{% url 'agri_shop' %}">🛒 Shop All Products</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=coffee">☕ Coffee</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=grains-cereals">🌾 Grains &amp; Cereals</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=beans-legumes">🫘 Beans &amp; Legumes</a></li>
+    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=fresh-produce">🍍 Fresh Produce</a></li>
+    <li><a onclick="closeMob()" href="{% url 'agri_cart' %}">🛒 Shopping Cart {% if cart_item_count > 0 %}({{ cart_item_count }}){% endif %}</a></li>
   </ul>
 
   <div class="mob-ctas">
@@ -305,6 +310,18 @@
      SCRIPTS
 ══════════════════════════════════════════════ -->
 <script>
+// Swipe to close mobile nav (iOS gesture support)
+(function() {
+  let startX = 0;
+  const nav = document.getElementById('mobNav');
+  if (!nav) return;
+  nav.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  nav.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx > 60) closeMob(); // swipe right to close
+  }, { passive: true });
+})();
+
 // Nav shadow on scroll
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
