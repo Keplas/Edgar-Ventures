@@ -1706,3 +1706,22 @@ footer{background:var(--navy-d);padding:72px 48px 40px}
 @media(max-width:600px){
   .shop-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Agri Shop nav highlight ─────────────────────────────── */
+.nav-links a[href*="agri"] {
+  color: #7FCC9B !important;
+}
+.nav-links a[href*="agri"]:hover {
+  color: #5ADF8A !important;
+  background: rgba(127,204,155,.1) !important;
+}
+.nav-active-li a[href*="agri"] {
+  border-bottom-color: var(--green) !important;
+}
+
+/* Make cart button always visible in nav */
+.cart-nav-btn {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
