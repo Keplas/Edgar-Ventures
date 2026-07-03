@@ -111,11 +111,22 @@
   {% endfor %}
 </div>
 {% else %}
-<div style="text-align:center;padding:80px 40px;max-width:480px;margin:0 auto">
+<div style="text-align:center;padding:80px 40px;max-width:560px;margin:0 auto">
   <div style="font-size:56px;margin-bottom:16px">🌿</div>
-  <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--text);margin-bottom:10px">No products found</h3>
+  {% if search_query %}
+  <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--text);margin-bottom:10px">No results for "{{ search_query }}"</h3>
   <p style="color:var(--muted);margin-bottom:24px">Try a different search term or browse all categories.</p>
   <a href="{% url 'agri_shop' %}" class="btn btn-md btn-green">View All Products</a>
+  {% else %}
+  <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:var(--text);margin-bottom:10px">Products Coming Soon</h3>
+  <p style="color:var(--muted);margin-bottom:14px">Our shop is being stocked. Please check back shortly or contact us directly to order.</p>
+  <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px;text-align:left">
+    <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Order by WhatsApp or Phone:</div>
+    <div style="font-size:15px;font-weight:700;color:var(--green)">+256 700 000 000</div>
+    <div style="font-size:13px;color:var(--muted);margin-top:4px">MTN &amp; Airtel Money accepted • Delivery across Uganda</div>
+  </div>
+  <a href="{% url 'contact' %}" class="btn btn-md btn-green">Contact to Order</a>
+  {% endif %}
 </div>
 {% endif %}
 </div>
