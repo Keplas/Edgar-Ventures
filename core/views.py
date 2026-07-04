@@ -173,14 +173,27 @@ def agri_shop(request):
     categories = Category.objects.prefetch_related('products')
     cat_slug   = request.GET.get('category', 'all')
     search     = request.GET.get('q', '').strip()
+    min_price  = request.GET.get('min_price', '')
+    max_price  = request.GET.get('max_price', '')
+    featured_only = request.GET.get('featured', '')
 
     products = Product.objects.filter(is_available=True).select_related('category')
+
     if cat_slug != 'all':
         products = products.filter(category__slug=cat_slug)
     if search:
         products = products.filter(name__icontains=search)
+    if min_price:
+        try: products = products.filter(price_ugx__gte=int(min_price))
+        except ValueError: pass
+    if max_price:
+        try: products = products.filter(price_ugx__lte=int(max_price))
+        except ValueError: pass
+    if featured_only:
+        products = products.filter(is_featured=True)
 
-    featured = Product.objects.filter(is_available=True, is_featured=True).select_related('category')[:6]
+    all_count = Product.objects.filter(is_available=True).count()
+    featured  = Product.objects.filter(is_available=True, is_featured=True).select_related('category')[:6]
 
     return render(request, 'core/agri_shop.html', {
         'categories':      categories,
@@ -188,6 +201,7 @@ def agri_shop(request):
         'featured':        featured,
         'active_category': cat_slug,
         'search_query':    search,
+        'all_count':       all_count,
     })
 
 
