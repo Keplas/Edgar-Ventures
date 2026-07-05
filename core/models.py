@@ -23,7 +23,15 @@ class Product(models.Model):
     description    = models.TextField()
     price_ugx      = models.DecimalField(max_digits=12, decimal_places=0)
     unit           = models.CharField(max_length=60, help_text='e.g. per kg, per 250g, per piece')
-    image_url      = models.URLField(blank=True)
+
+    # ── Cloudinary image (uploaded via admin) ──────────────────
+    image          = models.CharField(
+        max_length=500, blank=True,
+        help_text='Cloudinary public_id — filled automatically when you upload via admin'
+    )
+    # ── Fallback URL (Unsplash or any external URL) ─────────────
+    image_url      = models.URLField(blank=True, help_text='External image URL (used if no Cloudinary image)')
+
     stock_quantity = models.PositiveIntegerField(default=500)
     is_available   = models.BooleanField(default=True)
     is_featured    = models.BooleanField(default=False)
@@ -36,6 +44,28 @@ class Product(models.Model):
 
     def formatted_price(self):
         return f"UGX {int(self.price_ugx):,}"
+
+    def get_image_url(self, width=700, height=500):
+        """
+        Returns best image URL:
+        1. Cloudinary optimised URL (if image public_id is set)
+        2. Fallback to image_url (Unsplash or any external URL)
+        3. Empty string
+        """
+        if self.image:
+            try:
+                import cloudinary
+                return cloudinary.CloudinaryImage(self.image).build_url(
+                    width=width, height=height,
+                    crop='fill', gravity='auto',
+                    fetch_format='auto', quality='auto',
+                )
+            except Exception:
+                return self.image_url or ''
+        return self.image_url or ''
+
+    def get_thumb_url(self):
+        return self.get_image_url(width=400, height=300)
 
 
 def _order_number():
@@ -93,11 +123,11 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order      = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product    = models.ForeignKey(Product, on_delete=models.PROTECT)
-    product_name= models.CharField(max_length=200)   # snapshot
-    quantity   = models.PositiveIntegerField()
-    unit_price = models.DecimalField(max_digits=12, decimal_places=0)
+    order        = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product      = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product_name = models.CharField(max_length=200)
+    quantity     = models.PositiveIntegerField()
+    unit_price   = models.DecimalField(max_digits=12, decimal_places=0)
 
     @property
     def line_total(self):

@@ -16,8 +16,8 @@
   <div class="prod-detail-grid">
     <!-- Image -->
     <div class="prod-detail-img">
-      {% if product.image_url %}
-      <img src="{{ product.image_url }}" alt="{{ product.name }}">
+      {% if product.get_image_url %}
+      <img src="{{ product.get_image_url }}" alt="{{ product.name }}">
       {% else %}
       <div style="width:100%;aspect-ratio:4/3;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:80px">🌿</div>
       {% endif %}
@@ -84,7 +84,7 @@
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
       {% for p in related %}
       <div class="prod-card">
-        <a href="{% url 'agri_product' p.slug %}" class="prod-card-img"><img src="{{ p.image_url }}" alt="{{ p.name }}" loading="lazy"><span class="prod-cat-badge">{{ p.unit }}</span></a>
+        <a href="{% url 'agri_product' p.slug %}" class="prod-card-img"><img src="{{ p.get_image_url }}" alt="{{ p.name }}" loading="lazy"><span class="prod-cat-badge">{{ p.unit }}</span></a>
         <div class="prod-card-body">
           <a href="{% url 'agri_product' p.slug %}" style="text-decoration:none"><div class="prod-card-title">{{ p.name }}</div></a>
           <div class="prod-card-price"><span class="curr">UGX&nbsp;</span>{{ p.price_ugx|floatformat:0 }}</div>

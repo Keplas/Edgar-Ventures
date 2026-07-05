@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'core',
 ]
 
@@ -99,6 +100,19 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Kampala'
 USE_I18N = True
 USE_TZ = True
+
+
+# ── Cloudinary ──────────────────────────────────────────────────
+try:
+    import cloudinary
+    cloudinary.config(
+        cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME', ''),
+        api_key    = os.environ.get('CLOUDINARY_API_KEY',    ''),
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET', ''),
+        secure     = True,
+    )
+except ImportError:
+    pass  # cloudinary not installed — images fall back to image_url
 
 # ── Static files ───────────────────────────────────────────────
 STATIC_URL = 'static/'

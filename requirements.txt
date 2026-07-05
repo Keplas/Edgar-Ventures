@@ -13,3 +13,6 @@ whitenoise[brotli]>=6.6
 dj-database-url>=2.1
 # psycopg2-binary: PostgreSQL driver (required if you add a Render PostgreSQL instance)
 psycopg2-binary>=2.9
+
+# ── Cloudinary image hosting ───────────────────────────────────
+cloudinary>=1.36.0

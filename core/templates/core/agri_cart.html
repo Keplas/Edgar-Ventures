@@ -30,7 +30,7 @@
       {% for item in cart %}
       <div class="cart-item">
         <div class="cart-item-img">
-          {% if item.product.image_url %}<img src="{{ item.product.image_url }}" alt="{{ item.name }}" loading="lazy">
+          {% if item.product.get_image_url %}<img src="{{ item.product.get_image_url }}" alt="{{ item.name }}" loading="lazy">
           {% else %}<div style="width:100%;height:100%;background:var(--green-pale);display:flex;align-items:center;justify-content:center">🌿</div>{% endif %}
         </div>
         <div style="flex:1;min-width:0">
