@@ -18,4 +18,7 @@ python manage.py seed_agri_products
 echo "==> Creating admin user..."
 python manage.py ensure_admin
 
+echo "==> Uploading product images to Cloudinary..."
+python manage.py upload_images_to_cloudinary || echo "Cloudinary upload skipped (credentials not set)"
+
 echo "==> Build complete."
