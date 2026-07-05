@@ -15,4 +15,7 @@ python manage.py migrate --noinput
 echo "==> Seeding agriculture products..."
 python manage.py seed_agri_products
 
+echo "==> Creating admin user..."
+python manage.py ensure_admin
+
 echo "==> Build complete."
