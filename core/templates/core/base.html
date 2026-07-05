@@ -13,6 +13,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23163A63'/%3E%3Crect x='8' y='7' width='16' height='3' rx='1.5' fill='%23C8960C'/%3E%3Crect x='8' y='14' width='11' height='3' rx='1.5' fill='%23C8960C'/%3E%3Crect x='8' y='21' width='16' height='3' rx='1.5' fill='%23C8960C'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23163A63'/%3E%3Crect x='8' y='7' width='16' height='3' rx='1.5' fill='%23C8960C'/%3E%3Crect x='8' y='14' width='11' height='3' rx='1.5' fill='%23C8960C'/%3E%3Crect x='8' y='21' width='16' height='3' rx='1.5' fill='%23C8960C'/%3E%3C/svg%3E">
+
+<!-- SEO Meta Tags -->
+{% block page_meta %}
+<meta name="description" content="Edgar Global Ventures Ltd — Technology, Agriculture, Trade and Infrastructure solutions across East Africa. Buy fresh Ugandan produce and coffee online. Based in Kampala, Uganda.">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Edgar Global Ventures Ltd">
+<meta property="og:title"       content="Edgar Global Ventures — Built for East Africa">
+<meta property="og:description" content="Technology, Agriculture, Trade and Infrastructure solutions across East Africa. Shop fresh Ugandan coffee, grains and produce online.">
+<meta property="og:image"       content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:url"         content="https://edgar-ventures.onrender.com">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="Edgar Global Ventures Ltd">
+<meta name="twitter:description"content="Technology, Agriculture, Trade and Infrastructure solutions across East Africa.">
+<meta name="twitter:image"      content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
+{% endblock page_meta %}
+
 <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
 {% block extra_head %}{% endblock %}
 </head>
@@ -442,5 +461,15 @@ document.querySelectorAll('.ft-text,.ft-vis').forEach((el,i) => {
 });
 </script>
 {% block extra_js %}{% endblock %}
+<!-- ── Cookie consent ─────────────────── -->
+<div class="cookie-bar" id="cookieBar">
+  <p>
+    We use essential cookies to make this site work and to improve your shopping experience.
+    <a href="{% url 'privacy' %}">Learn more</a>
+  </p>
+  <button class="cookie-btn-decline" onclick="cookieDecline()">Decline</button>
+  <button class="cookie-btn-accept" onclick="cookieAccept()">Accept Cookies</button>
+</div>
+
 </body>
 </html>

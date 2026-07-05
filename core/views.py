@@ -227,7 +227,14 @@ def agri_cart_add(request, pk):
     qty      = int(request.POST.get('quantity', 1))
     override = request.POST.get('override') == '1'
     cart.add(product, quantity=qty, override=override)
-    return redirect(request.POST.get('next') or 'agri_cart')
+    next_url = request.POST.get('next') or ''
+    if next_url and '?' in next_url:
+        next_url += '&cart_added=1'
+    elif next_url:
+        next_url += '?cart_added=1'
+    else:
+        next_url = '/agriculture/cart/?cart_added=1'
+    return redirect(next_url)
 
 
 def agri_cart_remove(request, pk):
@@ -312,3 +319,53 @@ def agri_checkout(request):
 def agri_order_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     return render(request, 'core/agri_order_success.html', {'order': order})
+
+
+def agri_order_track(request):
+    order  = None
+    error  = None
+    number = request.GET.get('order_number', '').strip().upper()
+    if number:
+        try:
+            order = Order.objects.get(order_number=number)
+        except Order.DoesNotExist:
+            error = f'No order found with number "{number}". Please check and try again.'
+    return render(request, 'core/agri_order_track.html', {
+        'order': order, 'error': error, 'number': number,
+    })
+
+
+def handler500(request, *args, **kwargs):
+    return render(request, 'core/500.html', status=500)
+
+
+def sitemap_xml(request):
+    from django.http import HttpResponse
+    base = "https://edgar-ventures.onrender.com"
+    pages = [
+        "/", "/about/", "/sectors/", "/products/",
+        "/products/technology/", "/products/agriculture/",
+        "/products/trade/", "/products/infrastructure/",
+        "/agriculture/shop/", "/sustainability/",
+        "/news/", "/careers/", "/contact/",
+    ]
+    rows = ""
+    for p in pages:
+        rows += "  <url><loc>{}{}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>\n".format(base, p)
+    header = '<?xml version="1.0" encoding="UTF-8"?>'
+    body   = "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{}\n</urlset>".format(rows)
+    return HttpResponse(header + "\n" + body, content_type="application/xml")
+
+
+def robots_txt(request):
+    from django.http import HttpResponse
+    txt = """User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /agriculture/cart/
+Disallow: /agriculture/checkout/
+Disallow: /agriculture/order/
+
+Sitemap: https://edgar-ventures.onrender.com/sitemap.xml
+"""
+    return HttpResponse(txt, content_type='text/plain')

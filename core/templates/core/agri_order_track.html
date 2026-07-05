@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+{% block title %}Track Your Order — EGV Agriculture Shop{% endblock %}
+{% block content %}
+<div style="padding-top:72px;background:var(--cream);min-height:80vh">
+<div class="track-wrap">
+  <nav class="breadcrumb" style="color:var(--muted);margin-bottom:28px">
+    <a href="{% url 'agri_shop' %}" style="color:var(--muted);text-decoration:none">Shop</a>
+    <span class="breadcrumb-sep" style="color:var(--border)">›</span>
+    <span style="color:var(--text);font-weight:600">Track Order</span>
+  </nav>
+
+  <h1 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);margin-bottom:8px">Track Your Order</h1>
+  <p style="color:var(--muted);margin-bottom:32px">Enter your order number to see the current status of your delivery.</p>
+
+  <!-- Search form -->
+  <form method="get" style="display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap">
+    <input type="text" name="order_number" value="{{ number }}"
+           placeholder="e.g. EGV-ABCD1234"
+           style="flex:1;padding:13px 18px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;outline:none;min-width:200px"
+           autocomplete="off" autocorrect="off" autocapitalize="characters">
+    <button type="submit" class="btn btn-lg btn-green" style="padding:13px 28px">Track Order</button>
+  </form>
+
+  {% if error %}
+  <div style="background:#fff3f3;border:1px solid #ffcdd2;border-left:4px solid #C00;border-radius:8px;padding:16px 20px;margin-bottom:24px;color:#C00;font-size:14px;font-weight:600">
+    {{ error }}
+  </div>
+  {% endif %}
+
+  {% if order %}
+  <!-- Order found -->
+  <div style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+    <!-- Header -->
+    <div style="background:var(--navy);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px">Order Number</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff">{{ order.order_number }}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px">Placed</div>
+        <div style="font-size:14px;color:#fff;font-weight:600">{{ order.created_at|date:"d M Y" }}</div>
+      </div>
+    </div>
+
+    <!-- Status progress -->
+    <div style="padding:28px 24px;border-bottom:1px solid var(--border)">
+      <div class="track-status-bar">
+        {% with status=order.status %}
+        <div class="ts-step {% if status in 'pending confirmed processing dispatched delivered' %}done{% endif %} {% if status == 'pending' %}active{% endif %}">
+          <div class="ts-dot">{% if status != 'pending' %}✓{% else %}1{% endif %}</div>
+          <div class="ts-label">Order Placed</div>
+        </div>
+        <div class="ts-step {% if status in 'confirmed processing dispatched delivered' %}done{% endif %} {% if status == 'confirmed' %}active{% endif %}">
+          <div class="ts-dot">{% if status in 'processing dispatched delivered' %}✓{% else %}2{% endif %}</div>
+          <div class="ts-label">Confirmed</div>
+        </div>
+        <div class="ts-step {% if status in 'dispatched delivered' %}done{% endif %} {% if status == 'processing' %}active{% endif %}">
+          <div class="ts-dot">{% if status in 'dispatched delivered' %}✓{% else %}3{% endif %}</div>
+          <div class="ts-label">Processing</div>
+        </div>
+        <div class="ts-step {% if status == 'delivered' %}done{% endif %} {% if status == 'dispatched' %}active{% endif %}">
+          <div class="ts-dot">{% if status == 'delivered' %}✓{% else %}4{% endif %}</div>
+          <div class="ts-label">Dispatched</div>
+        </div>
+        <div class="ts-step {% if status == 'delivered' %}active{% endif %}">
+          <div class="ts-dot">5</div>
+          <div class="ts-label">Delivered</div>
+        </div>
+        {% endwith %}
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;background:var(--green-pale);color:var(--green);font-size:13px;font-weight:700">
+          {{ order.get_status_display }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Order items -->
+    <div style="padding:20px 24px;border-bottom:1px solid var(--border)">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px">Items Ordered</div>
+      {% for item in order.items.all %}
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px">
+        <div><span style="color:var(--text);font-weight:600">{{ item.product_name }}</span> <span style="color:var(--muted)">× {{ item.quantity }}</span></div>
+        <div style="font-weight:700;color:var(--text)">UGX {{ item.line_total|floatformat:0 }}</div>
+      </div>
+      {% endfor %}
+      <div style="display:flex;justify-content:space-between;padding:14px 0 4px;font-size:15px;font-weight:700;color:var(--text)">
+        <span>Total Paid</span>
+        <span style="color:var(--green)">UGX {{ order.total|floatformat:0 }}</span>
+      </div>
+    </div>
+
+    <!-- Delivery info -->
+    <div style="padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Delivery To</div>
+        <div style="font-size:14px;color:var(--text);font-weight:600">{{ order.district }}</div>
+        <div style="font-size:13px;color:var(--muted)">{{ order.delivery_address }}</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Payment</div>
+        <div style="font-size:14px;color:var(--text);font-weight:600">{{ order.get_payment_method_display }}</div>
+        <div style="font-size:13px;color:var(--muted)">{{ order.phone }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:24px">
+    <p style="font-size:13px;color:var(--muted)">Questions about your order? Call <strong>+256 700 000 000</strong> with your order number.</p>
+  </div>
+
+  {% elif number and not error %}
+  {% endif %}
+
+  <!-- Help box (when no search yet) -->
+  {% if not number %}
+  <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;margin-top:8px">
+    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px">Where is my order number?</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7">Your order number is shown on the confirmation page after checkout and starts with <strong>EGV-</strong>. If you provided an email address, it is also included in your confirmation details.</p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">Can't find it? <a href="{% url 'contact' %}" style="color:var(--green);font-weight:600">Contact us</a> with your name and phone number.</p>
+  </div>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

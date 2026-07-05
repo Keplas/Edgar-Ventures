@@ -19,6 +19,7 @@ urlpatterns = [
     path('agriculture/cart/update/', views.agri_cart_update, name='agri_cart_update'),
     path('agriculture/checkout/', views.agri_checkout, name='agri_checkout'),
     path('agriculture/order/success/<str:order_number>/', views.agri_order_success, name='agri_order_success'),
+    path('agriculture/order/track/', views.agri_order_track, name='agri_order_track'),
     # Products & Services
     path('products/', views.products_hub, name='products_hub'),
     path('products/technology/', views.products_technology, name='products_technology'),

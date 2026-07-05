@@ -3,6 +3,15 @@
 {% block title %}Order Confirmed {{ order.order_number }} — EGV{% endblock %}
 {% block content %}
 <div style="padding-top:72px;background:var(--cream);min-height:80vh">
+<!-- Progress -->
+<div class="checkout-progress">
+  <div class="cp-inner">
+    <div class="cp-step done"><div class="cp-num">✓</div><span class="cp-label">Cart</span></div>
+    <div class="cp-step done"><div class="cp-num">✓</div><span class="cp-label">Details</span></div>
+    <div class="cp-step done"><div class="cp-num">✓</div><span class="cp-label">Payment</span></div>
+    <div class="cp-step active"><div class="cp-num">4</div><span class="cp-label">Confirmed</span></div>
+  </div>
+</div>
 <div class="order-success-wrap">
 
   <!-- Success check -->
@@ -92,6 +101,11 @@
     <a href="{% url 'agri_shop' %}" class="btn btn-lg btn-green">Continue Shopping</a>
     <a href="{% url 'contact' %}" class="btn btn-lg btn-on">Contact Support</a>
   </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:16px">
+    <a href="{% url 'agri_order_track' %}?order_number={{ order.order_number }}" style="color:var(--green);font-weight:700;text-decoration:none">
+      🔍 Track this order
+    </a>
+  </p>
   <p style="font-size:13px;color:var(--muted);margin-top:24px">Questions about your order? Call <strong>+256 700 000 000</strong> or WhatsApp us.</p>
 </div>
 </div>

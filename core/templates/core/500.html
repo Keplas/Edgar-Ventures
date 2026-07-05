@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block title %}Server Error — Edgar Global Ventures{% endblock %}
+{% block content %}
+<div style="padding-top:72px;background:var(--cream);min-height:80vh;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;padding:80px 40px;max-width:560px">
+    <div style="font-family:'Playfair Display',serif;font-size:100px;font-weight:900;color:var(--border);line-height:1;margin-bottom:8px">500</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--text);margin-bottom:14px">Something Went Wrong</h1>
+    <p style="color:var(--muted);font-size:16px;line-height:1.72;margin-bottom:32px">Our server encountered an unexpected error. Our team has been notified and is working on a fix. Please try again in a few minutes.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="/" class="btn btn-lg btn-navy">Go to Homepage</a>
+      <a href="/contact/" class="btn btn-lg btn-on">Contact Support</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
