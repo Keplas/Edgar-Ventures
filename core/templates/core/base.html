@@ -70,183 +70,205 @@
   <button class="announce-close" onclick="this.parentElement.style.display='none'" aria-label="Close">&times;</button>
 </div>
 
-<nav class="nav" id="mainNav">
+<nav class="nav-v2" id="navV2">
 
   <!-- Logo -->
-  <a href="{% url 'home' %}" class="nav-logo">
-    <img src="{% static 'core/images/logo_0.png' %}" alt="EGV Logo">
-    <div class="logo-wm">
-      <span class="logo-nm">EDGAR GLOBAL VENTURES LTD</span>
-      <span class="logo-tg">Technology · Agriculture · Trade · Infrastructure</span>
+  <a href="{% url 'home' %}" class="nav-v2-logo">
+    <img src="{% static 'core/images/logo_0.png' %}" alt="EGV">
+    <div class="nav-v2-logo-text">
+      <span class="nav-v2-logo-name">Edgar Global Ventures</span>
+      <span class="nav-v2-logo-tag">Technology · Agriculture · Trade · Infrastructure</span>
     </div>
   </a>
 
-  <!-- Desktop nav links -->
-  <ul class="nav-links">
-
-    <li class="{% if url_name == 'about' %}nav-active-li{% endif %}">
-      <a href="{% url 'about' %}">About Us</a>
+  <!-- Desktop links (minimal) -->
+  <ul class="nav-v2-links">
+    <li class="{% if url_name == 'about' %}active{% endif %}">
+      <a href="{% url 'about' %}">About</a>
     </li>
-
-    <!-- Our Sectors — dropdown -->
-    <li class="has-drop {% if url_name == 'sectors' %}nav-active-li{% endif %}">
-      <a href="{% url 'sectors' %}">Our Sectors <span class="caret">▾</span></a>
-      <div class="dropdown">
-        <span class="dropdown-section-label">Explore by Sector</span>
-        <a href="{% url 'sectors' %}?tab=technology">
-          <span class="drop-dot" style="background:#5B2FC9"></span>
-          <span class="drop-text">
-            <span class="drop-title">Technology</span>
-            <span class="drop-sub">Digital & IT Solutions</span>
-          </span>
-        </a>
-        <a href="{% url 'sectors' %}?tab=agriculture">
-          <span class="drop-dot" style="background:var(--green)"></span>
-          <span class="drop-text">
-            <span class="drop-title">Agriculture</span>
-            <span class="drop-sub">Farming & Agri Training</span>
-          </span>
-        </a>
-        <a href="{% url 'sectors' %}?tab=trade">
-          <span class="drop-dot" style="background:var(--gold)"></span>
-          <span class="drop-text">
-            <span class="drop-title">Trade</span>
-            <span class="drop-sub">Cross-Border Commerce</span>
-          </span>
-        </a>
-        <a href="{% url 'sectors' %}?tab=infrastructure">
-          <span class="drop-dot" style="background:var(--navy)"></span>
-          <span class="drop-text">
-            <span class="drop-title">Infrastructure</span>
-            <span class="drop-sub">Roads & Public Works</span>
-          </span>
-        </a>
-      </div>
+    <li id="servicesNavItem">
+      <a href="{% url 'products_hub' %}" id="servicesNavLink">
+        Services
+        <svg class="nav-v2-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
     </li>
-
-    <!-- Products & Services — dropdown -->
-    <li class="has-drop">
-      <a href="{% url 'products_hub' %}">Products &amp; Services <span class="caret">▾</span></a>
-      <div class="dropdown">
-        <a href="{% url 'products_hub' %}">
-          <span class="drop-dot" style="background:var(--muted)"></span>
-          <span class="drop-text"><span class="drop-title">All Products &amp; Services</span><span class="drop-sub">View everything we offer</span></span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <span class="dropdown-section-label">By Sector</span>
-        <a href="{% url 'products_technology' %}">
-          <span class="drop-dot" style="background:#5B2FC9"></span>
-          <span class="drop-text"><span class="drop-title">Technology Solutions</span><span class="drop-sub">Software, Cloud, Cybersecurity</span></span>
-        </a>
-        <a href="{% url 'products_agriculture' %}">
-          <span class="drop-dot" style="background:var(--green)"></span>
-          <span class="drop-text"><span class="drop-title">Agriculture Services</span><span class="drop-sub">Training, Extension, Agribusiness</span></span>
-        </a>
-        <a href="{% url 'products_trade' %}">
-          <span class="drop-dot" style="background:var(--gold)"></span>
-          <span class="drop-text"><span class="drop-title">Trade Facilitation</span><span class="drop-sub">Import/Export, Compliance, Logistics</span></span>
-        </a>
-        <a href="{% url 'products_infrastructure' %}">
-          <span class="drop-dot" style="background:var(--navy)"></span>
-          <span class="drop-text"><span class="drop-title">Infrastructure Services</span><span class="drop-sub">Roads, Buildings, Procurement</span></span>
-        </a>
-      </div>
+    <li class="{% if url_name == 'news' %}active{% endif %}">
+      <a href="{% url 'news' %}">News</a>
     </li>
-
-    <li class="{% if url_name == 'sustainability' %}nav-active-li{% endif %}">
+    <li class="{% if url_name == 'sustainability' %}active{% endif %}">
       <a href="{% url 'sustainability' %}">Sustainability</a>
     </li>
-
-    <!-- News — dropdown -->
-    <li class="has-drop {% if url_name == 'news' %}nav-active-li{% endif %}">
-      <a href="{% url 'news' %}">News <span class="caret">▾</span></a>
-      <div class="dropdown">
-        <a href="{% url 'news' %}"><span class="drop-dot" style="background:var(--muted)"></span><span class="drop-text"><span class="drop-title">All Stories</span></span></a>
-        <a href="{% url 'news' %}?category=technology"><span class="drop-dot" style="background:#5B2FC9"></span><span class="drop-text"><span class="drop-title">Technology News</span></span></a>
-        <a href="{% url 'news' %}?category=agriculture"><span class="drop-dot" style="background:var(--green)"></span><span class="drop-text"><span class="drop-title">Agriculture News</span></span></a>
-        <a href="{% url 'news' %}?category=trade"><span class="drop-dot" style="background:var(--gold)"></span><span class="drop-text"><span class="drop-title">Trade News</span></span></a>
-        <a href="{% url 'news' %}?category=infrastructure"><span class="drop-dot" style="background:var(--navy)"></span><span class="drop-text"><span class="drop-title">Infrastructure News</span></span></a>
-      </div>
-    </li>
-
-    <li class="{% if url_name == 'careers' %}nav-active-li{% endif %}">
-      <a href="{% url 'careers' %}">Careers</a>
-    </li>
-
-    <!-- Agri Shop + Cart in nav -->
-    <li class="{% if url_name == 'agri_shop' or url_name == 'agri_product' %}nav-active-li{% endif %}">
-      <a href="{% url 'agri_shop' %}" style="color:#7FCC9B!important">
+    <li>
+      <a href="{% url 'agri_shop' %}" class="nav-v2-shop">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         Agri Shop
       </a>
     </li>
-    <li style="position:relative">
-      <a href="{% url 'agri_cart' %}" style="color:#fff!important;background:rgba(200,150,12,.2)!important;border-radius:7px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;height:auto!important;margin:0 4px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span>Cart</span>
-        {% if cart_item_count > 0 %}
-        <span style="background:var(--gold);color:#000;border-radius:100px;padding:1px 7px;font-size:11px;font-weight:900;min-width:18px;text-align:center">{{ cart_item_count }}</span>
-        {% endif %}
-      </a>
-    </li>
-
   </ul>
 
-  <!-- Mobile hamburger -->
-  <button class="mob-toggle" id="mobToggle" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- Desktop actions -->
-  <div class="nav-actions">
-
-    <a href="{% url 'contact' %}" class="btn btn-sm btn-on {% if url_name == 'contact' %}btn-navy{% endif %}">Contact Us</a>
-    <a href="{% url 'contact' %}" class="btn btn-sm btn-navy">Get Started</a>
+  <!-- Right actions -->
+  <div class="nav-v2-actions">
+    <!-- Cart -->
+    <a href="{% url 'agri_cart' %}" class="nav-v2-cart" aria-label="Cart">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="nav-v2-cart-txt">Cart</span>
+      {% if cart_item_count > 0 %}
+      <span class="nav-v2-cart-badge">{{ cart_item_count }}</span>
+      {% endif %}
+    </a>
+    <!-- CTA -->
+    <a href="{% url 'contact' %}" class="nav-v2-cta">Let&rsquo;s Talk</a>
+    <!-- Hamburger -->
+    <button class="nav-v2-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 
 </nav>
-{% endwith %}
 
-<!-- ── Mobile overlay + slide-in panel ─────────────────── -->
-<div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-nav" id="mobNav">
-  <div class="mob-nav-head">
-    <div class="mob-nav-logo">
-      <img src="{% static 'core/images/logo_0.png' %}" alt="EGV">
+<!-- ── MEGA MENU ──────────────────────────────────────────── -->
+<div class="mega-wrap" id="megaMenu">
+  <div class="mega">
+    <div class="mega-inner">
+      <!-- Left intro -->
+      <div>
+        <div class="mega-intro-label">Our Services</div>
+        <h3 class="mega-intro-h">What We Build &amp; Deliver</h3>
+        <p class="mega-intro-p">Four integrated divisions working in tandem across East Africa.</p>
+        <a href="{% url 'products_hub' %}" class="mega-view-all">
+          View all services
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- 4-sector grid -->
+      <div class="mega-grid">
+        <a href="{% url 'products_technology' %}" class="mega-card" style="--accent:#5B2FC9">
+          <div class="mega-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="mega-card-title">Technology</div>
+          <div class="mega-card-desc">Software, cloud, cybersecurity &amp; IT infrastructure for East Africa</div>
+          <div class="mega-card-link" style="color:#B89AFF">Explore <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <style>.mega-card:nth-child(1)::after{background:#5B2FC9}</style>
+        </a>
+        <a href="{% url 'products_agriculture' %}" class="mega-card">
+          <div class="mega-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7FCC9B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+          <div class="mega-card-title">Agriculture</div>
+          <div class="mega-card-desc">Farmer training, extension services &amp; agribusiness development</div>
+          <div class="mega-card-link" style="color:#7FCC9B">Explore <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+        <a href="{% url 'products_trade' %}" class="mega-card">
+          <div class="mega-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
+          <div class="mega-card-title">Trade</div>
+          <div class="mega-card-desc">Import/export, compliance, market intelligence &amp; logistics</div>
+          <div class="mega-card-link" style="color:#FFAA5E">Explore <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+        <a href="{% url 'products_infrastructure' %}" class="mega-card">
+          <div class="mega-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#88B8FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="mega-card-title">Infrastructure</div>
+          <div class="mega-card-desc">Roads, buildings, water utilities &amp; government procurement</div>
+          <div class="mega-card-link" style="color:#88B8FF">Explore <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </a>
+      </div>
     </div>
-    <button class="mob-close" id="mobClose" aria-label="Close menu">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-</button>
-  </div>
-
-  <ul class="mob-links" id="mobLinks">
-    <li><a onclick="closeMob()" href="{% url 'home' %}" onclick="closeMob()">Home</a></li>
-    <li><a onclick="closeMob()" href="{% url 'about' %}" onclick="closeMob()">About Us</a></li>
-    <div class="mob-divider"></div>
-    <span class="mob-section-label">Our Sectors</span>
-    <li><a onclick="closeMob()" href="{% url 'sectors' %}">All Sectors</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=technology">Technology</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=agriculture">Agriculture</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=trade">Trade</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'sectors' %}?tab=infrastructure">Infrastructure</a></li>
-    <div class="mob-divider"></div>
-    <li><a onclick="closeMob()" href="{% url 'sustainability' %}">Sustainability</a></li>
-    <li><a onclick="closeMob()" href="{% url 'news' %}">News</a></li>
-    <li><a onclick="closeMob()" href="{% url 'careers' %}">Careers</a></li>
-    <div class="mob-divider"></div>
-    <span class="mob-section-label">Agriculture Shop</span>
-    <li><a onclick="closeMob()" href="{% url 'agri_shop' %}">🛒 Shop All Products</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=coffee">☕ Coffee</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=grains-cereals">🌾 Grains &amp; Cereals</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=beans-legumes">🫘 Beans &amp; Legumes</a></li>
-    <li class="mob-sub"><a onclick="closeMob()" href="{% url 'agri_shop' %}?category=fresh-produce">🍍 Fresh Produce</a></li>
-    <li><a onclick="closeMob()" href="{% url 'agri_cart' %}">🛒 Shopping Cart {% if cart_item_count > 0 %}({{ cart_item_count }}){% endif %}</a></li>
-  </ul>
-
-  <div class="mob-ctas">
-    <a href="{% url 'contact' %}" class="btn btn-md btn-gold" style="justify-content:center;text-align:center">Contact Us</a>
-    <a href="{% url 'contact' %}" class="btn btn-md btn-ow" style="justify-content:center;text-align:center">Get Started</a>
+    <!-- Shop bar -->
+    <div class="mega-shop-bar">
+      <span class="mega-shop-label">Agriculture Shop</span>
+      <div class="mega-shop-links">
+        <a href="{% url 'agri_shop' %}" class="mega-shop-link">All Products</a>
+        <a href="{% url 'agri_shop' %}?category=coffee" class="mega-shop-link">☕ Coffee</a>
+        <a href="{% url 'agri_shop' %}?category=fertilizers" class="mega-shop-link">🌱 Fertilizers</a>
+        <a href="{% url 'agri_shop' %}?category=pesticides-herbicides" class="mega-shop-link">🧪 Pesticides</a>
+        <a href="{% url 'agri_cart' %}" class="mega-shop-link" style="border-color:rgba(200,150,12,.3);background:rgba(200,150,12,.08);color:#F0D882">
+          🛒 Cart{% if cart_item_count > 0 %} ({{ cart_item_count }}){% endif %}
+        </a>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- ── FULL-SCREEN MENU (mobile + desktop hamburger) ──────── -->
+<div class="fs-menu" id="fsMenu">
+  <div class="fs-menu-head">
+    <img src="{% static 'core/images/logo_0.png' %}" alt="EGV">
+    <button class="fs-close" id="fsClose" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="fs-menu-body">
+    <!-- Core pages -->
+    <div class="fs-nav-section">
+      <span class="fs-nav-label">Navigation</span>
+      <a href="{% url 'home' %}" class="fs-nav-link" onclick="closeFs()">
+        Home <span class="fs-link-arr">→</span>
+      </a>
+      <a href="{% url 'about' %}" class="fs-nav-link" onclick="closeFs()">
+        About EGV <span class="fs-link-arr">→</span>
+      </a>
+      <a href="{% url 'news' %}" class="fs-nav-link" onclick="closeFs()">
+        News <span class="fs-link-arr">→</span>
+      </a>
+      <a href="{% url 'sustainability' %}" class="fs-nav-link" onclick="closeFs()">
+        Sustainability <span class="fs-link-arr">→</span>
+      </a>
+      <a href="{% url 'careers' %}" class="fs-nav-link" onclick="closeFs()">
+        Careers <span class="fs-link-arr">→</span>
+      </a>
+    </div>
+
+    <!-- Services -->
+    <div class="fs-nav-section">
+      <span class="fs-nav-label">Services</span>
+      <div class="fs-sector-grid">
+        <a href="{% url 'products_technology' %}" class="fs-sector-link" onclick="closeFs()">
+          <span class="fs-sector-dot" style="background:#B89AFF"></span>Technology
+        </a>
+        <a href="{% url 'products_agriculture' %}" class="fs-sector-link" onclick="closeFs()">
+          <span class="fs-sector-dot" style="background:#7FCC9B"></span>Agriculture
+        </a>
+        <a href="{% url 'products_trade' %}" class="fs-sector-link" onclick="closeFs()">
+          <span class="fs-sector-dot" style="background:#FFAA5E"></span>Trade
+        </a>
+        <a href="{% url 'products_infrastructure' %}" class="fs-sector-link" onclick="closeFs()">
+          <span class="fs-sector-dot" style="background:#88B8FF"></span>Infrastructure
+        </a>
+      </div>
+      <a href="{% url 'products_hub' %}" class="fs-nav-link" style="font-size:16px;font-family:'Inter',sans-serif;padding:10px 0;color:rgba(255,255,255,.4)" onclick="closeFs()">
+        All Products &amp; Services <span class="fs-link-arr">→</span>
+      </a>
+    </div>
+
+    <!-- Shop -->
+    <div class="fs-nav-section">
+      <span class="fs-nav-label">Agriculture Shop</span>
+      <div class="fs-shop-grid">
+        <a href="{% url 'agri_shop' %}" class="fs-shop-pill" onclick="closeFs()">All Products</a>
+        <a href="{% url 'agri_shop' %}?category=coffee" class="fs-shop-pill" onclick="closeFs()">☕ Coffee</a>
+        <a href="{% url 'agri_shop' %}?category=fertilizers" class="fs-shop-pill" onclick="closeFs()">🌱 Fertilizers</a>
+        <a href="{% url 'agri_shop' %}?category=pesticides-herbicides" class="fs-shop-pill" onclick="closeFs()">🧪 Pesticides</a>
+        <a href="{% url 'agri_cart' %}" class="fs-shop-pill" style="border-color:rgba(200,150,12,.3);background:rgba(200,150,12,.08);color:#F0D882" onclick="closeFs()">🛒 Cart {% if cart_item_count > 0 %}({{ cart_item_count }}){% endif %}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-menu-foot">
+    <div class="fs-foot-ctas">
+      <a href="{% url 'contact' %}" class="dh-btn-primary" style="justify-content:center;text-align:center" onclick="closeFs()">Let&rsquo;s Talk</a>
+      <a href="{% url 'about' %}" class="dh-btn-ghost" style="justify-content:center;text-align:center" onclick="closeFs()">Our Story</a>
+    </div>
+    <div class="fs-foot-social">
+      <a href="https://facebook.com/edgarglobalventures" class="fs-social-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://instagram.com/edgarglobalventures" class="fs-social-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://linkedin.com/company/edgar-global-ventures" class="fs-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://wa.me/256700000000" class="fs-social-link" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:#25D366;border-color:rgba(37,211,102,.25)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.531 5.862L.057 23.486a.5.5 0 0 0 .612.612l5.701-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+      <a href="https://twitter.com/edgarglobaleg" class="fs-social-link" target="_blank" rel="noopener" aria-label="Twitter"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+{% endwith %}
+
+<!-- Overlay backdrop -->
+<div id="fsOverlay" style="display:none;position:fixed;inset:0;z-index:8999;background:rgba(0,0,0,.4);backdrop-filter:blur(4px)" onclick="closeFs()"></div>
 
 <!-- ══════════════════════════════════════════════
      PAGE CONTENT
@@ -349,127 +371,27 @@ window.addEventListener('scroll', () => {
     ? '0 4px 24px rgba(0,0,0,.13)' : '0 2px 12px rgba(0,0,0,.05)';
 });
 
-// Mobile menu
-const mobToggle  = document.getElementById('mobToggle');
-const mobNav     = document.getElementById('mobNav');
-const mobOverlay = document.getElementById('mobOverlay');
-const mobClose   = document.getElementById('mobClose');
+// ── Editorial Nav v2 ─────────────────────────────────────
+const navEl  = document.getElementById('navV2');
+const megaEl = document.getElementById('megaMenu');
+const servEl = document.getElementById('servicesNavItem');
+const hamEl  = document.getElementById('navHamburger');
+const fsEl   = document.getElementById('fsMenu');
+const fsOvEl = document.getElementById('fsOverlay');
+const fsClEl = document.getElementById('fsClose');
 
-function openMob()  { mobNav.classList.add('open'); mobOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
-function closeMob() { mobNav.classList.remove('open'); mobOverlay.classList.remove('open'); document.body.style.overflow=''; }
+// Mega menu — hover Services
+let megaTm;
+function openMega() { clearTimeout(megaTm); if(megaEl) megaEl.classList.add('open'); }
+function closeMega() { megaTm = setTimeout(() => { if(megaEl) megaEl.classList.remove('open'); }, 120); }
+if(servEl) { servEl.addEventListener('mouseenter', openMega); servEl.addEventListener('mouseleave', closeMega); }
+if(megaEl) { megaEl.addEventListener('mouseenter', openMega); megaEl.addEventListener('mouseleave', closeMega); }
 
-mobToggle.addEventListener('click',  openMob);
-mobClose.addEventListener('click',   closeMob);
-mobOverlay.addEventListener('click', closeMob);
-
-// ── Scroll progress bar ────────────────────────────────────
-const prog = document.getElementById('scrollProg');
-window.addEventListener('scroll', () => {
-  if (!prog) return;
-  const scrolled = window.scrollY;
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  prog.style.width = `${Math.min((scrolled / total) * 100, 100)}%`;
-
-  // Back-to-top visibility
-  const btt = document.getElementById('bttBtn');
-  if (btt) btt.classList.toggle('visible', scrolled > 400);
-}, { passive: true });
-
-// ── Back to top ────────────────────────────────────────────
-const bttBtn = document.getElementById('bttBtn');
-if (bttBtn) bttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// ── Animated counters ──────────────────────────────────────
-function animateCounter(el) {
-  const raw    = el.textContent.replace(/[^0-9.]/g, '');
-  const target = parseFloat(raw);
-  if (!target) return;
-  const suffix = el.querySelector('em') ? el.querySelector('em').outerHTML : '';
-  const decimals = raw.includes('.') ? 1 : 0;
-  const duration = 1800;
-  const start    = performance.now();
-
-  function step(now) {
-    const elapsed  = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const ease     = 1 - Math.pow(1 - progress, 3);
-    const current  = (target * ease).toFixed(decimals);
-    el.innerHTML   = (decimals ? current : Math.floor(current)) + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-const counterEls = document.querySelectorAll('.imp-n');
-if (counterEls.length) {
-  const counterIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        counterIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  counterEls.forEach(el => counterIO.observe(el));
-}
-
-// ── FAQ accordion ──────────────────────────────────────────
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item  = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
-// ── Scroll-reveal
-const rvl = document.querySelectorAll('.scd,.nc,.imp,.g-item,.sus-card,.job-card');
-if (rvl.length) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        const idx = [...rvl].indexOf(e.target);
-        setTimeout(() => {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }, (idx % 4) * 90);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
-  rvl.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity .55s ease, transform .55s ease';
-    io.observe(el);
-  });
-}
-
-// Feature section reveal
-document.querySelectorAll('.ft-text,.ft-vis').forEach((el,i) => {
-  const io2 = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) {
-      setTimeout(() => { el.style.opacity='1'; el.style.transform='translateY(0)'; }, i%2*110);
-      io2.unobserve(el);
-    }
-  }, { threshold: 0.1 });
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity .6s ease, transform .6s ease';
-  io2.observe(el);
-});
-</script>
-{% block extra_js %}{% endblock %}
-<!-- ── Cookie consent ─────────────────── -->
-<div class="cookie-bar" id="cookieBar">
-  <p>
-    We use essential cookies to make this site work and to improve your shopping experience.
-    <a href="{% url 'privacy' %}">Learn more</a>
-  </p>
-  <button class="cookie-btn-decline" onclick="cookieDecline()">Decline</button>
-  <button class="cookie-btn-accept" onclick="cookieAccept()">Accept Cookies</button>
-</div>
-
-</body>
-</html>
+// Full-screen menu
+function openFs() { if(fsEl) fsEl.classList.add('open'); if(fsOvEl) fsOvEl.style.display='block'; if(hamEl) hamEl.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeFs() { if(fsEl) fsEl.classList.remove('open'); if(fsOvEl) fsOvEl.style.display='none'; if(hamEl) hamEl.classList.remove('open'); document.body.style.overflow=''; }
+if(hamEl) hamEl.addEventListener('click', openFs);
+if(fsClEl) fsClEl.addEventListener('click', closeFs);
+if(fsEl) { let sx=0; fsEl.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true}); fsEl.addEventListener('touchend',e=>{if(e.changedTouches[0].clientX-sx>60)closeFs()},{passive:true}); }
+function closeMob() { closeFs(); }
+function openMob()  { openFs(); }
