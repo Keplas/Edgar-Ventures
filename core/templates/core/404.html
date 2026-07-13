@@ -1,22 +1,15 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% block title %}Page Not Found — Edgar Global Ventures Ltd{% endblock %}
-{% block content %}
-<div style="padding-top:72px;min-height:80vh;display:flex;align-items:center;justify-content:center;background:var(--cream)">
-  <div style="text-align:center;padding:80px 40px;max-width:600px">
-    <div style="font-family:'Playfair Display',serif;font-size:120px;font-weight:900;color:var(--border);line-height:1;margin-bottom:8px">404</div>
-    <h1 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);margin-bottom:16px">Page Not Found</h1>
-    <p style="color:var(--muted);font-size:16px;line-height:1.72;margin-bottom:36px">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="{% url 'home' %}" class="btn btn-md btn-navy">Go to Homepage</a>
-      <a href="{% url 'contact' %}" class="btn btn-md btn-on">Contact Us</a>
-    </div>
-    <div style="margin-top:56px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a href="{% url 'sectors' %}" style="font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1px solid var(--border);transition:all .15s">Our Sectors</a>
-      <a href="{% url 'news' %}" style="font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1px solid var(--border);transition:all .15s">News</a>
-      <a href="{% url 'careers' %}" style="font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1px solid var(--border);transition:all .15s">Careers</a>
-      <a href="{% url 'sustainability' %}" style="font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:100px;border:1px solid var(--border);transition:all .15s">Sustainability</a>
+{{% extends 'core/base.html' %}}
+{{% block title %}}Page Not Found — EGV{{% endblock %}}
+{{% block content %}}
+<div class="error-pg">
+  <div class="error-inner">
+    <div class="error-num">404</div>
+    <h1 class="error-h">Page Not Found</h1>
+    <p class="error-p">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+    <div class="error-btns">
+      <a href="/" class="btn btn-dark btn-lg">Go to Homepage</a>
+      <a href="/contact/" class="btn btn-outline btn-lg">Contact Us</a>
     </div>
   </div>
 </div>
-{% endblock %}
+{{% endblock %}}

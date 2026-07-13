@@ -1,136 +1,51 @@
 {% extends 'core/base.html' %}
-{% load static %}
-{% block title %}Trade Facilitation — Edgar Global Ventures Ltd{% endblock %}
+{% block title %}Trade — Edgar Global Ventures{% endblock %}
 {% block content %}
-<div style="padding-top:72px">
-
-<section class="prod-hero">
-  <div class="prod-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=85')"></div>
-  <div class="prod-hero-ov" style="background:linear-gradient(110deg,rgba(100,50,5,.97) 45%,rgba(181,72,15,.5) 100%)"></div>
+<div class="prod-hero">
+  <div class="prod-hero-bg" style="background-image:url('https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=1920&h=800&fit=crop')"></div>
+  <div class="prod-hero-ov" style="background:linear-gradient(135deg,rgba(160,72,24,.82) 0%,rgba(12,16,21,.65) 100%)"></div>
   <div class="prod-hero-inner">
     <div>
-      <nav class="breadcrumb"><a href="{% url 'products_hub' %}">Products &amp; Services</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-cur">Trade</span></nav>
-      <div class="prod-hero-eyebrow">Trade Facilitation</div>
-      <h1 class="prod-hero-h1">Opening East Africa's<br><em>Trade Corridors</em></h1>
-      <p class="prod-hero-p">EGV's trade division connects businesses across borders — streamlining import/export processes, providing market intelligence, and building the partnerships that unlock new economic corridors across East Africa and beyond.</p>
+      <div class="prod-hero-eyebrow">Trade Division</div>
+      <h1 class="prod-hero-h1">Cross-border commerce<br><em>simplified.</em></h1>
+      <p class="prod-hero-p">We facilitate import and export, cut clearance times, and connect buyers with sellers across East Africa and globally.</p>
       <div class="prod-mini-stats">
-        <div class="pms"><div class="pms-n">7<em></em></div><div class="pms-l">Border points served</div></div>
-        <div class="pms"><div class="pms-n">40<em>%</em></div><div class="pms-l">Faster clearance time</div></div>
-        <div class="pms"><div class="pms-n">500<em>+</em></div><div class="pms-l">Trade partners</div></div>
-        <div class="pms"><div class="pms-n">$4.2M<em></em></div><div class="pms-l">Trade volume facilitated</div></div>
+        <div class="pms"><div class="pms-n" data-target="500" data-suffix="+">500<em>+</em></div><div class="pms-l">Trade Partners</div></div><div class="pms"><div class="pms-n" data-target="12" data-suffix="+">12<em>+</em></div><div class="pms-l">Countries Served</div></div><div class="pms"><div class="pms-n" data-target="40" data-suffix="%">40<em>%</em></div><div class="pms-l">Avg Clearance Saving</div></div>
       </div>
       <div class="prod-hero-ctas">
-        <a href="{% url 'contact' %}?sector=trade" class="btn btn-lg btn-gold">Start Trading with EGV</a>
-        <a href="#services" class="btn btn-lg btn-ow">View All Services</a>
-      </div>
-    </div>
-    <div class="prod-hero-right">
-      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(181,72,15,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="ppc-title">Import / Export Facilitation</div><div class="ppc-sub">Documentation, clearance &amp; logistics</div></div><span class="ppc-arr">→</span></div>
-      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(181,72,15,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="ppc-title">Trade Compliance</div><div class="ppc-sub">Regulatory &amp; tariff advisory</div></div><span class="ppc-arr">→</span></div>
-      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(181,72,15,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div><div><div class="ppc-title">Market Intelligence</div><div class="ppc-sub">Research, data &amp; trade insights</div></div><span class="ppc-arr">→</span></div>
-      <div class="prod-preview-card"><div class="ppc-icon" style="background:rgba(181,72,15,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-4-4h-2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="ppc-title">Business Matching</div><div class="ppc-sub">Connecting buyers &amp; sellers across borders</div></div><span class="ppc-arr">→</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="svc-section cream" id="services">
-  <div class="svc-head">
-    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">What We Offer</span>
-    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:14px">Trade Facilitation Services</h2>
-    <p style="color:var(--muted);font-size:16px;line-height:1.72;max-width:580px">End-to-end support for cross-border commerce — from documentation and compliance through to logistics coordination and buyer-seller matching across East Africa.</p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80" alt="Import Export"><div class="svc-img-ov"></div><span class="svc-badge">Core Service</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="svc-title">Import / Export Facilitation</div>
-        <p class="svc-desc">Complete end-to-end support for cross-border trade — from customs documentation and permits to coordinating freight and final delivery across East Africa's major trade routes.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Customs documentation &amp; clearance</li><li style="color:var(--gold)">Freight forwarding coordination</li><li style="color:var(--gold)">7 active border crossing points</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Start Importing/Exporting →</a>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=700&q=80" alt="Trade Compliance"><div class="svc-img-ov"></div><span class="svc-badge">Regulatory</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="svc-title">Trade Compliance &amp; Regulatory Advisory</div>
-        <p class="svc-desc">Navigate the complex regulatory landscape of East African trade with confidence. Our experts provide up-to-date guidance on tariffs, standards, and compliance requirements for each country and commodity.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Tariff classification &amp; duty calculations</li><li style="color:var(--gold)">Standards &amp; product certification guidance</li><li style="color:var(--gold)">EAC &amp; COMESA trade agreement advisory</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Get Compliance Advice →</a>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80" alt="Market Intelligence"><div class="svc-img-ov"></div><span class="svc-badge">Intelligence</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
-        <div class="svc-title">Market Intelligence &amp; Research</div>
-        <p class="svc-desc">Data-driven market reports covering pricing trends, demand patterns, competitor landscapes, and emerging opportunities across East African trade sectors — helping you trade smarter.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Commodity price monitoring &amp; reports</li><li style="color:var(--gold)">Demand &amp; supply analysis per market</li><li style="color:var(--gold)">Emerging sector opportunity briefs</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Request a Market Report →</a>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=80" alt="Business Matching"><div class="svc-img-ov"></div><span class="svc-badge">Connections</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-4-4h-2"/></svg></div>
-        <div class="svc-title">Buyer-Seller Matching</div>
-        <p class="svc-desc">EGV's active network of 500+ trade partners spans Uganda, Kenya, Tanzania, Rwanda, and beyond. We match exporters with verified buyers and connect importers with reliable suppliers — fast.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Verified buyer &amp; supplier database</li><li style="color:var(--gold)">Trade fair &amp; networking facilitation</li><li style="color:var(--gold)">Contract negotiation support</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Find a Trade Partner →</a>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=700&q=80" alt="Logistics"><div class="svc-img-ov"></div><span class="svc-badge">Logistics</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="svc-title">Logistics &amp; Supply Chain Coordination</div>
-        <p class="svc-desc">Coordinating reliable, cost-efficient freight and last-mile delivery across East Africa — with real-time tracking, cold chain support, and established partnerships with regional logistics providers.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Freight forwarding &amp; route optimisation</li><li style="color:var(--gold)">Cold chain logistics management</li><li style="color:var(--gold)">Real-time cargo tracking</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Coordinate Your Shipment →</a>
-      </div>
-    </div>
-    <div class="svc-card">
-      <div class="svc-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Trade Finance"><div class="svc-img-ov"></div><span class="svc-badge">Finance</span></div>
-      <div class="svc-body">
-        <div class="svc-icon-wrap" style="background:var(--gold-pale)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="svc-title">Trade Finance Advisory</div>
-        <p class="svc-desc">Guidance on accessing trade finance products — letters of credit, invoice financing, and working capital solutions — that enable businesses to execute larger trade deals with confidence.</p>
-        <ul class="svc-feats"><li style="color:var(--gold)">Letter of credit facilitation</li><li style="color:var(--gold)">Working capital &amp; invoice financing</li><li style="color:var(--gold)">Lender introductions &amp; applications</li></ul>
-        <a href="{% url 'contact' %}?sector=trade" class="svc-lnk" style="color:var(--gold)">Explore Trade Finance →</a>
+        <a href="{% url 'contact' %}" class="btn btn-gold btn-lg">Start a Project</a>
+        <a href="{% url 'products_hub' %}" class="btn btn-ghost">All Services</a>
       </div>
     </div>
   </div>
-</section>
-
-<section class="prod-process">
-  <div class="pp-inner">
-    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">How We Work</span>
-    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:-.5px">Our Trade Facilitation Process</h2>
-    <div class="pp-grid">
-      <div class="pp-step"><div class="pp-num">01</div><div class="pp-title">Trade Requirements Mapping</div><p class="pp-desc">We assess your goods, target markets, compliance requirements, and logistics needs — building a complete trade execution plan tailored to your specific commodities and business model.</p></div>
-      <div class="pp-step"><div class="pp-num">02</div><div class="pp-title">Partner Matching &amp; Compliance</div><p class="pp-desc">We match you with verified buyers or suppliers from our network, manage all regulatory documentation, and ensure full compliance with EAC, COMESA, and national trade regulations.</p></div>
-      <div class="pp-step"><div class="pp-num">03</div><div class="pp-title">Shipment &amp; Settlement</div><p class="pp-desc">We coordinate freight, handle border clearance, track delivery, and support trade finance arrangements — ensuring goods move quickly and payment is received securely.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="outcomes" style="background:#fff">
-  <div style="max-width:1280px;margin:0 auto;margin-bottom:48px"><span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Results</span><h2 style="font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--text);letter-spacing:-.5px">What Our Trade Clients Achieve</h2></div>
-  <div class="out-grid">
-    <div class="out-card"><div class="out-n" style="color:var(--gold)">40<em style="color:var(--gold)">%</em></div><div class="out-label">Faster Border Clearance</div><div class="out-desc">Clients who use EGV's trade facilitation services experience up to 40% reduction in border clearance times compared to self-managed imports and exports.</div></div>
-    <div class="out-card"><div class="out-n" style="color:var(--gold)">500<em style="color:var(--gold)">+</em></div><div class="out-label">Active Trade Partners</div><div class="out-desc">Our network spans 500+ verified buyers, sellers, freight providers, and compliance experts across Uganda, Kenya, Tanzania, Rwanda, South Sudan, and DRC.</div></div>
-    <div class="out-card"><div class="out-n" style="color:var(--gold)">$4.2<em style="color:var(--gold)">M+</em></div><div class="out-label">Trade Volume Facilitated</div><div class="out-desc">EGV has facilitated over $4.2 million in cross-border trade volume, with transactions across agricultural products, manufactured goods, and raw materials.</div></div>
-  </div>
-</section>
-
-<section class="related-sec"><div style="max-width:1280px;margin:0 auto"><span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:12px">Explore More</span><h2 style="font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--text);letter-spacing:-.5px">Other EGV Divisions</h2>
-<div class="rel-grid">
-  <a href="{% url 'products_technology' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Tech"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Technology</div><div class="rel-title">Digital Innovation</div><div class="rel-sub">Explore services →</div></div></a>
-  <a href="{% url 'products_agriculture' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=600&q=80" alt="Agri"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Agriculture</div><div class="rel-title">Farming &amp; Training</div><div class="rel-sub">Explore services →</div></div></a>
-  <a href="{% url 'products_infrastructure' %}" class="rel-card"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80" alt="Infra"><div class="rel-ov"></div><div class="rel-content"><div class="rel-label">Infrastructure</div><div class="rel-title">Roads &amp; Construction</div><div class="rel-sub">Explore services →</div></div></a>
-</div></div></section>
-
-<div class="cta"><div class="cta-inner"><h2 class="cta-h">Ready to Expand Your Trade Reach?</h2><p class="cta-p">Whether you are importing, exporting, or looking for new markets — EGV opens the doors and keeps your goods moving efficiently across East Africa.</p><div class="cta-btns"><a href="{% url 'contact' %}?sector=trade" class="btn btn-lg btn-navy">Start Trading Today</a><a href="{% url 'products_hub' %}" class="btn btn-lg btn-on">All Services</a></div></div></div>
 </div>
+<section style="background:var(--parchment);padding:96px 80px;min-height:40vh">
+  <div style="max-width:var(--max-w);margin:0 auto">
+    <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">What We Offer</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.12;margin-bottom:20px">Our Trade Services</h2>
+    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px;margin-bottom:48px">End-to-end trade facilitation from market intelligence to customs clearance, connecting East African businesses to global opportunities.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;border-top:3px solid var(--gold)">
+      <div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Import/Export Facilitation</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.72">Full documentation, compliance, customs clearance and freight coordination across East Africa and internationally.</div>
+    </div><div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;border-top:3px solid var(--gold)">
+      <div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Market Intelligence</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.72">Trade data, competitor analysis, buyer profiles and pricing intelligence across East African markets.</div>
+    </div><div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;border-top:3px solid var(--gold)">
+      <div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Buyer-Seller Matching</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.72">We connect Ugandan producers with verified international buyers across coffee, grains, spices and raw materials.</div>
+    </div>
+    </div>
+  </div>
+</section>
+<section style="padding:80px;background:var(--midnight);text-align:center">
+  <div class="cta-inner">
+    <div class="cta-rule">Ready to Start</div>
+    <h2 class="cta-h">Partner with EGV<br><em>on Trade.</em></h2>
+    <div class="cta-btns" style="margin-top:0">
+      <a href="{% url 'contact' %}" class="btn btn-green btn-lg">Get in Touch</a>
+      <a href="{% url 'agri_shop' %}" class="btn btn-ghost btn-lg">Visit Shop</a>
+    </div>
+  </div>
+</section>
 {% endblock %}

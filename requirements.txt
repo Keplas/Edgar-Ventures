@@ -1,18 +1,7 @@
-# ── Core ──────────────────────────────────────────────────────
 Django>=5.2,<5.3
 Pillow>=10.0
-
-# ── Production server ─────────────────────────────────────────
 gunicorn>=21.2
-
-# ── Static files ──────────────────────────────────────────────
 whitenoise[brotli]>=6.6
-
-# ── Database ──────────────────────────────────────────────────
-# dj-database-url parses Render's DATABASE_URL env var into Django DATABASES config
 dj-database-url>=2.1
-# psycopg2-binary: PostgreSQL driver (required if you add a Render PostgreSQL instance)
 psycopg2-binary>=2.9
-
-# ── Cloudinary image hosting ───────────────────────────────────
 cloudinary>=1.36.0

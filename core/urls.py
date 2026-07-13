@@ -4,13 +4,19 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
     path('sectors/', views.sectors, name='sectors'),
+    path('contact/', views.contact, name='contact'),
     path('news/', views.news, name='news'),
     path('sustainability/', views.sustainability, name='sustainability'),
     path('careers/', views.careers, name='careers'),
     path('privacy/', views.privacy, name='privacy'),
-    # Agriculture Shop
+    # Products hub + sectors
+    path('products/', views.products_hub, name='products_hub'),
+    path('products/technology/', views.products_technology, name='products_technology'),
+    path('products/agriculture/', views.products_agriculture, name='products_agriculture'),
+    path('products/trade/', views.products_trade, name='products_trade'),
+    path('products/infrastructure/', views.products_infrastructure, name='products_infrastructure'),
+    # Agriculture shop
     path('agriculture/shop/', views.agri_shop, name='agri_shop'),
     path('agriculture/shop/<slug:slug>/', views.agri_product, name='agri_product'),
     path('agriculture/cart/', views.agri_cart, name='agri_cart'),
@@ -20,10 +26,7 @@ urlpatterns = [
     path('agriculture/checkout/', views.agri_checkout, name='agri_checkout'),
     path('agriculture/order/success/<str:order_number>/', views.agri_order_success, name='agri_order_success'),
     path('agriculture/order/track/', views.agri_order_track, name='agri_order_track'),
-    # Products & Services
-    path('products/', views.products_hub, name='products_hub'),
-    path('products/technology/', views.products_technology, name='products_technology'),
-    path('products/agriculture/', views.products_agriculture, name='products_agriculture'),
-    path('products/trade/', views.products_trade, name='products_trade'),
-    path('products/infrastructure/', views.products_infrastructure, name='products_infrastructure'),
+    # SEO
+    path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
 ]

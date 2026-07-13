@@ -1,116 +1,50 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% block title %}Products & Services — Edgar Global Ventures Ltd{% endblock %}
-{% block content %}
-<div style="padding-top:72px">
-
-<!-- HUB HERO -->
-<section style="position:relative;min-height:52vh;display:flex;align-items:center;padding:96px 56px 72px;overflow:hidden;background:var(--navy)">
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80');background-size:cover;background-position:center;opacity:.18"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,38,64,.98) 0%,rgba(22,58,99,.82) 100%)"></div>
-  <div style="max-width:1280px;margin:0 auto;width:100%;position:relative;z-index:2">
-    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px">Edgar Global Ventures</span>
-    <h1 style="font-family:'Playfair Display',serif;font-size:56px;font-weight:900;color:#fff;line-height:1.07;letter-spacing:-.5px;margin-bottom:20px;max-width:700px">Products &amp; Services<br>Across <em style="color:var(--gold);font-style:italic">Every Sector</em></h1>
-    <p style="color:rgba(255,255,255,.55);font-size:17px;line-height:1.75;max-width:580px;margin-bottom:36px">Four specialised divisions. One integrated vision. Explore the full range of solutions Edgar Global Ventures delivers across Technology, Agriculture, Trade, and Infrastructure.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <a href="{% url 'contact' %}" class="btn btn-lg btn-gold">Request a Consultation</a>
-      <a href="{% url 'about' %}" class="btn btn-lg btn-ow">About EGV</a>
-    </div>
+{{% extends 'core/base.html' %}}
+{{% block title %}}Products & Services — Edgar Global Ventures{{% endblock %}}
+{{% block content %}}
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Products &amp; Services</span></div>
+    <div class="page-hero-eyebrow">Edgar Global Ventures</div>
+    <h1>Products &amp; Services</h1>
+    <p>Four integrated sectors delivering solutions across East Africa — from farm to market, concept to code, blueprint to building.</p>
   </div>
-</section>
-
-<!-- SECTOR HUB GRID -->
-<section style="padding:88px 56px;background:var(--cream)">
-  <div style="max-width:1280px;margin:0 auto">
-    <div style="text-align:center;margin-bottom:56px">
-      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:12px">Our Four Divisions</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--text);letter-spacing:-.5px">Choose Your Sector</h2>
-    </div>
+</div>
+<section style="background:var(--parchment);padding:80px">
+  <div style="max-width:var(--max-w);margin:0 auto">
     <div class="hub-grid">
-      <!-- Technology -->
-      <a href="{% url 'products_technology' %}" class="hub-card">
-        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" alt="Technology">
-        <div class="hub-ov" style="background:linear-gradient(to top, rgba(91,47,201,.9) 0%, rgba(91,47,201,.35) 100%)"></div>
-        <div class="hub-content">
-          <div class="hub-sector-label" style="color:rgba(184,154,255,.9)">Technology Solutions</div>
-          <div class="hub-title">Digital Innovation &amp; IT Services</div>
-          <div class="hub-services">
-            <span class="hub-svc-pill">Software Development</span>
-            <span class="hub-svc-pill">Cybersecurity</span>
-            <span class="hub-svc-pill">Cloud Services</span>
-          </div>
-          <span class="hub-cta">Explore Technology <span class="hub-cta-arr">→</span></span>
+      <a href="{{% url 'products_technology' %}}" class="hub-card">
+        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Technology">
+        <div class="hub-content" style="background:linear-gradient(to top,rgba(91,47,201,.85),rgba(12,16,21,.3))">
+          <div class="hub-services"><span class="hub-svc-pill">Software</span><span class="hub-svc-pill">Cloud</span><span class="hub-svc-pill">Cybersecurity</span></div>
+          <div class="hub-title">Technology</div>
+          <div class="hub-cta">Explore Technology &rarr;</div>
         </div>
       </a>
-      <!-- Agriculture -->
-      <a href="{% url 'products_agriculture' %}" class="hub-card">
-        <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=900&q=80" alt="Agriculture">
-        <div class="hub-ov" style="background:linear-gradient(to top, rgba(29,122,58,.92) 0%, rgba(29,122,58,.38) 100%)"></div>
-        <div class="hub-content">
-          <div class="hub-sector-label" style="color:rgba(127,204,155,.9)">Agriculture Services</div>
-          <div class="hub-title">Sustainable Farming &amp; Agri Training</div>
-          <div class="hub-services">
-            <span class="hub-svc-pill">Farmer Training</span>
-            <span class="hub-svc-pill">Extension Services</span>
-            <span class="hub-svc-pill">Agribusiness</span>
-          </div>
-          <span class="hub-cta">Explore Agriculture <span class="hub-cta-arr">→</span></span>
+      <a href="{{% url 'products_agriculture' %}}" class="hub-card">
+        <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Agriculture">
+        <div class="hub-content" style="background:linear-gradient(to top,rgba(30,107,20,.85),rgba(12,16,21,.3))">
+          <div class="hub-services"><span class="hub-svc-pill">Training</span><span class="hub-svc-pill">E-Shop</span><span class="hub-svc-pill">Extension</span></div>
+          <div class="hub-title">Agriculture</div>
+          <div class="hub-cta">Explore Agriculture &rarr;</div>
         </div>
       </a>
-      <!-- Trade -->
-      <a href="{% url 'products_trade' %}" class="hub-card">
-        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=80" alt="Trade">
-        <div class="hub-ov" style="background:linear-gradient(to top, rgba(181,72,15,.92) 0%, rgba(181,72,15,.38) 100%)"></div>
-        <div class="hub-content">
-          <div class="hub-sector-label" style="color:rgba(255,200,100,.9)">Trade Facilitation</div>
-          <div class="hub-title">Cross-Border Commerce &amp; Market Access</div>
-          <div class="hub-services">
-            <span class="hub-svc-pill">Import/Export</span>
-            <span class="hub-svc-pill">Compliance</span>
-            <span class="hub-svc-pill">Market Intelligence</span>
-          </div>
-          <span class="hub-cta">Explore Trade <span class="hub-cta-arr">→</span></span>
+      <a href="{{% url 'products_trade' %}}" class="hub-card">
+        <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Trade">
+        <div class="hub-content" style="background:linear-gradient(to top,rgba(160,72,24,.85),rgba(12,16,21,.3))">
+          <div class="hub-services"><span class="hub-svc-pill">Import/Export</span><span class="hub-svc-pill">Compliance</span><span class="hub-svc-pill">Logistics</span></div>
+          <div class="hub-title">Trade</div>
+          <div class="hub-cta">Explore Trade &rarr;</div>
         </div>
       </a>
-      <!-- Infrastructure -->
-      <a href="{% url 'products_infrastructure' %}" class="hub-card">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Infrastructure">
-        <div class="hub-ov" style="background:linear-gradient(to top, rgba(13,38,64,.94) 0%, rgba(22,58,99,.4) 100%)"></div>
-        <div class="hub-content">
-          <div class="hub-sector-label" style="color:rgba(136,184,255,.9)">Infrastructure Services</div>
-          <div class="hub-title">Construction, Roads &amp; Public Works</div>
-          <div class="hub-services">
-            <span class="hub-svc-pill">Road Construction</span>
-            <span class="hub-svc-pill">Buildings</span>
-            <span class="hub-svc-pill">Project Management</span>
-          </div>
-          <span class="hub-cta">Explore Infrastructure <span class="hub-cta-arr">→</span></span>
+      <a href="{{% url 'products_infrastructure' %}}" class="hub-card">
+        <img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Infrastructure">
+        <div class="hub-content" style="background:linear-gradient(to top,rgba(22,58,99,.85),rgba(12,16,21,.3))">
+          <div class="hub-services"><span class="hub-svc-pill">Roads</span><span class="hub-svc-pill">Buildings</span><span class="hub-svc-pill">Utilities</span></div>
+          <div class="hub-title">Infrastructure</div>
+          <div class="hub-cta">Explore Infrastructure &rarr;</div>
         </div>
       </a>
     </div>
   </div>
 </section>
-
-<!-- WHY EGV -->
-<div class="impact">
-  <div class="imp-inner">
-    <div class="imp"><div class="imp-n">4<em>+</em></div><div class="imp-l">Integrated sectors</div></div>
-    <div class="imp"><div class="imp-n">500<em>+</em></div><div class="imp-l">Active partners</div></div>
-    <div class="imp"><div class="imp-n">2,000<em>+</em></div><div class="imp-l">Farmers trained</div></div>
-    <div class="imp"><div class="imp-n">15<em>+</em></div><div class="imp-l">Countries reached</div></div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta">
-  <div class="cta-inner">
-    <h2 class="cta-h">Ready to Work With EGV?</h2>
-    <p class="cta-p">Tell us your challenge and we'll match you with the right team and the right solution from across our four divisions.</p>
-    <div class="cta-btns">
-      <a href="{% url 'contact' %}" class="btn btn-lg btn-navy">Start a Conversation</a>
-      <a href="{% url 'careers' %}" class="btn btn-lg btn-on">Join Our Team</a>
-    </div>
-  </div>
-</div>
-</div>
-{% endblock %}
+{{% endblock %}}

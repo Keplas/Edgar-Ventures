@@ -1,303 +1,287 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Edgar Global Ventures Ltd — Technology, Agriculture, Trade & Infrastructure{% endblock %}
+{% block title %}Edgar Global Ventures Ltd — Technology, Agriculture, Trade & Infrastructure | Kampala, Uganda{% endblock %}
 {% block page_meta %}
-<meta name="description" content="Edgar Global Ventures Ltd — Technology, Agriculture, Trade and Infrastructure solutions across East Africa. Buy fresh Ugandan produce and coffee online. Based in Kampala, Uganda.">
+<meta name="description" content="Edgar Global Ventures Ltd — Technology, Agriculture, Trade and Infrastructure across East Africa. Shop coffee, fertilizers and pesticides online. Kampala, Uganda.">
 <meta property="og:title" content="Edgar Global Ventures — Built for East Africa">
-<meta property="og:description" content="Four integrated sectors. One vision. Technology, Agriculture, Trade and Infrastructure across East Africa.">
-<meta property="og:image" content="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80">
+<meta property="og:image" content="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&fit=crop&w=1200&q=80">
 {% endblock %}
 
 {% block content %}
-<!-- ══ HERO — DARK EDITORIAL (GLINT-INSPIRED) ══ -->
-<section class="dh" id="darkHero">
-  <div class="dh-bg"></div>
-  <div class="dh-noise"></div>
-  <div class="dh-inner">
-    <div class="dh-left">
-      <div class="dh-eyebrow">Edgar Global Ventures Ltd — Kampala, Uganda</div>
-      <h1 class="dh-h1">
-        Building East Africa's<br>
-        <span class="dh-accent">Future</span> Through<br>
-        Innovation &amp; Growth.
-      </h1>
-      <p class="dh-lead">Technology. Agriculture. Trade. Infrastructure.<br>Four divisions. One integrated vision across East Africa.</p>
-      <div class="dh-ctas">
-        <a href="{% url 'products_hub' %}" class="dh-btn-primary">
-          Explore Services
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="{% url 'about' %}" class="dh-btn-ghost">Our Story →</a>
-      </div>
-      <div class="dh-scroll">
-        <span class="dh-scroll-line"></span>
-        <span class="dh-scroll-text">SCROLL DOWN</span>
-      </div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Welcome to Edgar Global Ventures</div>
+    <h1 class="hero-h1">We build the systems<br>that power <em>East Africa's</em><br>growth.</h1>
+    <p class="hero-lead">Technology. Agriculture. Trade. Infrastructure.<br>Four integrated divisions. One mission across East Africa.</p>
+    <div class="hero-ctas">
+      <a href="{% url 'products_hub' %}" class="btn btn-green btn-lg">Explore Services</a>
+      <a href="{% url 'agri_shop' %}" class="btn btn-ghost btn-lg">Shop Products</a>
     </div>
-    <div class="dh-right">
-      <a href="{% url 'products_technology' %}" class="dh-card">
-        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Technology" loading="eager">
-        <div class="dh-card-ov" style="background:linear-gradient(to top,rgba(91,47,201,.75) 0%,rgba(6,12,24,.15) 60%)"></div>
-        <div class="dh-card-content"><div class="dh-card-text"><div class="dh-card-num">01</div><div class="dh-card-title">Technology</div><div class="dh-card-sub">Digital Innovation &amp; IT</div></div><span class="dh-card-arr">→</span></div>
-      </a>
-      <a href="{% url 'products_agriculture' %}" class="dh-card">
-        <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Agriculture" loading="eager">
-        <div class="dh-card-ov" style="background:linear-gradient(to top,rgba(29,122,58,.75) 0%,rgba(6,12,24,.15) 60%)"></div>
-        <div class="dh-card-content"><div class="dh-card-text"><div class="dh-card-num">02</div><div class="dh-card-title">Agriculture</div><div class="dh-card-sub">Farming &amp; Agri Training</div></div><span class="dh-card-arr">→</span></div>
-      </a>
-      <a href="{% url 'products_trade' %}" class="dh-card">
-        <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Trade" loading="eager">
-        <div class="dh-card-ov" style="background:linear-gradient(to top,rgba(181,72,15,.75) 0%,rgba(6,12,24,.15) 60%)"></div>
-        <div class="dh-card-content"><div class="dh-card-text"><div class="dh-card-num">03</div><div class="dh-card-title">Trade</div><div class="dh-card-sub">Cross-Border Commerce</div></div><span class="dh-card-arr">→</span></div>
-      </a>
-      <a href="{% url 'products_infrastructure' %}" class="dh-card">
-        <img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Infrastructure" loading="eager">
-        <div class="dh-card-ov" style="background:linear-gradient(to top,rgba(22,58,99,.78) 0%,rgba(6,12,24,.15) 60%)"></div>
-        <div class="dh-card-content"><div class="dh-card-text"><div class="dh-card-num">04</div><div class="dh-card-title">Infrastructure</div><div class="dh-card-sub">Roads &amp; Construction</div></div><span class="dh-card-arr">→</span></div>
-      </a>
+    <div class="hero-scroll-ind">
+      <span class="hero-scroll-line"></span>
+      <span>SCROLL DOWN</span>
     </div>
   </div>
-  <div class="dh-social">
-    <a href="https://facebook.com/edgarglobalventures" class="dh-social-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-    <a href="https://twitter.com/edgarglobaleg" class="dh-social-link" target="_blank" rel="noopener" aria-label="Twitter"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="https://instagram.com/edgarglobalventures" class="dh-social-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-    <a href="https://linkedin.com/company/edgar-global-ventures" class="dh-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    <a href="https://wa.me/256700000000" class="dh-social-link" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:#25D366;border-color:rgba(37,211,102,.3)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.531 5.862L.057 23.486a.5.5 0 0 0 .612.612l5.701-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+  <div class="hero-right">
+    <div class="hero-tile" data-color="purple">
+      <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Technology" loading="eager">
+      <div class="hero-tile-ov"></div>
+      <div style="position:absolute;bottom:14px;left:16px">
+        <div class="hero-tile-label">01 &middot; Technology</div>
+        <div class="hero-tile-title">Digital Innovation</div>
+      </div>
+    </div>
+    <div class="hero-tile" data-color="green">
+      <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Agriculture" loading="eager">
+      <div class="hero-tile-ov"></div>
+      <div style="position:absolute;bottom:14px;left:16px">
+        <div class="hero-tile-label">02 &middot; Agriculture</div>
+        <div class="hero-tile-title">Farming &amp; Training</div>
+      </div>
+    </div>
+    <div class="hero-tile" data-color="gold">
+      <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Trade" loading="eager">
+      <div class="hero-tile-ov"></div>
+      <div style="position:absolute;bottom:14px;left:16px">
+        <div class="hero-tile-label">03 &middot; Trade</div>
+        <div class="hero-tile-title">Cross-Border Commerce</div>
+      </div>
+    </div>
+    <div class="hero-tile" data-color="blue">
+      <img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Infrastructure" loading="eager">
+      <div class="hero-tile-ov"></div>
+      <div style="position:absolute;bottom:14px;left:16px">
+        <div class="hero-tile-label">04 &middot; Infrastructure</div>
+        <div class="hero-tile-title">Roads &amp; Construction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-social">
+    <a href="https://facebook.com/edgarglobalventures" class="hero-social-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://instagram.com/edgarglobalventures" class="hero-social-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    <a href="https://linkedin.com/company/edgar-global-ventures" class="hero-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://wa.me/256700000000" class="hero-social-link" target="_blank" rel="noopener" aria-label="WhatsApp" style="color:#25D366;border-color:rgba(37,211,102,.3)"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.126 1.531 5.862L.057 23.486a.5.5 0 0 0 .612.612l5.701-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
   </div>
 </section>
 
-<!-- ══ DARK STATS ══ -->
-<div class="dh-stats">
-  <div class="dh-stats-inner">
-    <div class="dh-stat"><div class="dh-stat-n imp-n" data-target="4" data-suffix="+">4<em>+</em></div><div class="dh-stat-l">Integrated Sectors</div></div>
-    <div class="dh-stat"><div class="dh-stat-n imp-n" data-target="500" data-suffix="+">500<em>+</em></div><div class="dh-stat-l">Trade Partners</div></div>
-    <div class="dh-stat"><div class="dh-stat-n imp-n" data-target="2000" data-suffix="+" data-format="comma">2,000<em>+</em></div><div class="dh-stat-l">Farmers Trained</div></div>
-    <div class="dh-stat"><div class="dh-stat-n imp-n" data-target="15" data-suffix="+">15<em>+</em></div><div class="dh-stat-l">Years of Excellence</div></div>
+<!-- TICKER -->
+<div class="ticker-band" aria-hidden="true">
+  <div class="ticker-track"><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div><div class="ticker-item"><span class="ticker-text">Technology</span><span class="ticker-dot"></span><span class="ticker-text">Agriculture</span><span class="ticker-dot"></span><span class="ticker-text">Trade</span><span class="ticker-dot"></span><span class="ticker-text">Infrastructure</span><span class="ticker-dot"></span></div></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-img">
+    <img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=900&h=800&fit=crop" alt="EGV Agriculture Uganda" loading="lazy">
+    <div class="about-img-tag">Est. 2010 &middot; Kampala, Uganda</div>
+  </div>
+  <div class="about-content">
+    <div class="t-eyebrow" style="color:var(--harvest)">Our Story</div>
+    <h2 class="about-h2">Built from the ground up<br>for East Africa.</h2>
+    <p class="about-p">Edgar Global Ventures Ltd was founded with a clear conviction: that East Africa's growth requires integrated solutions across technology, agriculture, trade and infrastructure working together — not in silos. Fifteen years on, that conviction drives everything we do.</p>
+    <p class="about-p">From Kampala we serve clients across Uganda, Kenya, Tanzania and Rwanda — helping farmers boost yields, businesses scale digitally, exporters reach new markets, and communities access reliable infrastructure.</p>
+    <a href="{% url 'about' %}" class="btn btn-outline">Read Our Full Story</a>
+    <div class="about-stats">
+      <div><div class="about-stat-n" data-target="15" data-suffix="+">15<em>+</em></div><div class="about-stat-l">Years in Business</div></div>
+      <div><div class="about-stat-n" data-target="500" data-suffix="+">500<em>+</em></div><div class="about-stat-l">Trade Partners</div></div>
+      <div><div class="about-stat-n" data-target="2000" data-suffix="+">2,000<em>+</em></div><div class="about-stat-l">Farmers Trained</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="t-eyebrow" style="color:var(--harvest-2)">What We Do</div>
+        <h2 class="section-head-h2">Four sectors.<br>One integrated vision.</h2>
+      </div>
+      <a href="{% url 'products_hub' %}" class="btn btn-ghost">View All Services</a>
+    </div>
+    <div class="services-grid">
+      <a href="{% url 'products_technology' %}" class="svc-card" data-accent="purple">
+        <div class="svc-num">01</div>
+        <div class="svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="svc-title">Technology</div>
+        <div class="svc-desc">Software development, cloud computing, cybersecurity and IT infrastructure for businesses and government across East Africa.</div>
+        <div class="svc-link" style="color:#B89AFF">Explore Technology <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="{% url 'products_agriculture' %}" class="svc-card" data-accent="green">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FCC9B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+        <div class="svc-title">Agriculture</div>
+        <div class="svc-desc">Farmer training, extension services, agribusiness development and an online shop for coffee, fertilizers and pesticides across Uganda.</div>
+        <div class="svc-link" style="color:#7FCC9B">Explore Agriculture <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="{% url 'products_trade' %}" class="svc-card" data-accent="gold">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E5C05E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
+        <div class="svc-title">Trade</div>
+        <div class="svc-desc">Import/export facilitation, trade compliance, market intelligence and buyer-seller connections across East Africa's major corridors.</div>
+        <div class="svc-link" style="color:#E5C05E">Explore Trade <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="{% url 'products_infrastructure' %}" class="svc-card" data-accent="blue">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#88B8FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="svc-title">Infrastructure</div>
+        <div class="svc-desc">Road construction, water utilities, commercial buildings and government procurement to international standards.</div>
+        <div class="svc-link" style="color:#88B8FF">Explore Infrastructure <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-n" data-target="4" data-suffix="+">4<em>+</em></div><div class="stat-label">Integrated Sectors</div></div>
+    <div class="stat-item"><div class="stat-n" data-target="500" data-suffix="+">500<em>+</em></div><div class="stat-label">Trade Partners</div></div>
+    <div class="stat-item"><div class="stat-n" data-target="2000" data-suffix="+">2,000<em>+</em></div><div class="stat-label">Farmers Trained</div></div>
+    <div class="stat-item"><div class="stat-n" data-target="15" data-suffix="+">15<em>+</em></div><div class="stat-label">Years of Excellence</div></div>
   </div>
 </div>
 
-<!-- ══ DARK FEATURE 1: Technology & Agriculture ══ -->
-<section class="dh-feature">
-  <div class="dh-feature-inner">
-    <div>
-      <div class="dh-feature-label" style="color:var(--green)"><span style="background:var(--green)"></span>Integrated Solutions</div>
-      <h2 class="dh-feature-h2">Where Technology Meets<br>the Land.</h2>
-      <p class="dh-feature-p">EGV bridges the digital and agricultural worlds — deploying technology that empowers farmers, connects supply chains, and builds the infrastructure that drives East Africa's economy forward.</p>
-      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:36px">
-        <div style="display:flex;align-items:flex-start;gap:16px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(29,122,58,.15);border:1px solid rgba(29,122,58,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div><div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">Farm Management Software</div><div style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.6">Custom digital tools built for East African farmers and cooperatives</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:16px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(29,122,58,.15);border:1px solid rgba(29,122,58,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div><div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">Supply Chain Digitalisation</div><div style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.6">End-to-end digital tracking from farm to market across Uganda</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:16px">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(29,122,58,.15);border:1px solid rgba(29,122,58,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div><div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">Agri E-Commerce</div><div style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.6">Shop coffee, fertilizers and pesticides online with MTN &amp; Airtel Money</div></div>
-        </div>
-      </div>
-      <a href="{% url 'agri_shop' %}" class="dh-btn-primary" style="display:inline-flex">Shop Agriculture Products →</a>
-    </div>
-    <div class="dh-feature-img">
-      <img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=700&h=520&fit=crop" alt="EGV Agriculture Technology">
-      <div class="dh-feature-num">Technology × Agriculture</div>
-      <div class="dh-feature-stat"><div class="dh-feature-stat-n">2,000+</div><div class="dh-feature-stat-l">Farmers supported</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ DARK SERVICES GRID ══ -->
-<section class="dh-services" id="services">
-  <div class="dh-services-inner">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:0">
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="section-inner">
+    <div class="section-head">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:14px;display:flex;align-items:center;gap:12px"><span style="display:block;width:24px;height:1px;background:var(--green)"></span>Our Four Divisions</div>
-        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.1">Products &amp; Services Across<br><em style="color:var(--green);font-style:italic">Every Sector</em></h2>
+        <div class="t-eyebrow" style="color:var(--harvest)">Our Work</div>
+        <h2 class="section-head-h2 dark">Impact Across East Africa</h2>
       </div>
-      <a href="{% url 'products_hub' %}" class="dh-btn-ghost" style="flex-shrink:0">View All Services →</a>
+      <a href="{% url 'about' %}" class="btn btn-outline">Our Story</a>
     </div>
-    <div class="dh-services-grid">
-      <a href="{% url 'products_technology' %}" class="dh-svc" style="color:#B89AFF">
-        <div class="dh-svc-num">01</div>
-        <div class="dh-svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B89AFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div class="dh-svc-title">Technology</div>
-        <div class="dh-svc-desc">Software, cybersecurity, cloud services, IT infrastructure and digital training for businesses and government across East Africa.</div>
-        <div class="dh-svc-link" style="color:#B89AFF">Explore <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="{% url 'products_agriculture' %}" class="dh-svc" style="color:#7FCC9B">
-        <div class="dh-svc-num">02</div>
-        <div class="dh-svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FCC9B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
-        <div class="dh-svc-title">Agriculture</div>
-        <div class="dh-svc-desc">Farmer training, extension services, agribusiness development and an online shop for coffee, fertilizers and pesticides across Uganda.</div>
-        <div class="dh-svc-link" style="color:#7FCC9B">Explore <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="{% url 'products_trade' %}" class="dh-svc" style="color:#FFAA5E">
-        <div class="dh-svc-num">03</div>
-        <div class="dh-svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFAA5E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div>
-        <div class="dh-svc-title">Trade</div>
-        <div class="dh-svc-desc">Import/export facilitation, trade compliance, market intelligence and buyer-seller matching across East Africa's major trade corridors.</div>
-        <div class="dh-svc-link" style="color:#FFAA5E">Explore <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="{% url 'products_infrastructure' %}" class="dh-svc" style="color:#88B8FF">
-        <div class="dh-svc-num">04</div>
-        <div class="dh-svc-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#88B8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="dh-svc-title">Infrastructure</div>
-        <div class="dh-svc-desc">Road construction, water utilities, building projects and government procurement services executed to international standards in Uganda.</div>
-        <div class="dh-svc-link" style="color:#88B8FF">Explore <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
+    <div class="bento-grid">
+      <div class="bento-cell"><img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=900&q=80" alt="Agriculture Uganda" loading="lazy"><div class="bento-cell-cap">Agriculture &middot; Kitgum, Uganda</div></div>
+      <div class="bento-cell"><img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Technology" loading="lazy"><div class="bento-cell-cap">Technology &middot; Kampala</div></div>
+      <div class="bento-cell"><img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Trade" loading="lazy"><div class="bento-cell-cap">Trade &middot; East Africa</div></div>
+      <div class="bento-cell"><img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Nursery Uganda" loading="lazy"><div class="bento-cell-cap">Agriculture &middot; Nursery Programme</div></div>
+      <div class="bento-cell"><img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Infrastructure" loading="lazy"><div class="bento-cell-cap">Infrastructure &middot; Construction</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ LIGHT: MOSAIC GALLERY ══ -->
-<section style="padding:80px 56px;background:#fff">
-  <div style="max-width:1280px;margin:0 auto">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+{% if featured_products %}
+<!-- SHOP PREVIEW -->
+<section class="shop-preview-section">
+  <div class="section-inner">
+    <div class="section-head">
       <div>
-        <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:10px">Our Work in Action</span>
-        <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--text);letter-spacing:-.5px">Impact Across East Africa</h2>
+        <div class="t-eyebrow" style="color:var(--harvest)">Agriculture Shop</div>
+        <h2 class="section-head-h2 dark">Featured Products</h2>
       </div>
-      <a href="{% url 'about' %}" style="font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px">View our story →</a>
+      <a href="{% url 'agri_shop' %}" class="btn btn-green">Shop All Products</a>
     </div>
-    <div class="sq-gallery">
-      <div class="sq-gallery-item"><img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=900&q=80" alt="Farming Uganda" loading="lazy"><div class="sq-gallery-overlay"></div></div>
-      <div class="sq-gallery-item"><img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Seedlings" loading="lazy"><div class="sq-gallery-overlay"></div></div>
-      <div class="sq-gallery-item"><img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Trade" loading="lazy"><div class="sq-gallery-overlay"></div></div>
-      <div class="sq-gallery-item"><img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Infrastructure" loading="lazy"><div class="sq-gallery-overlay"></div></div>
-      <div class="sq-gallery-item"><img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Technology" loading="lazy"><div class="sq-gallery-overlay"></div></div>
+    <div class="shop-preview-grid">
+      {% for product in featured_products %}
+      <div class="sp-card">
+        <div class="sp-card-img">
+          <img src="{{ product.get_image_url }}" alt="{{ product.name }}" loading="lazy" onerror="this.src='https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop'">
+          <span class="sp-card-badge">{{ product.category.name }}</span>
+        </div>
+        <div class="sp-card-body">
+          <div class="sp-cat">{{ product.category.name }}</div>
+          <div class="sp-name">{{ product.name }}</div>
+          <div class="sp-desc">{{ product.description|truncatewords:18 }}</div>
+          <div class="sp-price">UGX {{ product.price_ugx|floatformat:0 }} <span>{{ product.unit }}</span></div>
+          <a href="{% url 'agri_product' product.slug %}" class="sp-add-btn">View Product</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="t-eyebrow" style="color:var(--harvest-2)">Client Stories</div>
+        <h2 class="section-head-h2">Trusted across<br>East Africa.</h2>
+      </div>
+    </div>
+    <div class="testi-grid-new">
+      <div class="testi-card-new">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <p class="testi-text">EGV's agri training programme transformed our cooperative. Within one season our yields increased by over 60% using their climate-smart methods.</p>
+        <div class="testi-author-new"><div class="testi-avatar-new" style="background:var(--harvest)">JO</div><div><div class="testi-name-new">James Okello</div><div class="testi-role-new">Smallholder Farmer, Soroti</div></div></div>
+      </div>
+      <div class="testi-card-new">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <p class="testi-text">Their technology team delivered our entire IT infrastructure upgrade on time and on budget. The cybersecurity framework has been invaluable to our operations.</p>
+        <div class="testi-author-new"><div class="testi-avatar-new" style="background:#8B5CF6">RN</div><div><div class="testi-name-new">Rebecca Nakato</div><div class="testi-role-new">IT Director, Regional Government</div></div></div>
+      </div>
+      <div class="testi-card-new">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <p class="testi-text">Working with EGV on cross-border trade was seamless. They cut our clearance time in half and opened market connections we couldn't have reached alone.</p>
+        <div class="testi-author-new"><div class="testi-avatar-new" style="background:#3B82F6">DM</div><div><div class="testi-name-new">David Mugisha</div><div class="testi-role-new">CEO, East Africa Export Company</div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ DARK: TESTIMONIALS ══ -->
-<section class="testimonials">
-  <div class="testi-inner">
-    <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">What They Say</span>
-    <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.1;margin-bottom:0">Trusted by Partners Across East Africa</h2>
-    <div class="testi-grid">
-      <div class="testi-card"><span class="testi-quote">"</span><p class="testi-text">EGV transformed our farm's productivity through their agri training programme. Within one season, our yields increased by over 60% using the climate-smart methods we learned.</p><div class="testi-author"><div class="testi-avatar">JO</div><div><div class="testi-name">James Okello</div><div class="testi-role">Smallholder Farmer, Soroti District</div></div></div></div>
-      <div class="testi-card"><span class="testi-quote">"</span><p class="testi-text">Their technology team delivered our entire IT infrastructure upgrade on time and within budget. The cybersecurity framework they deployed has been invaluable. Highly professional outfit.</p><div class="testi-author"><div class="testi-avatar" style="background:var(--gold);color:var(--navy)">RN</div><div><div class="testi-name">Rebecca Nakato</div><div class="testi-role">IT Director, Regional Government Agency</div></div></div></div>
-      <div class="testi-card"><span class="testi-quote">"</span><p class="testi-text">Working with EGV on our cross-border trade operations was seamless. They cut our clearance time in half and opened market connections we could not have reached on our own.</p><div class="testi-author"><div class="testi-avatar" style="background:#5B2FC9">DM</div><div><div class="testi-name">David Mugisha</div><div class="testi-role">CEO, East Africa Export Company</div></div></div></div>
+<!-- PARTNERS -->
+<section class="logos-section">
+  <p class="logos-label">Trusted by organisations across East Africa and beyond</p>
+  <div class="logos-grid">
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:rgba(139,92,246,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="logo-cell-name">Ministry of ICT</div><div class="logo-cell-type">Uganda</div></div>
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:var(--harvest-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--harvest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/></svg></div><div class="logo-cell-name">FAO</div><div class="logo-cell-type">East Africa</div></div>
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:var(--gold-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="logo-cell-name">Uganda Dev Bank</div><div class="logo-cell-type">Finance</div></div>
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:rgba(59,130,246,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="logo-cell-name">UNRA</div><div class="logo-cell-type">Roads Authority</div></div>
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:rgba(139,92,246,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="logo-cell-name">EAC Council</div><div class="logo-cell-type">Trade</div></div>
+    <div class="logo-cell"><div class="logo-cell-icon" style="background:var(--harvest-pale)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--harvest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="logo-cell-name">NEMA Uganda</div><div class="logo-cell-type">Environment</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-wrap">
+    <div style="text-align:center">
+      <div class="t-eyebrow" style="color:var(--harvest);justify-content:center;margin-bottom:14px">Questions</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,46px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list" style="margin-top:40px">
+      <div class="faq-item">
+        <button class="faq-q">What sectors does EGV operate in?<span class="faq-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a">Technology, Agriculture, Trade and Infrastructure. Our strength is in how these divisions reinforce each other — digital tools boosting farm productivity, new roads unlocking trade corridors, and technology managing infrastructure projects efficiently.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Which countries does EGV operate in?<span class="faq-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a">Our primary base is Kampala, Uganda. We serve clients across Kenya, Tanzania, Rwanda and South Sudan with active trade partnerships extending into the broader African continent and internationally.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do I buy from the Agriculture Shop?<span class="faq-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a">Browse coffee, fertilizers and pesticides at /agriculture/shop/ and checkout with MTN Mobile Money, Airtel Money, Cash on Delivery or bank transfer. We deliver across Uganda within 2-4 business days.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do I start a partnership with EGV?<span class="faq-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a">Reach out through our Contact page or WhatsApp. Our team will schedule a consultation to understand your needs and propose how EGV can deliver value for your project or organisation.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does EGV work with government agencies and NGOs?<span class="faq-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a">Yes — government agencies, NGOs, development organisations, private businesses and individuals are all welcome. We have active contracts with UNRA, Ministry of ICT and regional agricultural agencies.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PARTNER LOGOS ══ -->
-<div class="logo-mosaic">
-  <div class="lm-inner">
-    <div class="lm-label">Trusted By Organisations Across East Africa &amp; Beyond</div>
-    <div class="lm-grid">
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(91,47,201,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="lm-name">Ministry of ICT</div><div class="lm-type">Uganda</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--green-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/></svg></div><div class="lm-name">FAO</div><div class="lm-type">East Africa</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--gold-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="lm-name">Uganda Dev Bank</div><div class="lm-type">Finance</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(22,58,99,.09)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="lm-name">UNRA</div><div class="lm-type">Roads Authority</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(91,47,201,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg></div><div class="lm-name">EAC Council</div><div class="lm-type">Trade</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--green-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="lm-name">NEMA Uganda</div><div class="lm-type">Environment</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(22,58,99,.09)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="lm-name">Stanbic Bank</div><div class="lm-type">Banking Partner</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--gold-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></div><div class="lm-name">KRA</div><div class="lm-type">Kenya Revenue</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--green-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="lm-name">Agri-Uganda</div><div class="lm-type">Initiative</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(22,58,99,.09)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="lm-name">Cavendish Univ</div><div class="lm-type">Academia</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:var(--gold-pale)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/></svg></div><div class="lm-name">T&amp;TG Corp</div><div class="lm-type">Trade Partner</div></div>
-      <div class="lm-cell"><div class="lm-icon" style="background:rgba(91,47,201,.1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B2FC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="lm-name">TechBuzz Hub</div><div class="lm-type">Tech Partner</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ FAQ ══ -->
-<section class="faq">
-  <div class="faq-inner">
-    <div class="faq-head">
-      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:12px">Common Questions</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:16px">Frequently Asked Questions</h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;max-width:560px;margin:0 auto">Everything you need to know about working with Edgar Global Ventures.</p>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item"><button class="faq-q">What sectors does Edgar Global Ventures operate in?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a">We operate across four integrated sectors: Technology, Agriculture, Trade, and Infrastructure. Our strength lies in how these areas reinforce each other — digital tools boosting farm productivity, new roads unlocking trade corridors, and tech solutions managing infrastructure projects.</div></div>
-      <div class="faq-item"><button class="faq-q">Which countries does EGV operate in?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a">Our primary base is Uganda, but we serve clients across East Africa including Kenya, Tanzania, Rwanda, and South Sudan. We have active trade partnerships extending into the broader African continent and internationally.</div></div>
-      <div class="faq-item"><button class="faq-q">How do I start a partnership with Edgar Global Ventures?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a">Reach out through our Contact page or WhatsApp. Our team will schedule an initial consultation to understand your needs and propose how EGV can deliver value for your organisation or project.</div></div>
-      <div class="faq-item"><button class="faq-q">How do I buy from the Agriculture Shop?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a">Visit the Agriculture Shop at /agriculture/shop/, browse coffee, fertilizers and pesticides, add items to your cart, then checkout with MTN Mobile Money, Airtel Money, Cash on Delivery, or bank transfer. We deliver across Uganda within 2–4 business days.</div></div>
-      <div class="faq-item"><button class="faq-q">Does EGV work with government agencies and NGOs?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a">Yes — government agencies, NGOs, development organisations, private businesses, and individual entrepreneurs are all welcome. We tailor our approach to fit the scale and requirements of each client.</div></div>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <div class="cta-rule">Start Your Project</div>
+    <h2 class="cta-h">Let&rsquo;s build something<br><em>meaningful together.</em></h2>
+    <p class="cta-p">Whether you need a digital system, farm training, trade facilitation or infrastructure — EGV has the expertise and the team to deliver results across East Africa.</p>
+    <div class="cta-btns">
+      <a href="{% url 'contact' %}" class="btn btn-green btn-lg">Start a Conversation</a>
+      <a href="{% url 'careers' %}" class="btn btn-ghost btn-lg">Join Our Team</a>
     </div>
   </div>
 </section>
 
-<!-- ══ DARK CTA ══ -->
-<section style="background:#060C18;padding:96px 56px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 50% 100%,rgba(29,122,58,.08),transparent);pointer-events:none"></div>
-  <div style="max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1">
-    <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px"><span style="display:block;width:24px;height:1px;background:var(--green)"></span>Ready to Start<span style="display:block;width:24px;height:1px;background:var(--green)"></span></div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,56px);font-weight:700;color:#fff;letter-spacing:-.8px;line-height:1.08;margin-bottom:20px">Let's Build Something<br><em style="color:var(--green);font-style:italic">Meaningful Together.</em></h2>
-    <p style="color:rgba(255,255,255,.4);font-size:17px;line-height:1.72;margin-bottom:44px">Whether you need a digital system, farm training, trade facilitation or infrastructure — EGV has the expertise and the team to deliver.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="{% url 'contact' %}" class="dh-btn-primary">Start a Conversation</a>
-      <a href="{% url 'careers' %}" class="dh-btn-ghost">Join Our Team →</a>
-    </div>
-  </div>
-</section>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-// ── Tab switcher ──────────────────────────────────────────
-function switchTab(btn, panelId) {
-  document.querySelectorAll('.sts-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.sts-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  const el = document.getElementById(panelId);
-  if (el) el.classList.add('active');
-}
-
-// ── Rolling digit counter ─────────────────────────────────
-function animateCounter(el) {
-  const val    = el.querySelector('.counter-val') || el;
-  const target = parseInt(el.dataset.target);
-  const format = el.dataset.format === 'comma';
-  if (!target) return;
-  const dur = 2000; const t0 = performance.now();
-  const suffix_el = el.querySelector('em');
-  const suffix = suffix_el ? suffix_el.outerHTML : '';
-  function ease(t) { return 1 - Math.pow(1 - t, 3); }
-  function tick(now) {
-    const p = Math.min((now - t0) / dur, 1);
-    const v = Math.floor(target * ease(p));
-    el.innerHTML = (format ? v.toLocaleString() : v) + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-    else el.innerHTML = (format ? target.toLocaleString() : target) + suffix;
-  }
-  requestAnimationFrame(tick);
-}
-const counters = document.querySelectorAll('.dh-stat-n[data-target], .imp-n[data-target]');
-if (counters.length) {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); io.unobserve(e.target); } });
-  }, { threshold: 0.5 });
-  counters.forEach(el => io.observe(el));
-}
-
-// ── FAQ accordion ─────────────────────────────────────────
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const open  = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!open) item.classList.add('open');
-  });
-});
-
-// ── Scroll-reveal ─────────────────────────────────────────
-const rvl = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.dh-feature, .dh-svc, .testi-card').forEach(el => {
-  el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease';
-  rvl.observe(el);
-});
-</script>
 {% endblock %}

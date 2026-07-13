@@ -1,160 +1,75 @@
 {% extends 'core/base.html' %}
-{% load static %}
 {% block title %}Checkout — EGV Agriculture Shop{% endblock %}
 {% block content %}
-<div style="padding-top:72px;background:var(--cream);min-height:100vh">
-<!-- Progress -->
-<div class="checkout-progress" style="position:sticky;top:60px;z-index:50">
-  <div class="cp-inner">
-    <div class="cp-step done"><div class="cp-num">✓</div><span class="cp-label">Cart</span></div>
-    <div class="cp-step active"><div class="cp-num">2</div><span class="cp-label">Details</span></div>
-    <div class="cp-step active"><div class="cp-num">3</div><span class="cp-label">Payment</span></div>
-    <div class="cp-step"><div class="cp-num">4</div><span class="cp-label">Confirmed</span></div>
-  </div>
-</div>
-<div style="max-width:1100px;margin:0 auto;padding:40px 40px 8px">
-  <nav class="breadcrumb" style="color:var(--muted)">
-    <a href="{% url 'agri_shop' %}" style="color:var(--muted);text-decoration:none">Shop</a>
-    <span class="breadcrumb-sep" style="color:var(--border)">›</span>
-    <a href="{% url 'agri_cart' %}" style="color:var(--muted);text-decoration:none">Cart</a>
-    <span class="breadcrumb-sep" style="color:var(--border)">›</span>
-    <span style="color:var(--text);font-weight:600">Checkout</span>
-  </nav>
-  <h1 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);margin:8px 0 0">Checkout</h1>
-</div>
-
-<form method="post" class="checkout-wrap">
-  {% csrf_token %}
-
-  <!-- LEFT COLUMN: Form -->
-  <div>
-    <!-- Customer Info -->
-    <div class="checkout-card">
-      <h3 class="checkout-section-title">Your Details</h3>
-      <div class="form-row-2">
-        <div class="form-group">
-          <label>First Name *</label>
-          <input type="text" name="first_name" value="{{ post.first_name|default:'' }}" placeholder="John" autocomplete="given-name" required>
-          {% if errors.first_name %}<span class="form-error">{{ errors.first_name }}</span>{% endif %}
-        </div>
-        <div class="form-group">
-          <label>Last Name *</label>
-          <input type="text" name="last_name" value="{{ post.last_name|default:'' }}" placeholder="Doe" autocomplete="family-name" required>
-          {% if errors.last_name %}<span class="form-error">{{ errors.last_name }}</span>{% endif %}
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address *</label>
-        <input type="email" name="email" value="{{ post.email|default:'' }}" placeholder="john@example.com" autocomplete="email" inputmode="email" required>
-        {% if errors.email %}<span class="form-error">{{ errors.email }}</span>{% endif %}
-      </div>
-      <div class="form-group">
-        <label>Phone Number *</label>
-        <input type="tel" name="phone" value="{{ post.phone|default:'' }}" placeholder="+256 700 000 000" autocomplete="tel" inputmode="tel" required>
-        {% if errors.phone %}<span class="form-error">{{ errors.phone }}</span>{% endif %}
-      </div>
-    </div>
-
-    <!-- Delivery -->
-    <div class="checkout-card">
-      <h3 class="checkout-section-title">Delivery Address</h3>
-      <div class="form-group">
-        <label>Full Delivery Address *</label>
-        <textarea name="delivery_address" placeholder="Street, area, landmark..." required>{{ post.delivery_address|default:'' }}</textarea>
-        {% if errors.delivery_address %}<span class="form-error">{{ errors.delivery_address }}</span>{% endif %}
-      </div>
-      <div class="form-group">
-        <label>District *</label>
-        <select name="district" required>
-          <option value="">Select your district...</option>
-          {% for d in districts %}
-          <option value="{{ d }}" {% if post.district == d %}selected{% endif %}>{{ d }}</option>
-          {% endfor %}
-        </select>
-        {% if errors.district %}<span class="form-error">{{ errors.district }}</span>{% endif %}
-      </div>
-      <div class="form-group">
-        <label>Order Notes (optional)</label>
-        <textarea name="notes" placeholder="Any special instructions, preferred delivery times, etc.">{{ post.notes|default:'' }}</textarea>
-      </div>
-    </div>
-
-    <!-- Payment Method -->
-    <div class="checkout-card">
-      <h3 class="checkout-section-title">Payment Method</h3>
-      {% if errors.payment_method %}<div style="color:#C75B2A;font-size:13px;margin-bottom:16px">{{ errors.payment_method }}</div>{% endif %}
-      <div class="payment-opts">
-        <label class="pay-opt">
-          <input type="radio" name="payment_method" value="mtn_momo" {% if post.payment_method == 'mtn_momo' or not post.payment_method %}checked{% endif %} onchange="togglePayPhone()">
-          <div class="pay-icon" style="background:#FFCC02;color:#000;font-weight:900;font-size:12px">MTN</div>
-          <div><div class="pay-name">MTN Mobile Money</div><div class="pay-desc">Pay via MTN MoMo. You'll receive payment instructions after placing your order.</div></div>
-        </label>
-        <label class="pay-opt">
-          <input type="radio" name="payment_method" value="airtel" {% if post.payment_method == 'airtel' %}checked{% endif %} onchange="togglePayPhone()">
-          <div class="pay-icon" style="background:#E40000;color:#fff;font-weight:900;font-size:11px">AIRTEL</div>
-          <div><div class="pay-name">Airtel Money</div><div class="pay-desc">Pay via Airtel Money. Instructions sent after placing your order.</div></div>
-        </label>
-        <label class="pay-opt">
-          <input type="radio" name="payment_method" value="cod" {% if post.payment_method == 'cod' %}checked{% endif %} onchange="togglePayPhone()">
-          <div class="pay-icon" style="background:var(--green-pale)">💵</div>
-          <div><div class="pay-name">Cash on Delivery</div><div class="pay-desc">Pay cash when your order is delivered. Available in Kampala and major towns only.</div></div>
-        </label>
-        <label class="pay-opt">
-          <input type="radio" name="payment_method" value="bank" {% if post.payment_method == 'bank' %}checked{% endif %} onchange="togglePayPhone()">
-          <div class="pay-icon" style="background:rgba(22,58,99,.1)">🏦</div>
-          <div><div class="pay-name">Bank Transfer</div><div class="pay-desc">Transfer directly to our Stanbic / Equity bank account. Details provided after order.</div></div>
-        </label>
-      </div>
-      <div id="payPhoneField" style="margin-top:18px">
-        <div class="form-group" style="margin-bottom:0">
-          <label>Mobile Money Number</label>
-          <input type="tel" name="payment_phone" value="{{ post.payment_phone|default:'' }}" id="payPhoneInput" placeholder="+256 700 000 000">
-          <span style="font-size:12px;color:var(--muted);margin-top:5px;display:block">The number you will send payment from</span>
-        </div>
-      </div>
-    </div>
-
-    <button type="submit" class="place-order-btn">
-      Place Order — {{ cart.fmt_total }}
-    </button>
-    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">By placing your order you agree to our terms of service. Payment instructions will be sent after checkout.</p>
-  </div>
-
-  <!-- RIGHT COLUMN: Order Summary -->
-  <div>
-    <div class="cart-summary" style="position:sticky;top:96px">
-      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:20px">Your Order ({{ cart|length }} item{{ cart|length|pluralize }})</h3>
-      {% for item in cart %}
-      <div style="display:flex;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)">
-        {% if item.product.get_image_url %}<img src="{{ item.product.get_image_url }}" alt="{{ item.name }}" style="width:52px;height:52px;border-radius:8px;object-fit:cover;flex-shrink:0">{% endif %}
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.3">{{ item.name }}</div>
-          <div style="font-size:11px;color:var(--muted)">{{ item.unit }} × {{ item.quantity }}</div>
-        </div>
-        <div style="font-size:14px;font-weight:700;color:var(--text);flex-shrink:0">UGX {{ item.line_total|floatformat:0 }}</div>
-      </div>
-      {% endfor %}
-      <div class="cs-row"><span>Subtotal</span><span style="font-weight:600">{{ cart.fmt_subtotal }}</span></div>
-      <div class="cs-row"><span>Delivery fee</span><span style="font-weight:600">{{ cart.fmt_delivery }}</span></div>
-      <div class="cs-row total"><span>Total</span><span>{{ cart.fmt_total }}</span></div>
-      <a href="{% url 'agri_cart' %}" style="display:block;text-align:center;font-size:13px;color:var(--muted);text-decoration:none;margin-top:16px;font-weight:500">← Edit Cart</a>
+<div style="padding-top:68px;background:var(--parchment);min-height:100vh">
+  <!-- Progress -->
+  <div class="checkout-progress" style="position:sticky;top:68px;z-index:50">
+    <div class="cp-inner">
+      <div class="cp-step done"><div class="cp-num">✓</div><span class="cp-label">Cart</span></div>
+      <div class="cp-step active"><div class="cp-num">2</div><span class="cp-label">Details</span></div>
+      <div class="cp-step active"><div class="cp-num">3</div><span class="cp-label">Payment</span></div>
+      <div class="cp-step"><div class="cp-num">4</div><span class="cp-label">Confirmed</span></div>
     </div>
   </div>
-</form>
+  <div class="checkout-wrap">
+    <div>
+      <form method="post" action="{% url 'agri_checkout' %}">
+        {% csrf_token %}
+        <!-- Customer details -->
+        <div class="checkout-card">
+          <div class="checkout-section-title">Delivery Details</div>
+          <div class="form-row-2">
+            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" required placeholder="John"></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Doe"></div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="john@example.com"></div>
+            <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="+256 700 000 000"></div>
+          </div>
+          <div class="form-group"><label>Delivery Address *</label><textarea name="delivery_address" required placeholder="Street address, village, area..."></textarea></div>
+          <div class="form-group">
+            <label>District *</label>
+            <select name="district" required>
+              <option value="">Select district...</option>
+              {% for d in "Kampala Wakiso Mukono Jinja Mbale Gulu Mbarara Arua Masaka Fort Portal Lira Soroti Kabale"|split %}
+              <option value="{{ d }}">{{ d }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group"><label>Additional Notes</label><textarea name="notes" placeholder="Special instructions, landmark, etc."></textarea></div>
+        </div>
+        <!-- Payment method -->
+        <div class="checkout-card">
+          <div class="checkout-section-title">Payment Method</div>
+          <div class="payment-opts">
+            <label class="pay-opt"><input type="radio" name="payment_method" value="mtn_momo" checked><div class="pay-icon" style="background:#FFC107">📱</div><div><div class="pay-name">MTN Mobile Money</div><div class="pay-desc">Send to: 0700 000 000 (EGV Uganda)</div></div></label>
+            <label class="pay-opt"><input type="radio" name="payment_method" value="airtel"><div class="pay-icon" style="background:#FF3366">📲</div><div><div class="pay-name">Airtel Money</div><div class="pay-desc">Send to: 0750 000 000 (EGV Uganda)</div></div></label>
+            <label class="pay-opt"><input type="radio" name="payment_method" value="cod"><div class="pay-icon" style="background:#4CAF50">💵</div><div><div class="pay-name">Cash on Delivery</div><div class="pay-desc">Pay when your order arrives</div></div></label>
+            <label class="pay-opt"><input type="radio" name="payment_method" value="bank"><div class="pay-icon" style="background:#2196F3">🏦</div><div><div class="pay-name">Bank Transfer</div><div class="pay-desc">Stanbic Bank: 9030022345 (EGV Uganda Ltd)</div></div></label>
+          </div>
+          <div class="form-group" style="margin-top:20px"><label>Mobile Money Number (if paying via MTN/Airtel)</label><input type="tel" name="payment_phone" placeholder="+256 700 000 000"></div>
+        </div>
+        <button type="submit" class="place-order-btn">Place Order →</button>
+      </form>
+    </div>
+    <!-- Order summary -->
+    <div>
+      <div class="cart-summary">
+        <h2 style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)">Order Summary</h2>
+        {% for item in cart %}
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+          <div style="width:48px;height:48px;border-radius:var(--r-sm);overflow:hidden;flex-shrink:0;background:var(--parchment-2)">
+            {% if item.product.get_image_url %}<img src="{{ item.product.get_thumb_url }}" alt="{{ item.product.name }}" style="width:100%;height:100%;object-fit:cover">{% endif %}
+          </div>
+          <div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--charcoal)">{{ item.product.name }}</div><div style="font-size:11px;color:var(--muted)">Qty: {{ item.qty }}</div></div>
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--charcoal)">UGX {{ item.total|floatformat:0 }}</div>
+        </div>
+        {% endfor %}
+        <div class="cs-row"><span>Subtotal</span><span>UGX {{ cart.get_subtotal|floatformat:0 }}</span></div>
+        <div class="cs-row"><span>Delivery</span><span>UGX 10,000</span></div>
+        <div class="cs-row total"><span>Total</span><span>UGX {{ cart.get_total|floatformat:0 }}</span></div>
+      </div>
+    </div>
+  </div>
 </div>
-<script>
-function togglePayPhone() {
-  const sel = document.querySelector('input[name="payment_method"]:checked');
-  const field = document.getElementById('payPhoneField');
-  const input = document.getElementById('payPhoneInput');
-  if (sel && (sel.value === 'mtn_momo' || sel.value === 'airtel')) {
-    field.style.display = 'block';
-    input.required = true;
-  } else {
-    field.style.display = 'none';
-    input.required = false;
-  }
-}
-togglePayPhone();
-</script>
 {% endblock %}

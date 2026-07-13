@@ -1,28 +1,17 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% block title %}Privacy Policy — Edgar Global Ventures Ltd{% endblock %}
-{% block content %}
-<div style="padding-top:72px">
+{{% extends 'core/base.html' %}}
+{{% block title %}}Privacy Policy — Edgar Global Ventures Ltd{{% endblock %}}
+{{% block content %}}
 <div class="page-hero">
   <div class="page-hero-inner">
-    <span class="page-hero-label">Legal</span>
-    <h1>Privacy <em>Policy</em></h1>
-    <p>Last updated: June 2026. Edgar Global Ventures Ltd is committed to protecting your personal data and respecting your privacy.</p>
+    <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Privacy Policy</span></div>
+    <div class="page-hero-eyebrow">Edgar Global Ventures</div>
+    <h1>Privacy Policy</h1>
+    <p>How we handle your data.</p>
   </div>
 </div>
-<section style="padding:80px 56px;background:#fff">
-  <div style="max-width:800px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.8">
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px">1. Information We Collect</h2>
-    <p style="margin-bottom:32px">We collect information you provide when you contact us, subscribe to updates, or engage with our services — including name, email address, organisation, and the nature of your enquiry.</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px">2. How We Use Your Data</h2>
-    <p style="margin-bottom:32px">Your data is used to respond to enquiries, provide services, send relevant updates (with your consent), and improve our website and operations. We do not sell your data to third parties.</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px">3. Data Retention</h2>
-    <p style="margin-bottom:32px">We retain personal data only as long as necessary for the purposes for which it was collected, or as required by law. Contact form submissions are retained for up to 2 years.</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px">4. Your Rights</h2>
-    <p style="margin-bottom:32px">You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at <a href="mailto:privacy@edgarglobalventures.com" style="color:var(--navy);font-weight:600">privacy@edgarglobalventures.com</a>.</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px">5. Contact</h2>
-    <p>For privacy-related enquiries, contact Edgar Global Ventures Ltd at our registered address in Kampala, Uganda, or via <a href="{% url 'contact' %}" style="color:var(--navy);font-weight:600">our contact page</a>.</p>
+<section style="background:var(--parchment);padding:80px;min-height:40vh">
+  <div style="max-width:var(--max-w);margin:0 auto">
+    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px">This page is being updated with fresh content. <a href="/contact/" style="color:var(--harvest);font-weight:600">Contact us</a> for more information.</p>
   </div>
 </section>
-</div>
-{% endblock %}
+{{% endblock %}}

@@ -1,400 +1,148 @@
 {% extends 'core/base.html' %}
+{% block title %}Agriculture Shop — Coffee, Fertilizers & Pesticides | EGV{% endblock %}
 {% block page_meta %}
-<meta name="description" content="Buy fresh Ugandan produce, coffee, grains and spices online. Delivered across Uganda. MTN and Airtel Money accepted. EGV Agriculture Shop.">
-<meta property="og:title" content="Agriculture Shop — Edgar Global Ventures">
-<meta property="og:description" content="26 farm-fresh Ugandan products: coffee, maize, vanilla, passion fruit and more. MTN & Airtel Money. Ships Uganda-wide.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80">
-{% endblock page_meta %}
-{% load static %}
-{% block title %}EGV Agriculture Shop — Fresh Ugandan Produce & Coffee{% endblock %}
-
+<meta name="description" content="Buy coffee, fertilizers and pesticides online. MTN and Airtel Money accepted. Delivery across Uganda. Edgar Global Ventures Agriculture Shop.">
+{% endblock %}
 {% block content %}
-<div style="padding-top:72px" class="eb-page">
+<div class="eb-page" style="padding-top:68px">
+  <!-- Search bar -->
+  <div class="eb-search-bar">
+    <div class="eb-search-inner">
+      <form method="get" style="display:flex;flex:1;max-width:700px">
+        <select name="category" class="eb-search-select" onchange="this.form.submit()">
+          <option value="">All Categories</option>
+          {% for cat in categories %}
+          <option value="{{ cat.slug }}" {% if active_cat and active_cat.slug == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="q" value="{{ q }}" placeholder="Search products..." class="eb-search-input">
+        <button type="submit" class="eb-search-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
 
-<!-- ══ EBAY-STYLE TOP SEARCH BAR ══ -->
-<div class="eb-search-bar">
-  <div class="eb-search-inner">
-    <form method="get" action="{% url 'agri_shop' %}" style="display:flex;width:100%;align-items:center;gap:0">
-      {% if active_category != 'all' %}
-      <input type="hidden" name="category" value="{{ active_category }}">
-      {% endif %}
-      <select class="eb-search-select" name="category" onchange="this.form.submit()">
-        <option value="all" {% if active_category == 'all' %}selected{% endif %}>All Categories</option>
+  <!-- Category tabs -->
+  <div class="eb-cat-tabs">
+    <div class="eb-cat-tabs-inner">
+      <a href="{% url 'agri_shop' %}" class="eb-cat-tab {% if not active_cat %}active{% endif %}">All Products</a>
+      {% for cat in categories %}
+      <a href="{% url 'agri_shop' %}?category={{ cat.slug }}" class="eb-cat-tab {% if active_cat and active_cat.slug == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="eb-body">
+    <!-- Sidebar -->
+    <aside class="eb-sidebar">
+      <div class="eb-sidebar-title">Filter Products</div>
+      <div class="eb-filter-group">
+        <span class="eb-filter-label">Category</span>
         {% for cat in categories %}
-        <option value="{{ cat.slug }}" {% if active_category == cat.slug %}selected{% endif %}>{{ cat.name }}</option>
+        <div class="eb-filter-option">
+          <input type="checkbox" id="cat{{ cat.id }}" {% if active_cat and active_cat.slug == cat.slug %}checked{% endif %}
+                 onclick="window.location='{% url 'agri_shop' %}?category={{ cat.slug }}'">
+          <label for="cat{{ cat.id }}">{{ cat.name }}</label>
+          <span class="count">({{ cat.products.count }})</span>
+        </div>
         {% endfor %}
-      </select>
-      <input type="text" name="q" value="{{ search_query }}"
-             class="eb-search-input"
-             placeholder="Search EGV Agriculture Shop..."
-             autocomplete="off" autocorrect="off" autocapitalize="off">
-      <button type="submit" class="eb-search-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        Search
-      </button>
-    </form>
-  </div>
-</div>
+      </div>
+      <div class="eb-filter-group">
+        <span class="eb-filter-label">Price Range (UGX)</span>
+        <div class="eb-price-inputs">
+          <input type="number" id="priceFrom" placeholder="Min" class="eb-price-from">
+          <span class="eb-price-sep">–</span>
+          <input type="number" id="priceTo" placeholder="Max" class="eb-price-to">
+        </div>
+        <button class="eb-price-btn">Apply Filter</button>
+      </div>
+      <div class="eb-filter-group">
+        <span class="eb-filter-label">Availability</span>
+        <div class="eb-filter-option"><input type="checkbox" id="inStock" checked><label for="inStock">In Stock</label></div>
+      </div>
+    </aside>
 
-<!-- ══ CATEGORY QUICK TABS ══ -->
-<div class="eb-cat-tabs">
-  <div class="eb-cat-tabs-inner">
-    <a href="{% url 'agri_shop' %}" class="eb-cat-tab {% if active_category == 'all' and not search_query %}active{% endif %}">All</a>
-    {% for cat in categories %}
-    <a href="{% url 'agri_shop' %}?category={{ cat.slug }}" class="eb-cat-tab {% if active_category == cat.slug %}active{% endif %}">
-      {{ cat.name }} <span style="color:#999;font-size:11px">({{ cat.products.count }})</span>
-    </a>
-    {% endfor %}
-    <a href="{% url 'agri_shop' %}?featured=1" class="eb-cat-tab {% if request.GET.featured %}active{% endif %}" style="color:#C00;font-weight:700">
-      Featured
-    </a>
-  </div>
-</div>
+    <!-- Results -->
+    <div class="eb-results">
+      <!-- Mobile filter bar -->
+      <div class="eb-filter-bar">
+        {% for cat in categories %}
+        <a href="{% url 'agri_shop' %}?category={{ cat.slug }}" class="eb-filter-toggle {% if active_cat and active_cat.slug == cat.slug %}active{% endif %}" style="{% if active_cat and active_cat.slug == cat.slug %}background:var(--harvest);color:#fff;border-color:var(--harvest){% endif %}">{{ cat.name }}</a>
+        {% endfor %}
+      </div>
 
-<!-- ══ MAIN BODY: SIDEBAR + RESULTS ══ -->
-<div class="eb-body">
+      <!-- Deals banner -->
+      <div class="eb-deals-banner">
+        <div class="eb-deals-icon">🌾</div>
+        <div>
+          <div class="eb-deals-title">Free Delivery on Orders Over UGX 100,000</div>
+          <div class="eb-deals-sub">MTN & Airtel Money accepted &bull; Cash on Delivery available</div>
+        </div>
+        <a href="{% url 'agri_shop' %}" class="eb-deals-link">Shop Now</a>
+      </div>
 
-  <!-- ── LEFT SIDEBAR (eBay filters) ── -->
-  <aside class="eb-sidebar" id="ebSidebar">
-    <div class="eb-sidebar-title">Shop by Category</div>
-
-    <!-- Category filter -->
-    <div class="eb-filter-group">
-      <span class="eb-filter-label">Category</span>
-      <div class="eb-filter-option">
-        <input type="radio" name="f_cat" id="fc_all"
-               {% if active_category == 'all' %}checked{% endif %}
-               onchange="location='{% url 'agri_shop' %}{% if search_query %}?q={{ search_query }}{% endif %}'">
-        <label for="fc_all">All Products</label>
-        <span class="count">({{ all_count }})</span>
-      </div>
-      {% for cat in categories %}
-      <div class="eb-filter-option">
-        <input type="radio" name="f_cat" id="fc_{{ cat.slug }}"
-               {% if active_category == cat.slug %}checked{% endif %}
-               onchange="location='{% url 'agri_shop' %}?category={{ cat.slug }}{% if search_query %}&q={{ search_query }}{% endif %}'">
-        <label for="fc_{{ cat.slug }}">{{ cat.name }}</label>
-        <span class="count">({{ cat.products.count }})</span>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- Price range -->
-    <div class="eb-filter-group">
-      <span class="eb-filter-label">Price (UGX)</span>
-      <div class="eb-filter-option">
-        <input type="radio" name="f_price" id="fp_1"
-               onchange="location='{% url 'agri_shop' %}?category={{ active_category }}&max_price=3000{% if search_query %}&q={{ search_query }}{% endif %}'">
-        <label for="fp_1">Under UGX 3,000</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="radio" name="f_price" id="fp_2"
-               onchange="location='{% url 'agri_shop' %}?category={{ active_category }}&min_price=3000&max_price=8000{% if search_query %}&q={{ search_query }}{% endif %}'">
-        <label for="fp_2">UGX 3,000 – 8,000</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="radio" name="f_price" id="fp_3"
-               onchange="location='{% url 'agri_shop' %}?category={{ active_category }}&min_price=8000&max_price=20000{% if search_query %}&q={{ search_query }}{% endif %}'">
-        <label for="fp_3">UGX 8,000 – 20,000</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="radio" name="f_price" id="fp_4"
-               onchange="location='{% url 'agri_shop' %}?category={{ active_category }}&min_price=20000{% if search_query %}&q={{ search_query }}{% endif %}'">
-        <label for="fp_4">Over UGX 20,000</label>
-      </div>
-      <div class="eb-price-inputs">
-        <input class="eb-price-from" placeholder="Min" type="number" id="priceMin">
-        <span class="eb-price-sep">to</span>
-        <input class="eb-price-to" placeholder="Max" type="number" id="priceMax">
-      </div>
-      <button class="eb-price-btn" onclick="applyPriceFilter()">Apply</button>
-    </div>
-
-    <!-- Delivery -->
-    <div class="eb-filter-group">
-      <span class="eb-filter-label">Delivery</span>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fd_ug" checked disabled>
-        <label for="fd_ug">Ships across Uganda</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fd_fast">
-        <label for="fd_fast">Express (2–3 days)</label>
-      </div>
-    </div>
-
-    <!-- Condition -->
-    <div class="eb-filter-group">
-      <span class="eb-filter-label">Condition</span>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fc_fresh" checked>
-        <label for="fc_fresh">Farm Fresh</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fc_grade" checked>
-        <label for="fc_grade">Grade A</label>
-      </div>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fc_organic">
-        <label for="fc_organic">Organic Certified</label>
-      </div>
-    </div>
-
-    <!-- Seller -->
-    <div class="eb-filter-group">
-      <span class="eb-filter-label">Seller</span>
-      <div class="eb-filter-option">
-        <input type="checkbox" id="fs_egv" checked>
-        <label for="fs_egv">EGV Verified Farms</label>
-        <span class="count" style="background:#e8f5ef;color:var(--green);padding:1px 6px;border-radius:100px;font-size:10px">Trusted</span>
-      </div>
-    </div>
-
-    <!-- Clear filters -->
-    {% if search_query or active_category != 'all' %}
-    <div style="padding:14px 18px">
-      <a href="{% url 'agri_shop' %}" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none;display:flex;align-items:center;gap:5px">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        Clear all filters
-      </a>
-    </div>
-    {% endif %}
-  </aside>
-
-  <!-- ── RIGHT: RESULTS ── -->
-  <div class="eb-results">
-
-    <!-- Mobile filter toggle -->
-    <div class="eb-filter-bar" style="display:none" id="mobileFilterBar">
-      <button class="eb-filter-toggle" onclick="toggleSidebar()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="11" y2="18"/></svg>
-        Filter
-      </button>
-      {% for cat in categories %}
-      <a href="{% url 'agri_shop' %}?category={{ cat.slug }}" class="eb-filter-toggle" style="{% if active_category == cat.slug %}background:var(--navy);color:#fff;border-color:var(--navy){% endif %}">{{ cat.name }}</a>
-      {% endfor %}
-    </div>
-
-    <!-- Deals banner -->
-    {% if active_category == 'all' and not search_query %}
-    <div class="eb-deals-banner">
-      <div class="eb-deals-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <div>
-        <div class="eb-deals-title">Farm Fresh Today — Direct from EGV Partner Farms</div>
-        <div class="eb-deals-sub">Free delivery on orders over UGX 50,000 • MTN &amp; Airtel Money accepted • Ships Uganda-wide</div>
-      </div>
-      <a href="{% url 'agri_shop' %}?featured=1" class="eb-deals-link">Featured Picks</a>
-    </div>
-    {% endif %}
-
-    <!-- Sort bar -->
-    <div class="eb-sort-bar">
-      <div class="eb-result-count">
-        <span>{{ products|length }}</span>
-        result{{ products|length|pluralize }}
-        {% if search_query %} for "<strong>{{ search_query }}</strong>"{% endif %}
-        {% if active_category != 'all' %} in <strong>{% for cat in categories %}{% if cat.slug == active_category %}{{ cat.name }}{% endif %}{% endfor %}</strong>{% endif %}
-      </div>
-      <span class="eb-sort-label">Sort by:</span>
-      <select class="eb-sort-select" onchange="sortProducts(this.value)">
-        <option value="default">Best Match</option>
-        <option value="price_low">Price: Lowest first</option>
-        <option value="price_high">Price: Highest first</option>
-        <option value="name">Name A–Z</option>
-        <option value="featured">Featured first</option>
-      </select>
-      <div class="eb-view-btns">
-        <button class="eb-view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid view">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        </button>
-        <button class="eb-view-btn" id="listViewBtn" onclick="setView('list')" title="List view">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Product grid -->
-    {% if products %}
-    <div class="eb-grid" id="ebGrid">
-      {% for p in products %}
-      <div class="eb-card" data-name="{{ p.name }}" data-price="{{ p.price_ugx }}" data-featured="{{ p.is_featured|yesno:'1,0' }}">
-
-        <!-- Image -->
-        <a href="{% url 'agri_product' p.slug %}" class="eb-card-img" style="display:block">
-          {% if p.get_image_url %}
-          <img src="{{ p.get_image_url }}" alt="{{ p.name }}" loading="lazy">
-          {% else %}
-          <div style="width:100%;height:100%;background:#f5f5f5;display:flex;align-items:center;justify-content:center">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/></svg>
-          </div>
-          {% endif %}
-          <span class="eb-condition">{% if p.is_featured %}Grade A{% else %}Farm Fresh{% endif %}</span>
-          <button class="eb-heart" onclick="event.preventDefault();this.style.color='red'" title="Save">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <!-- Sort bar -->
+      <div class="eb-sort-bar">
+        <div class="eb-result-count"><span>{{ products.count }}</span> products found{% if active_cat %} in {{ active_cat.name }}{% endif %}</div>
+        <select class="eb-sort-select"><option>Best Match</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option></select>
+        <div class="eb-view-btns">
+          <button class="eb-view-btn active" title="Grid view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           </button>
-        </a>
-
-        <!-- Card body -->
-        <div class="eb-card-body">
-          <div class="eb-card-cat">{{ p.category.name }}</div>
-          <a href="{% url 'agri_product' p.slug %}" style="text-decoration:none">
-            <div class="eb-card-title">{{ p.name }}</div>
-          </a>
-          <div class="eb-card-price">
-            <span class="eb-curr">UGX </span>{{ p.price_ugx|floatformat:0 }}
-          </div>
-          <div class="eb-card-unit">{{ p.unit }}</div>
-
-          <div class="eb-card-meta">
-            <div class="eb-verified">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-              EGV Verified Supplier
-            </div>
-            <div class="eb-delivery">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <span style="color:var(--green);font-weight:600">UGX 10,000 delivery</span> &bull; Ships Uganda-wide
-            </div>
-          </div>
-
-          <!-- Buy Now + Add to Cart buttons -->
-          <a href="{% url 'agri_product' p.slug %}" class="eb-buy-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-            Buy It Now
-          </a>
-
-          <form method="post" action="{% url 'agri_cart_add' p.pk %}">
-            {% csrf_token %}
-            <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="next" value="{{ request.get_full_path }}">
-            <button type="submit" class="eb-cart-btn">Add to Cart</button>
-          </form>
         </div>
       </div>
-      {% endfor %}
-    </div>
 
-    {% else %}
-    <!-- Empty state -->
-    <div class="eb-empty">
-      <div class="eb-empty-icon">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      {% if products %}
+      <div class="eb-grid">
+        {% for p in products %}
+        <div class="eb-card">
+          <div class="eb-card-img">
+            <button class="eb-heart" aria-label="Save">&#10084;</button>
+            <div class="eb-condition">In Stock</div>
+            {% if p.get_image_url %}
+            <img src="{{ p.get_image_url }}" alt="{{ p.name }}" loading="lazy" onerror="this.src='https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop'">
+            {% else %}
+            <div style="width:100%;height:100%;background:var(--parchment-2);display:flex;align-items:center;justify-content:center;font-size:40px">🌿</div>
+            {% endif %}
+          </div>
+          <div class="eb-card-body">
+            <div class="eb-card-cat">{{ p.category.name }}</div>
+            <div class="eb-card-title">{{ p.name }}</div>
+            <div class="eb-card-price"><span class="eb-curr">UGX </span>{{ p.price_ugx|floatformat:0 }}</div>
+            <div class="eb-card-unit">{{ p.unit }}</div>
+            <div class="eb-card-meta">
+              <div class="eb-verified">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                EGV Verified
+              </div>
+              <div class="eb-delivery">Free delivery &bull; 2–4 business days</div>
+            </div>
+            <a href="{% url 'agri_product' p.slug %}" class="eb-buy-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Buy Now
+            </a>
+            <form method="post" action="{% url 'agri_cart_add' p.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="quantity" value="1">
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button type="submit" class="eb-cart-btn">+ Add to Cart</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% if search_query %}
-      <h3>No results for "{{ search_query }}"</h3>
-      <p>Try different keywords or browse all categories below.</p>
-      <a href="{% url 'agri_shop' %}" class="eb-buy-btn" style="max-width:240px;margin:0 auto;display:flex">Browse All Products</a>
       {% else %}
-      <h3>Products Coming Soon</h3>
-      <p>Our shop is being stocked. Order by WhatsApp at <strong>+256 700 000 000</strong> or contact us below.</p>
-      <a href="{% url 'contact' %}" class="eb-buy-btn" style="max-width:200px;margin:0 auto;display:flex">Contact to Order</a>
-      {% endif %}
-    </div>
-    {% endif %}
-
-    <!-- Cart quick info -->
-    {% if cart_item_count > 0 %}
-    <div style="margin-top:16px;background:#f0f8f0;border:1px solid #b8dfc0;border-radius:4px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-      <div style="font-size:14px;color:#111">
-        <strong>{{ cart_item_count }} item{{ cart_item_count|pluralize }}</strong> in your cart
+      <div class="eb-empty">
+        <div style="font-size:48px;margin-bottom:16px">🌾</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">No products found</div>
+        <div style="color:var(--muted);margin-bottom:20px">Try a different search term or category.</div>
+        <a href="{% url 'agri_shop' %}" class="btn btn-green">View All Products</a>
       </div>
-      <a href="{% url 'agri_cart' %}" class="eb-buy-btn" style="max-width:180px;padding:8px 20px;font-size:13px">Go to Cart</a>
-    </div>
-    {% endif %}
-
-  </div><!-- /.eb-results -->
-</div><!-- /.eb-body -->
-
-<!-- ── Footer trust bar (eBay-style) ── -->
-<div style="background:#fff;border-top:1px solid #e0e0e0;padding:20px 24px;margin-top:24px">
-  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span><strong style="color:#111">EGV Buyer Protection</strong> — Quality guaranteed or full refund</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      <span><strong style="color:#111">Ships Uganda-wide</strong> — UGX 10,000 flat delivery fee</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-      <span><strong style="color:#111">MTN &amp; Airtel Money</strong> — Instant mobile payment accepted</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
-      <span><strong style="color:#111">Support</strong> — Call +256 700 000 000</span>
+      {% endif %}
     </div>
   </div>
 </div>
-
-</div><!-- /.eb-page -->
-{% endblock %}
-
-{% block extra_js %}
-<script>
-// Mobile filter toggle
-function toggleSidebar() {
-  const s = document.getElementById('ebSidebar');
-  s.classList.toggle('open');
-}
-
-// Show mobile filter bar
-if (window.innerWidth <= 960) {
-  const bar = document.getElementById('mobileFilterBar');
-  if (bar) bar.style.display = 'flex';
-}
-
-// Sort products client-side
-function sortProducts(val) {
-  const grid = document.getElementById('ebGrid');
-  if (!grid) return;
-  const cards = Array.from(grid.querySelectorAll('.eb-card'));
-  cards.sort((a,b) => {
-    if (val === 'price_low')  return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
-    if (val === 'price_high') return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
-    if (val === 'name')       return a.dataset.name.localeCompare(b.dataset.name);
-    if (val === 'featured')   return b.dataset.featured - a.dataset.featured;
-    return 0;
-  });
-  cards.forEach(c => grid.appendChild(c));
-}
-
-// View toggle: grid / list
-function setView(v) {
-  const grid = document.getElementById('ebGrid');
-  const gBtn = document.getElementById('gridViewBtn');
-  const lBtn = document.getElementById('listViewBtn');
-  if (!grid) return;
-  if (v === 'list') {
-    grid.style.gridTemplateColumns = '1fr';
-    grid.querySelectorAll('.eb-card').forEach(c => {
-      c.style.flexDirection = 'row';
-      const img = c.querySelector('.eb-card-img');
-      if (img) { img.style.width = '180px'; img.style.height = '140px'; img.style.flexShrink = '0'; }
-    });
-    gBtn.classList.remove('active'); lBtn.classList.add('active');
-  } else {
-    grid.style.gridTemplateColumns = '';
-    grid.querySelectorAll('.eb-card').forEach(c => {
-      c.style.flexDirection = 'column';
-      const img = c.querySelector('.eb-card-img');
-      if (img) { img.style.width = ''; img.style.height = ''; img.style.flexShrink = ''; }
-    });
-    lBtn.classList.remove('active'); gBtn.classList.add('active');
-  }
-}
-
-// Price filter
-function applyPriceFilter() {
-  const min = document.getElementById('priceMin').value;
-  const max = document.getElementById('priceMax').value;
-  const base = '{% url "agri_shop" %}?category={{ active_category }}';
-  let url = base;
-  if (min) url += '&min_price=' + min;
-  if (max) url += '&max_price=' + max;
-  if ('{{ search_query }}') url += '&q={{ search_query }}';
-  location.href = url;
-}
-</script>
 {% endblock %}

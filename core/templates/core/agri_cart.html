@@ -1,98 +1,79 @@
 {% extends 'core/base.html' %}
-{% load static %}
-{% block title %}Your Cart — EGV Agriculture Shop{% endblock %}
+{% block title %}Shopping Cart — EGV Agriculture Shop{% endblock %}
 {% block content %}
-<div style="padding-top:72px;background:var(--cream);min-height:80vh">
-<!-- Progress -->
-<div class="checkout-progress" style="position:sticky;top:60px;z-index:50">
-  <div class="cp-inner">
-    <div class="cp-step active"><div class="cp-num">1</div><span class="cp-label">Cart</span></div>
-    <div class="cp-step"><div class="cp-num">2</div><span class="cp-label">Details</span></div>
-    <div class="cp-step"><div class="cp-num">3</div><span class="cp-label">Payment</span></div>
-    <div class="cp-step"><div class="cp-num">4</div><span class="cp-label">Confirmed</span></div>
+<div style="padding-top:68px;background:var(--parchment);min-height:100vh">
+  <!-- Progress -->
+  <div class="checkout-progress" style="position:sticky;top:68px;z-index:50">
+    <div class="cp-inner">
+      <div class="cp-step active"><div class="cp-num">1</div><span class="cp-label">Cart</span></div>
+      <div class="cp-step"><div class="cp-num">2</div><span class="cp-label">Details</span></div>
+      <div class="cp-step"><div class="cp-num">3</div><span class="cp-label">Payment</span></div>
+      <div class="cp-step"><div class="cp-num">4</div><span class="cp-label">Confirmed</span></div>
+    </div>
   </div>
-</div>
-<div style="max-width:1100px;margin:0 auto;padding:40px 40px 8px">
-  <nav class="breadcrumb" style="color:var(--muted)">
-    <a href="{% url 'agri_shop' %}" style="color:var(--muted);text-decoration:none">Shop</a>
-    <span class="breadcrumb-sep" style="color:var(--border)">›</span>
-    <span style="color:var(--text);font-weight:600">Shopping Cart</span>
-  </nav>
-  <h1 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);margin-bottom:0;margin-top:8px">Shopping Cart</h1>
-</div>
-
-{% if cart|length > 0 %}
-<div class="cart-wrap">
-  <!-- Cart items -->
-  <div>
-    <form method="post" action="{% url 'agri_cart_update' %}" id="cartForm">
-      {% csrf_token %}
-      {% for item in cart %}
-      <div class="cart-item">
-        <div class="cart-item-img">
-          {% if item.product.get_image_url %}<img src="{{ item.product.get_image_url }}" alt="{{ item.name }}" loading="lazy">
-          {% else %}<div style="width:100%;height:100%;background:var(--green-pale);display:flex;align-items:center;justify-content:center">🌿</div>{% endif %}
-        </div>
-        <div style="flex:1;min-width:0">
-          <a href="{% url 'agri_product' item.product.slug %}" style="text-decoration:none">
-            <div class="cart-item-name">{{ item.name }}</div>
-          </a>
-          <div class="cart-item-unit">{{ item.unit }}</div>
-          <div class="cart-item-price">UGX {{ item.unit_price|floatformat:0 }} each</div>
-          <div class="cart-qty-mini" style="margin-top:10px">
-            <button type="button" class="cqb" onclick="changeQty('{{ item.pid }}', -1)">−</button>
-            <input type="number" name="qty_{{ item.pid }}" id="qi_{{ item.pid }}" value="{{ item.quantity }}" min="1" class="cqi">
-            <button type="button" class="cqb" onclick="changeQty('{{ item.pid }}', 1)">+</button>
+  <div class="cart-wrap">
+    <div>
+      <h1 style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--charcoal);margin-bottom:24px">Your Cart</h1>
+      {% if cart|length == 0 %}
+      <div style="text-align:center;padding:60px 20px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg)">
+        <div style="font-size:48px;margin-bottom:16px">🛒</div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Your cart is empty</div>
+        <div style="color:var(--muted);margin-bottom:24px">Add some products to get started.</div>
+        <a href="{% url 'agri_shop' %}" class="btn btn-green">Browse Products</a>
+      </div>
+      {% else %}
+      <form method="post" action="{% url 'agri_cart_update' %}">
+        {% csrf_token %}
+        {% for item in cart %}
+        <div class="cart-item">
+          <div class="cart-item-img">
+            {% if item.product.get_image_url %}
+            <img src="{{ item.product.get_thumb_url }}" alt="{{ item.product.name }}" loading="lazy" onerror="this.src='https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=90&h=90&fit=crop'">
+            {% else %}
+            <div style="width:100%;height:100%;background:var(--parchment-2);display:flex;align-items:center;justify-content:center;font-size:24px">🌿</div>
+            {% endif %}
+          </div>
+          <div style="flex:1">
+            <div class="cart-item-name">{{ item.product.name }}</div>
+            <div class="cart-item-unit">{{ item.product.unit }}</div>
+            <div class="cart-qty-mini">
+              <button type="button" class="cqb" onclick="q=this.nextElementSibling;q.value=Math.max(1,+q.value-1)">−</button>
+              <input type="number" name="qty_{{ item.product.pk }}" value="{{ item.qty }}" min="1" max="500" class="cqi">
+              <button type="button" class="cqb" onclick="q=this.previousElementSibling;q.value=Math.min(500,+q.value+1)">+</button>
+              <button type="submit" style="margin-left:8px;background:none;border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-family:var(--font-accent);font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s">Update</button>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div class="cart-item-total">UGX {{ item.total|floatformat:0 }}</div>
+            <a href="{% url 'agri_cart_remove' item.product.pk %}" class="remove-btn" title="Remove">✕</a>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0">
-          <div class="cart-item-total">UGX {{ item.fmt_total|slice:"4:" }}</div>
-          <form method="post" action="{% url 'agri_cart_remove' item.product.pk %}">
-            {% csrf_token %}
-            <button type="submit" class="remove-btn" title="Remove">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-            </button>
-          </form>
+        {% endfor %}
+      </form>
+      {% endif %}
+    </div>
+    <!-- Summary -->
+    <div>
+      <div class="cart-summary">
+        <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--charcoal);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)">Order Summary</h2>
+        <div class="cs-row"><span>Subtotal</span><span>UGX {{ cart.get_subtotal|floatformat:0 }}</span></div>
+        <div class="cs-row"><span>Delivery</span><span>UGX 10,000</span></div>
+        <div class="cs-row total"><span>Total</span><span>UGX {{ cart.get_total|floatformat:0 }}</span></div>
+        {% if cart|length > 0 %}
+        <a href="{% url 'agri_checkout' %}" class="checkout-btn">Proceed to Checkout →</a>
+        {% endif %}
+        <a href="{% url 'agri_shop' %}" style="display:block;text-align:center;margin-top:14px;font-family:var(--font-accent);font-size:12px;font-weight:600;color:var(--muted);text-decoration:none">← Continue Shopping</a>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">We Accept</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="padding:5px 10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font-accent);font-size:10px;font-weight:700;color:var(--charcoal)">MTN MoMo</span>
+            <span style="padding:5px 10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font-accent);font-size:10px;font-weight:700;color:var(--charcoal)">Airtel Money</span>
+            <span style="padding:5px 10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font-accent);font-size:10px;font-weight:700;color:var(--charcoal)">Cash on Delivery</span>
+            <span style="padding:5px 10px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--font-accent);font-size:10px;font-weight:700;color:var(--charcoal)">Bank Transfer</span>
+          </div>
         </div>
       </div>
-      {% endfor %}
-    </form>
-    <div style="display:flex;justify-content:space-between;margin-top:20px;flex-wrap:wrap;gap:10px">
-      <a href="{% url 'agri_shop' %}" class="btn btn-md btn-on">← Continue Shopping</a>
-      <button form="cartForm" type="submit" class="btn btn-md" style="background:var(--cream);color:var(--text);border:1.5px solid var(--border)">Update Cart</button>
-    </div>
-  </div>
-
-  <!-- Cart Summary -->
-  <div class="cart-summary">
-    <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:20px">Order Summary</h3>
-    <div class="cs-row"><span>Subtotal</span><span style="font-weight:600;color:var(--text)">{{ cart.fmt_subtotal }}</span></div>
-    <div class="cs-row"><span>Delivery fee</span><span style="font-weight:600;color:var(--text)">{{ cart.fmt_delivery }}</span></div>
-    <div class="cs-row total"><span>Total</span><span>{{ cart.fmt_total }}</span></div>
-    <p style="font-size:12px;color:var(--muted);margin-top:10px">Delivery within 2–4 business days across Uganda. MTN &amp; Airtel Money accepted.</p>
-    <a href="{% url 'agri_checkout' %}" class="checkout-btn">Proceed to Checkout →</a>
-    <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
-      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Secure, trusted payment</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Delivery across all Uganda districts</div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg> Questions? Call +256 700 000 000</div>
     </div>
   </div>
 </div>
-
-{% else %}
-<div style="text-align:center;padding:100px 40px;max-width:480px;margin:0 auto">
-  <div style="font-size:64px;margin-bottom:20px">🛒</div>
-  <h2 style="font-family:'Playfair Display',serif;font-size:28px;color:var(--text);margin-bottom:12px">Your cart is empty</h2>
-  <p style="color:var(--muted);margin-bottom:28px">Browse our fresh Ugandan produce, coffee, and more — and add your favourite items to your cart.</p>
-  <a href="{% url 'agri_shop' %}" class="btn btn-lg btn-green">Shop Now</a>
-</div>
-{% endif %}
-</div>
-<script>
-function changeQty(pid, delta) {
-  const inp = document.getElementById('qi_' + pid);
-  const v = parseInt(inp.value) + delta;
-  if (v >= 1) inp.value = v;
-}
-</script>
 {% endblock %}
