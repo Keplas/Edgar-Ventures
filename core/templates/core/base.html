@@ -25,20 +25,31 @@
   <button class="ann-close" onclick="document.getElementById('annBar').style.display='none'" aria-label="Close">&times;</button>
 </div>
 
-<header class="header" id="mainHeader">
-  <a href="{% url 'home' %}" class="header-logo">
+<header class="farmie-header" id="mainHeader">
+  <a href="{% url 'home' %}" class="fh-logo">
     <img src="{% static 'core/images/logo_0.png' %}" alt="EGV" onerror="this.style.display='none'">
-    <div class="header-brand">
-      <span class="header-brand-name">Edgar Global Ventures</span>
-      <span class="header-brand-tag">Technology &middot; Agriculture &middot; Trade &middot; Infrastructure</span>
+    <div class="fh-logo-text">
+      <span class="fh-logo-name">Edgar Global Ventures</span>
+      <span class="fh-logo-tag">Uganda &bull; East Africa</span>
     </div>
   </a>
-  <div class="header-right">
-    <a href="{% url 'agri_cart' %}" class="header-cart" aria-label="Cart">
+
+  <ul class="fh-nav">
+    <li><a href="{% url 'about' %}" class="fh-nav-link">About</a></li>
+    <li><a href="{% url 'products_hub' %}" class="fh-nav-link">Services</a></li>
+    <li><a href="{% url 'agri_shop' %}" class="fh-nav-link">Shop</a></li>
+    <li><a href="{% url 'sustainability' %}" class="fh-nav-link">Sustainability</a></li>
+    <li><a href="{% url 'news' %}" class="fh-nav-link">News</a></li>
+  </ul>
+
+  <div class="fh-right">
+    <a href="{% url 'agri_cart' %}" class="fh-cart" aria-label="Cart">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      {% if cart_item_count > 0 %}<span class="cart-count">{{ cart_item_count }}</span>{% endif %}
+      Cart
+      {% if cart_item_count > 0 %}<span class="fh-cart-badge">{{ cart_item_count }}</span>{% endif %}
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+    <a href="{% url 'contact' %}" class="fh-cta">Let&rsquo;s Talk</a>
+    <button class="fh-menu-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
       <span class="menu-btn-label">MENU</span>
       <div class="menu-btn-lines"><span></span><span></span></div>
     </button>
@@ -186,7 +197,7 @@ if(fsNav){
 }
 
 window.addEventListener('scroll',()=>{
-  if(hdr)hdr.classList.toggle('scrolled',scrollY>40);
+  if(hdr)hdr.classList.toggle('scrolled',scrollY>60);
   const b=document.getElementById('btt');
   if(b)b.classList.toggle('visible',scrollY>400);
 },{passive:true});
