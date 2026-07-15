@@ -1,17 +1,37 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}Our Sectors — Edgar Global Ventures Ltd{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}Our Sectors — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Our Sectors</span></div>
     <div class="page-hero-eyebrow">Edgar Global Ventures</div>
     <h1>Our Sectors</h1>
-    <p>Technology, Agriculture, Trade and Infrastructure.</p>
+    <p>Four integrated divisions delivering solutions across East Africa.</p>
   </div>
 </div>
-<section style="background:var(--parchment);padding:80px;min-height:40vh">
+
+<section style="background:var(--parchment);padding:80px">
   <div style="max-width:var(--max-w);margin:0 auto">
-    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px">This page is being updated with fresh content. <a href="/contact/" style="color:var(--harvest);font-weight:600">Contact us</a> for more information.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <a href="{% url 'products_technology' %}" style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:block;text-decoration:none;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="height:200px;overflow:hidden"><img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=700&h=300&fit=crop" alt="Technology" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:28px"><div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8B5CF6;margin-bottom:8px">01 &bull; Technology</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Digital Innovation</div><p style="font-size:14px;color:var(--muted);line-height:1.7">Software development, cloud computing, cybersecurity and IT infrastructure across East Africa.</p><div style="margin-top:16px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:#8B5CF6">Explore &rarr;</div></div>
+      </a>
+      <a href="{% url 'products_agriculture' %}" style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:block;text-decoration:none;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="height:200px;overflow:hidden"><img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=700&h=300&fit=crop" alt="Agriculture" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:28px"><div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--harvest);margin-bottom:8px">02 &bull; Agriculture</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Farming &amp; Training</div><p style="font-size:14px;color:var(--muted);line-height:1.7">Farmer training, extension services and online shop for coffee, fertilizers and pesticides.</p><div style="margin-top:16px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:var(--harvest)">Explore &rarr;</div></div>
+      </a>
+      <a href="{% url 'products_trade' %}" style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:block;text-decoration:none;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="height:200px;overflow:hidden"><img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=700&h=300&fit=crop" alt="Trade" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:28px"><div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">03 &bull; Trade</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Cross-Border Commerce</div><p style="font-size:14px;color:var(--muted);line-height:1.7">Import/export facilitation, trade compliance, market intelligence and buyer-seller connections.</p><div style="margin-top:16px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:var(--gold)">Explore &rarr;</div></div>
+      </a>
+      <a href="{% url 'products_infrastructure' %}" style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:block;text-decoration:none;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="height:200px;overflow:hidden"><img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=700&h=300&fit=crop" alt="Infrastructure" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:28px"><div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3B82F6;margin-bottom:8px">04 &bull; Infrastructure</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Roads &amp; Construction</div><p style="font-size:14px;color:var(--muted);line-height:1.7">Road construction, water utilities, commercial buildings and government procurement.</p><div style="margin-top:16px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:#3B82F6">Explore &rarr;</div></div>
+      </a>
+    </div>
   </div>
 </section>
-{{% endblock %}}
+
+{% endblock %}

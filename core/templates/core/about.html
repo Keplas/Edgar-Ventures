@@ -1,17 +1,49 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}About Edgar Global Ventures — Edgar Global Ventures Ltd{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}About Edgar Global Ventures — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">About EGV</span></div>
     <div class="page-hero-eyebrow">Edgar Global Ventures</div>
     <h1>About EGV</h1>
-    <p>Who we are, what we do, and why we do it.</p>
+    <p>A diversified multi-sector company delivering technology, agriculture, trade and infrastructure across East Africa since 2010.</p>
   </div>
 </div>
-<section style="background:var(--parchment);padding:80px;min-height:40vh">
-  <div style="max-width:var(--max-w);margin:0 auto">
-    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px">This page is being updated with fresh content. <a href="/contact/" style="color:var(--harvest);font-weight:600">Contact us</a> for more information.</p>
+
+<section style="background:var(--white);padding:96px 80px">
+  <div style="max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+    <div>
+      <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">Our Mission</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,46px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px">Built from the ground up for East Africa.</h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px">Edgar Global Ventures Ltd was founded with a clear conviction: that East Africa's growth requires integrated solutions across technology, agriculture, trade and infrastructure &mdash; not in silos.</p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:32px">From Kampala we serve clients across Uganda, Kenya, Tanzania and Rwanda &mdash; helping farmers boost yields, businesses scale digitally, exporters reach new markets, and communities access reliable infrastructure.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:28px;border-top:1px solid var(--border)">
+        <div><div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--harvest)">15+</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Years Active</div></div>
+        <div><div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--harvest)">500+</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Trade Partners</div></div>
+        <div><div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--harvest)">4</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Sectors</div></div>
+      </div>
+      <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="{% url 'contact' %}" class="btn btn-green">Get In Touch</a>
+        <a href="{% url 'agri_shop' %}" class="btn btn-outline">Visit Shop</a>
+      </div>
+    </div>
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.12)">
+      <img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="EGV Agriculture Uganda" style="width:100%;display:block">
+    </div>
   </div>
 </section>
-{{% endblock %}}
+<section style="background:var(--parchment);padding:80px">
+  <div style="max-width:var(--max-w);margin:0 auto">
+    <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">What We Do</div>
+    <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--charcoal);letter-spacing:-.02em;margin-bottom:40px">Four divisions. One vision.</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <a href="{% url 'products_technology' %}" style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;border-top:3px solid #8B5CF6;text-decoration:none;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Technology</div><p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">Software, cloud, cybersecurity and IT infrastructure across East Africa.</p><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:#8B5CF6">Explore &rarr;</div></a>
+      <a href="{% url 'products_agriculture' %}" style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;border-top:3px solid var(--harvest);text-decoration:none;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Agriculture</div><p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">Farmer training, extension services and online shop for agri-inputs.</p><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--harvest)">Explore &rarr;</div></a>
+      <a href="{% url 'products_trade' %}" style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;border-top:3px solid var(--gold);text-decoration:none;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Trade</div><p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">Import/export facilitation, compliance and cross-border commerce.</p><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--gold)">Explore &rarr;</div></a>
+      <a href="{% url 'products_infrastructure' %}" style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;border-top:3px solid #3B82F6;text-decoration:none;transition:all .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Infrastructure</div><p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px">Road construction, water utilities and commercial buildings.</p><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:#3B82F6">Explore &rarr;</div></a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,50 +1,44 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}Products & Services — Edgar Global Ventures{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}Products & Services — Edgar Global Ventures{% endblock %}
+{% block content %}
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Products &amp; Services</span></div>
     <div class="page-hero-eyebrow">Edgar Global Ventures</div>
     <h1>Products &amp; Services</h1>
-    <p>Four integrated sectors delivering solutions across East Africa — from farm to market, concept to code, blueprint to building.</p>
+    <p>Four integrated sectors delivering solutions across East Africa.</p>
   </div>
 </div>
+
 <section style="background:var(--parchment);padding:80px">
   <div style="max-width:var(--max-w);margin:0 auto">
-    <div class="hub-grid">
-      <a href="{{% url 'products_technology' %}}" class="hub-card">
-        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Technology">
-        <div class="hub-content" style="background:linear-gradient(to top,rgba(91,47,201,.85),rgba(12,16,21,.3))">
-          <div class="hub-services"><span class="hub-svc-pill">Software</span><span class="hub-svc-pill">Cloud</span><span class="hub-svc-pill">Cybersecurity</span></div>
-          <div class="hub-title">Technology</div>
-          <div class="hub-cta">Explore Technology &rarr;</div>
-        </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:24px">
+      <a href="{% url 'products_technology' %}" style="border-radius:16px;overflow:hidden;position:relative;height:300px;display:block;text-decoration:none">
+        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Technology" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(91,47,201,.85),rgba(12,16,21,.3))"></div>
+        <div style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin-bottom:6px">Technology</div><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:rgba(255,255,255,.7)">Software &bull; Cloud &bull; Cybersecurity &rarr;</div></div>
       </a>
-      <a href="{{% url 'products_agriculture' %}}" class="hub-card">
-        <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Agriculture">
-        <div class="hub-content" style="background:linear-gradient(to top,rgba(30,107,20,.85),rgba(12,16,21,.3))">
-          <div class="hub-services"><span class="hub-svc-pill">Training</span><span class="hub-svc-pill">E-Shop</span><span class="hub-svc-pill">Extension</span></div>
-          <div class="hub-title">Agriculture</div>
-          <div class="hub-cta">Explore Agriculture &rarr;</div>
-        </div>
+      <a href="{% url 'products_agriculture' %}" style="border-radius:16px;overflow:hidden;position:relative;height:300px;display:block;text-decoration:none">
+        <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Agriculture" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,107,20,.85),rgba(12,16,21,.3))"></div>
+        <div style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin-bottom:6px">Agriculture</div><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:rgba(255,255,255,.7)">Training &bull; E-Shop &bull; Extension &rarr;</div></div>
       </a>
-      <a href="{{% url 'products_trade' %}}" class="hub-card">
-        <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Trade">
-        <div class="hub-content" style="background:linear-gradient(to top,rgba(160,72,24,.85),rgba(12,16,21,.3))">
-          <div class="hub-services"><span class="hub-svc-pill">Import/Export</span><span class="hub-svc-pill">Compliance</span><span class="hub-svc-pill">Logistics</span></div>
-          <div class="hub-title">Trade</div>
-          <div class="hub-cta">Explore Trade &rarr;</div>
-        </div>
+      <a href="{% url 'products_trade' %}" style="border-radius:16px;overflow:hidden;position:relative;height:300px;display:block;text-decoration:none">
+        <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Trade" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(160,72,24,.85),rgba(12,16,21,.3))"></div>
+        <div style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin-bottom:6px">Trade</div><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:rgba(255,255,255,.7)">Import/Export &bull; Compliance &bull; Logistics &rarr;</div></div>
       </a>
-      <a href="{{% url 'products_infrastructure' %}}" class="hub-card">
-        <img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=900&h=400&fit=crop" alt="Infrastructure">
-        <div class="hub-content" style="background:linear-gradient(to top,rgba(22,58,99,.85),rgba(12,16,21,.3))">
-          <div class="hub-services"><span class="hub-svc-pill">Roads</span><span class="hub-svc-pill">Buildings</span><span class="hub-svc-pill">Utilities</span></div>
-          <div class="hub-title">Infrastructure</div>
-          <div class="hub-cta">Explore Infrastructure &rarr;</div>
-        </div>
+      <a href="{% url 'products_infrastructure' %}" style="border-radius:16px;overflow:hidden;position:relative;height:300px;display:block;text-decoration:none">
+        <img src="https://images.pexels.com/photos/1117452/pexels-photo-1117452.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop" alt="Infrastructure" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,58,99,.85),rgba(12,16,21,.3))"></div>
+        <div style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin-bottom:6px">Infrastructure</div><div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:rgba(255,255,255,.7)">Roads &bull; Buildings &bull; Utilities &rarr;</div></div>
       </a>
+    </div>
+    <div style="background:var(--harvest);border-radius:16px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;margin-bottom:6px">Shop Agriculture Products Online</div><p style="color:rgba(255,255,255,.8);font-size:14px">Coffee, fertilizers &amp; pesticides &mdash; pay with MTN or Airtel Money, delivered across Uganda.</p></div>
+      <a href="{% url 'agri_shop' %}" style="padding:14px 32px;border-radius:100px;background:#fff;color:var(--harvest);font-family:var(--font-accent);font-size:13px;font-weight:700;text-decoration:none;flex-shrink:0">Shop Now &rarr;</a>
     </div>
   </div>
 </section>
-{{% endblock %}}
+{% endblock %}

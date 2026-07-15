@@ -1,17 +1,48 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}News & Stories — Edgar Global Ventures Ltd{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}News & Stories — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">News & Stories</span></div>
     <div class="page-hero-eyebrow">Edgar Global Ventures</div>
     <h1>News & Stories</h1>
-    <p>The latest from Edgar Global Ventures.</p>
+    <p>The latest from Edgar Global Ventures &mdash; technology updates, agriculture insights and company milestones.</p>
   </div>
 </div>
-<section style="background:var(--parchment);padding:80px;min-height:40vh">
+
+<section style="background:var(--parchment);padding:80px">
   <div style="max-width:var(--max-w);margin:0 auto">
-    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px">This page is being updated with fresh content. <a href="/contact/" style="color:var(--harvest);font-weight:600">Contact us</a> for more information.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="https://images.pexels.com/photos/28101456/pexels-photo-28101456.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Agriculture News" style="width:100%;display:block">
+        <div style="padding:24px">
+          <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--harvest);margin-bottom:8px">Agriculture &bull; July 2026</div>
+          <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px;line-height:1.3">EGV Launches New Season Fertilizer Range for Ugandan Farmers</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7">Our expanded NPK, DAP and organic fertilizer range is now available online with MTN and Airtel Mobile Money payments.</p>
+          <a href="{% url 'agri_shop' %}?category=fertilizers" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:var(--harvest);text-decoration:none;margin-top:16px">Read More &rarr;</a>
+        </div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Technology News" style="width:100%;display:block">
+        <div style="padding:24px">
+          <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8B5CF6;margin-bottom:8px">Technology &bull; June 2026</div>
+          <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px;line-height:1.3">EGV Deploys Farm Management System for Ugandan Cooperatives</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7">Our technology division delivered a custom platform helping cooperatives track yields, inputs and sales across Uganda.</p>
+          <a href="{% url 'contact' %}" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:var(--harvest);text-decoration:none;margin-top:16px">Learn More &rarr;</a>
+        </div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <img src="https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop" alt="Trade News" style="width:100%;display:block">
+        <div style="padding:24px">
+          <div style="font-family:var(--font-accent);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Trade &bull; May 2026</div>
+          <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px;line-height:1.3">EGV Expands Trade Corridors to Rwanda and South Sudan</h3>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7">New cross-border trade facilitation agreements open fresh opportunities for Ugandan exporters in two key markets.</p>
+          <a href="{% url 'contact' %}" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-accent);font-size:12px;font-weight:700;color:var(--harvest);text-decoration:none;margin-top:16px">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-{{% endblock %}}
+
+{% endblock %}

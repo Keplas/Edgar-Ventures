@@ -1,17 +1,43 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}Contact EGV — Edgar Global Ventures Ltd{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}Contact EGV — Edgar Global Ventures Ltd{% endblock %}
+{% block content %}
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Get In Touch</span></div>
     <div class="page-hero-eyebrow">Edgar Global Ventures</div>
     <h1>Get In Touch</h1>
-    <p>Reach out to us in Kampala, Uganda.</p>
+    <p>Reach out to our team in Kampala, Uganda. We respond to all enquiries within 24 hours.</p>
   </div>
 </div>
-<section style="background:var(--parchment);padding:80px;min-height:40vh">
-  <div style="max-width:var(--max-w);margin:0 auto">
-    <p style="color:var(--muted);font-size:16px;line-height:1.8;max-width:640px">This page is being updated with fresh content. <a href="/contact/" style="color:var(--harvest);font-weight:600">Contact us</a> for more information.</p>
+
+<section style="background:var(--parchment);padding:80px">
+  <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px">
+    <div>
+      <h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--charcoal);margin-bottom:24px">Contact Information</h2>
+      <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:36px">
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:44px;height:44px;border-radius:10px;background:var(--harvest-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">&#128205;</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:4px">Address</div><div style="color:var(--muted);font-size:14px;line-height:1.6">Plot 15, Kampala Road<br>Kampala, Uganda</div></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:44px;height:44px;border-radius:10px;background:var(--harvest-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">&#128222;</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:4px">Phone</div><a href="tel:+256700000000" style="color:var(--harvest);font-size:14px">+256 700 000 000</a></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:44px;height:44px;border-radius:10px;background:var(--harvest-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">&#9993;</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:4px">Email</div><a href="mailto:info@egv.co.ug" style="color:var(--harvest);font-size:14px">info@egv.co.ug</a></div></div>
+        <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:44px;height:44px;border-radius:10px;background:rgba(37,211,102,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">&#128172;</div><div><div style="font-weight:700;color:var(--charcoal);margin-bottom:4px">WhatsApp</div><a href="https://wa.me/256700000000" target="_blank" rel="noopener" style="color:#25D366;font-size:14px">+256 700 000 000</a></div></div>
+      </div>
+      <div style="background:var(--harvest);color:#fff;border-radius:12px;padding:20px 24px">
+        <div style="font-weight:700;margin-bottom:6px">Agriculture Shop Support</div>
+        <p style="font-size:14px;opacity:.85;line-height:1.6">For orders, delivery queries and product advice, WhatsApp us directly. We respond within 2 hours on business days.</p>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--charcoal);margin-bottom:24px">Send Us a Message</h2>
+      <form method="post" style="display:flex;flex-direction:column;gap:16px">
+        {% csrf_token %}
+        <div class="form-group"><label>Your Name *</label><input type="text" name="name" required placeholder="e.g. John Doe"></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" name="email" required placeholder="john@example.com"></div>
+        <div class="form-group"><label>Subject</label><input type="text" name="subject" placeholder="How can we help?"></div>
+        <div class="form-group"><label>Message *</label><textarea name="message" required placeholder="Tell us about your project..." style="height:140px;resize:vertical"></textarea></div>
+        <button type="submit" class="btn btn-green" style="align-self:flex-start">Send Message</button>
+      </form>
+    </div>
   </div>
 </section>
-{{% endblock %}}
+
+{% endblock %}
