@@ -1,52 +1,115 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
-from .models import Category, Product, Order, OrderItem
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.http import require_POST
+from .models import Category, Product, Order, OrderItem, ContactMessage, Newsletter, ProductReview, NewsPost
 from .cart import Cart
-
+import re
 
 # ── Core pages ────────────────────────────────────────────────
 def home(request):
     featured = Product.objects.filter(is_featured=True, is_available=True)[:3]
-    return render(request, 'core/home.html', {'featured_products': featured})
+    latest_news = NewsPost.objects.filter(is_published=True)[:3]
+    return render(request, 'core/home.html', {
+        'featured_products': featured,
+        'latest_news': latest_news,
+    })
 
-def about(request):           return render(request, 'core/about.html')
-def sectors(request):         return render(request, 'core/sectors.html')
-def contact(request):         return render(request, 'core/contact.html')
-def news(request):            return render(request, 'core/news.html')
-def sustainability(request):  return render(request, 'core/sustainability.html')
-def careers(request):         return render(request, 'core/careers.html')
-def privacy(request):         return render(request, 'core/privacy.html')
+def about(request): return render(request, 'core/about.html')
+def sectors(request): return redirect('products_hub')
+def sustainability(request): return render(request, 'core/sustainability.html')
+def careers(request): return render(request, 'core/careers.html')
+def privacy(request): return render(request, 'core/privacy.html')
+
+def contact(request):
+    success = False
+    if request.method == 'POST':
+        name    = request.POST.get('name', '').strip()
+        email   = request.POST.get('email', '').strip()
+        phone   = request.POST.get('phone', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('message', '').strip()
+        if name and message:
+            ContactMessage.objects.create(
+                name=name, email=email, phone=phone,
+                subject=subject, message=message
+            )
+            success = True
+    return render(request, 'core/contact.html', {'success': success})
+
+def news(request):
+    posts = NewsPost.objects.filter(is_published=True)
+    cat = request.GET.get('category', '')
+    if cat:
+        posts = posts.filter(category=cat)
+    return render(request, 'core/news.html', {'posts': posts, 'active_cat': cat})
+
+@require_POST
+def newsletter_subscribe(request):
+    email = request.POST.get('email', '').strip()
+    name  = request.POST.get('name', '').strip()
+    if email and re.match(r'^[^@]+@[^@]+\.[^@]+$', email):
+        obj, created = Newsletter.objects.get_or_create(email=email, defaults={'name': name, 'is_active': True})
+        if not created and not obj.is_active:
+            obj.is_active = True; obj.save()
+        return JsonResponse({'ok': True, 'created': created})
+    return JsonResponse({'ok': False, 'error': 'Invalid email'}, status=400)
 
 # ── Product sector pages ───────────────────────────────────────
-def products_hub(request):            return render(request, 'core/products_hub.html')
-def products_technology(request):     return render(request, 'core/products_technology.html')
-def products_agriculture(request):    return render(request, 'core/products_agriculture.html')
-def products_trade(request):          return render(request, 'core/products_trade.html')
+def products_hub(request):          return render(request, 'core/products_hub.html')
+def products_technology(request):   return render(request, 'core/products_technology.html')
+def products_agriculture(request):  return render(request, 'core/products_agriculture.html')
+def products_trade(request):        return render(request, 'core/products_trade.html')
 def products_infrastructure(request): return render(request, 'core/products_infrastructure.html')
 
 # ── Agriculture shop ──────────────────────────────────────────
 def agri_shop(request):
     categories = Category.objects.all()
     products   = Product.objects.filter(is_available=True)
-    cat_slug   = request.GET.get('category')
+    cat_slug   = request.GET.get('category', '')
     q          = request.GET.get('q', '')
+    sort       = request.GET.get('sort', '')
     if cat_slug:
         products = products.filter(category__slug=cat_slug)
     if q:
         products = products.filter(name__icontains=q)
+    if sort == 'price_asc':
+        products = products.order_by('price_ugx')
+    elif sort == 'price_desc':
+        products = products.order_by('-price_ugx')
     active_cat = None
     if cat_slug:
         try: active_cat = Category.objects.get(slug=cat_slug)
         except Category.DoesNotExist: pass
+    # Category counts
+    cat_counts = {c.slug: c.products.filter(is_available=True).count() for c in categories}
     return render(request, 'core/agri_shop.html', {
         'products': products, 'categories': categories,
-        'active_cat': active_cat, 'q': q,
+        'active_cat': active_cat, 'q': q, 'sort': sort,
+        'cat_counts': cat_counts,
     })
 
 def agri_product(request, slug):
     product  = get_object_or_404(Product, slug=slug, is_available=True)
     related  = Product.objects.filter(category=product.category, is_available=True).exclude(pk=product.pk)[:4]
-    return render(request, 'core/agri_product.html', {'product': product, 'related': related})
+    reviews  = product.reviews.filter(is_approved=True)
+    avg_rating = round(sum(r.rating for r in reviews) / len(reviews), 1) if reviews else None
+    review_submitted = False
+    if request.method == 'POST' and request.POST.get('action') == 'review':
+        rname    = request.POST.get('reviewer_name','').strip()
+        rloc     = request.POST.get('reviewer_location','').strip()
+        rrating  = int(request.POST.get('rating', 5))
+        rcomment = request.POST.get('comment','').strip()
+        if rname and rcomment:
+            ProductReview.objects.create(
+                product=product, name=rname, location=rloc,
+                rating=rrating, comment=rcomment, is_approved=False
+            )
+            review_submitted = True
+    return render(request, 'core/agri_product.html', {
+        'product': product, 'related': related,
+        'reviews': reviews, 'avg_rating': avg_rating,
+        'review_submitted': review_submitted,
+    })
 
 def agri_cart(request):
     cart = Cart(request)
@@ -62,22 +125,19 @@ def agri_cart_add(request, pk):
     return redirect((next_url + sep + 'cart_added=1') if next_url else '/agriculture/cart/?cart_added=1')
 
 def agri_cart_remove(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    Cart(request).remove(product)
+    Cart(request).remove(get_object_or_404(Product, pk=pk))
     return redirect('agri_cart')
 
 def agri_cart_update(request):
-    cart = Cart(request)
     if request.method == 'POST':
+        cart = Cart(request)
         for key, val in request.POST.items():
             if key.startswith('qty_'):
                 try:
                     pk  = int(key.split('_')[1])
                     qty = int(val)
-                    p   = Product.objects.get(pk=pk)
-                    cart.update(p, qty)
-                except Exception:
-                    pass
+                    cart.update(get_object_or_404(Product, pk=pk), qty)
+                except Exception: pass
     return redirect('agri_cart')
 
 def agri_checkout(request):
@@ -125,7 +185,7 @@ def handler500(request, *a, **k):
 
 def sitemap_xml(request):
     base  = 'https://edgar-ventures.onrender.com'
-    pages = ['/','/about/','/sectors/','/products/','/products/technology/',
+    pages = ['/','/about/','/products/','/products/technology/',
              '/products/agriculture/','/products/trade/','/products/infrastructure/',
              '/agriculture/shop/','/sustainability/','/news/','/careers/','/contact/']
     rows  = ''.join(f'  <url><loc>{base}{p}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>\n' for p in pages)

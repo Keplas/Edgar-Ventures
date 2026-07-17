@@ -1,15 +1,16 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}Server Error — EGV{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}Something Went Wrong — EGV{% endblock %}
+{% block content %}
 <div class="error-pg">
   <div class="error-inner">
-    <div class="error-num">500</div>
-    <h1 class="error-h">Something Went Wrong</h1>
-    <p class="error-p">Our server encountered an unexpected error. Our team has been notified and is working on a fix. Please try again shortly.</p>
+    <div class="error-illustration">⚡</div>
+    <div class="error-code">500</div>
+    <h1 class="error-h">Our server hit a bump.</h1>
+    <p class="error-p">Something unexpected happened on our end. Our team has been notified and is working on a fix. Please try again in a few minutes.</p>
     <div class="error-btns">
-      <a href="/" class="btn btn-dark btn-lg">Go to Homepage</a>
-      <a href="/contact/" class="btn btn-outline btn-lg">Contact Support</a>
+      <a href="{% url 'home' %}" class="btn btn-green btn-lg">Back to Home</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Contact Support</a>
     </div>
   </div>
 </div>
-{{% endblock %}}
+{% endblock %}

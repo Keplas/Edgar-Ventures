@@ -1,35 +1,79 @@
 {% extends 'core/base.html' %}
-{% block title %}Sustainability — Edgar Global Ventures Ltd{% endblock %}
+{% block title %}Sustainability — EGV's Commitment to a Greener East Africa{% endblock %}
 {% block content %}
-
 <div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Sustainability</span></div>
-    <div class="page-hero-eyebrow">Edgar Global Ventures</div>
-    <h1>Sustainability</h1>
-    <p>Our commitment to building a greener, more sustainable East Africa through responsible business practices.</p>
+  <div class="page-hero-img" style="background-image:url('https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=1920&q=60')"></div>
+  <div class="page-hero-inner" style="position:relative;z-index:2">
+    <div class="breadcrumb"><a href="/">Home</a><span style="opacity:.4">›</span><span style="color:rgba(255,255,255,.6)">Sustainability</span></div>
+    <div class="page-hero-eyebrow">Our Pledge</div>
+    <h1>Growing responsibly,<br>for future generations.</h1>
+    <p>EGV integrates environmental responsibility across all four divisions — from organic farming inputs to eco-friendly construction practices.</p>
   </div>
 </div>
 
 <section style="background:var(--white);padding:80px">
   <div style="max-width:var(--max-w);margin:0 auto">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px">
-      <div>
-        <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">Our Commitment</div>
-        <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px">Growing responsibly,<br>for future generations.</h2>
-        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px">EGV integrates sustainability across all four divisions &mdash; from organic products in our agriculture shop, to climate-smart farming training, eco-friendly infrastructure, and green technology solutions.</p>
-        <p style="font-size:16px;color:var(--muted);line-height:1.8">We believe doing business well and doing good for the planet are the same goal.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:72px">
+      <div class="reveal-left">
+        <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">Our Approach</div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.2vw,42px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px">Business and nature<br>in balance.</h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px">We believe that doing business well and caring for our environment are not competing goals — they are the same goal. Every division of EGV has sustainability targets built into its annual strategy.</p>
+        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px">From the organic neem pesticides in our agriculture shop to the NEMA-compliant infrastructure projects we deliver, sustainability is embedded into how EGV operates every day.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="width:24px;height:24px;border-radius:50%;background:var(--harvest);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">✓</span>NEMA-compliant infrastructure projects</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="width:24px;height:24px;border-radius:50%;background:var(--harvest);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">✓</span>Organic and eco-friendly agri-inputs stocked</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="width:24px;height:24px;border-radius:50%;background:var(--harvest);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">✓</span>Climate-smart farming training for 2,000+ farmers</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="width:24px;height:24px;border-radius:50%;background:var(--harvest);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">✓</span>Environmental impact assessments on all builds</div>
+        </div>
       </div>
-      <div style="border-radius:16px;overflow:hidden">
-        <img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop" alt="Sustainability EGV" style="width:100%;display:block">
+      <div class="reveal-right" style="border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.12)">
+        <img src="https://images.pexels.com/photos/36185282/pexels-photo-36185282.jpeg?auto=compress&cs=tinysrgb&w=700&h=600&fit=crop" alt="EGV Sustainability" style="width:100%;display:block">
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-      <div style="background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px;padding:32px;text-align:center"><div style="font-size:40px;margin-bottom:16px">&#127807;</div><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Climate-Smart Farming</div><p style="font-size:13px;color:var(--muted);line-height:1.7">We train 2,000+ Ugandan farmers annually in drought-resistant varieties, organic fertilization and sustainable pest management.</p></div>
-      <div style="background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px;padding:32px;text-align:center"><div style="font-size:40px;margin-bottom:16px">&#9851;</div><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Organic Products</div><p style="font-size:13px;color:var(--muted);line-height:1.7">Our shop stocks neem organic pesticides, compost manure and eco-friendly inputs that protect soil health and biodiversity.</p></div>
-      <div style="background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px;padding:32px;text-align:center"><div style="font-size:40px;margin-bottom:16px">&#127968;</div><div style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:10px">Green Infrastructure</div><p style="font-size:13px;color:var(--muted);line-height:1.7">All EGV infrastructure projects incorporate environmental impact assessments and use sustainable construction materials.</p></div>
+
+    <!-- Impact metrics -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:64px">
+      <div style="text-align:center;padding:32px 20px;background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px" class="reveal reveal-d1">
+        <div class="impact-number" style="font-size:40px" data-target="2000" data-suffix="+">2,000<em>+</em></div>
+        <div class="impact-label">Farmers Trained</div>
+        <div class="impact-desc">in climate-smart and sustainable agriculture methods</div>
+      </div>
+      <div style="text-align:center;padding:32px 20px;background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px" class="reveal reveal-d2">
+        <div class="impact-number" style="font-size:40px" data-target="6" data-suffix="">6</div>
+        <div class="impact-label">Organic Products</div>
+        <div class="impact-desc">eco-friendly agri-inputs available in our online shop</div>
+      </div>
+      <div style="text-align:center;padding:32px 20px;background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px" class="reveal reveal-d3">
+        <div class="impact-number" style="font-size:40px" data-target="35" data-suffix="+">35<em>+</em></div>
+        <div class="impact-label">Green Projects</div>
+        <div class="impact-desc">infrastructure projects with full NEMA environmental clearance</div>
+      </div>
+      <div style="text-align:center;padding:32px 20px;background:var(--harvest-pale);border:1px solid rgba(30,107,20,.15);border-radius:16px" class="reveal reveal-d4">
+        <div class="impact-number" style="font-size:40px" data-target="100" data-suffix="%">100<em>%</em></div>
+        <div class="impact-label">EIA Compliant</div>
+        <div class="impact-desc">of all construction projects carry environmental impact assessments</div>
+      </div>
+    </div>
+
+    <!-- SDG alignment -->
+    <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">UN Sustainable Development Goals</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(22px,2.8vw,36px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;margin-bottom:32px">Our work contributes to global SDGs</h2>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px">
+      <div class="sdg-badge" style="background:#E5243B"><div class="sdg-num">1</div>No Poverty</div>
+      <div class="sdg-badge" style="background:#DDA63A"><div class="sdg-num">2</div>Zero Hunger</div>
+      <div class="sdg-badge" style="background:#4C9F38"><div class="sdg-num">8</div>Decent Work</div>
+      <div class="sdg-badge" style="background:#FD6925"><div class="sdg-num">9</div>Innovation</div>
+      <div class="sdg-badge" style="background:#56C02B"><div class="sdg-num">15</div>Life on Land</div>
+      <div class="sdg-badge" style="background:#19486A"><div class="sdg-num">17</div>Partnerships</div>
     </div>
   </div>
 </section>
-
+{% endblock %}
+{% block extra_js %}
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>ro.observe(el));
+const counters=document.querySelectorAll('[data-target]');
+if(counters.length){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=parseInt(el.dataset.target),em=el.querySelector('em'),suffix=em?em.outerHTML:'',dur=2000,t0=performance.now();function tick(now){const p=Math.min((now-t0)/dur,1),v=Math.floor(target*(1-Math.pow(1-p,3)));el.innerHTML=v+suffix;if(p<1)requestAnimationFrame(tick);else el.innerHTML=target+suffix;}requestAnimationFrame(tick);io.unobserve(el);}});},{threshold:0.5});counters.forEach(el=>io.observe(el));}
+</script>
 {% endblock %}

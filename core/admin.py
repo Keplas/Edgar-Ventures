@@ -38,3 +38,36 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ['order_number','first_name','last_name','phone']
     inlines       = [OrderItemInline]
     readonly_fields = ['order_number','created_at']
+
+from .models import ContactMessage, Newsletter, ProductReview, NewsPost
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display  = ['name','email','subject','created_at','is_read']
+    list_filter   = ['is_read']
+    list_editable = ['is_read']
+    search_fields = ['name','email','subject']
+    readonly_fields = ['created_at']
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display  = ['email','name','subscribed_at','is_active']
+    list_filter   = ['is_active']
+    list_editable = ['is_active']
+    search_fields = ['email','name']
+
+@admin.register(ProductReview)
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display  = ['name','product','rating','location','is_approved','created_at']
+    list_filter   = ['is_approved','rating']
+    list_editable = ['is_approved']
+    search_fields = ['name','product__name']
+    readonly_fields = ['created_at']
+
+@admin.register(NewsPost)
+class NewsPostAdmin(admin.ModelAdmin):
+    list_display  = ['title','category','is_published','published_at']
+    list_filter   = ['category','is_published']
+    list_editable = ['is_published']
+    prepopulated_fields = {'slug':('title',)}
+    search_fields = ['title']

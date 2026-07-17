@@ -80,3 +80,54 @@ class OrderItem(models.Model):
     def line_total(self): return self.unit_price * self.quantity
     def formatted_total(self): return f"UGX {int(self.line_total):,}"
     def __str__(self): return f"{self.quantity} x {self.product_name}"
+
+
+# ── Contact Messages ──────────────────────────────────────────
+class ContactMessage(models.Model):
+    name       = models.CharField(max_length=120)
+    email      = models.EmailField()
+    phone      = models.CharField(max_length=25, blank=True)
+    subject    = models.CharField(max_length=200, blank=True)
+    message    = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read    = models.BooleanField(default=False)
+    class Meta: ordering = ['-created_at']
+    def __str__(self): return f"{self.name} — {self.subject or 'No subject'}"
+
+# ── Newsletter ────────────────────────────────────────────────
+class Newsletter(models.Model):
+    email         = models.EmailField(unique=True)
+    name          = models.CharField(max_length=100, blank=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+    is_active     = models.BooleanField(default=True)
+    class Meta: ordering = ['-subscribed_at']
+    def __str__(self): return self.email
+
+# ── Product Reviews ───────────────────────────────────────────
+class ProductReview(models.Model):
+    RATINGS = [(i, f'{i} Star{"s" if i>1 else ""}') for i in range(1,6)]
+    product     = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    name        = models.CharField(max_length=100)
+    location    = models.CharField(max_length=100, blank=True)
+    rating      = models.PositiveSmallIntegerField(choices=RATINGS, default=5)
+    comment     = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    created_at  = models.DateTimeField(auto_now_add=True)
+    class Meta: ordering = ['-created_at']
+    def __str__(self): return f"{self.name} — {self.product.name} ({self.rating}★)"
+    @property
+    def stars(self): return '★' * self.rating + '☆' * (5 - self.rating)
+
+# ── News Posts ────────────────────────────────────────────────
+class NewsPost(models.Model):
+    CATS = [('agriculture','Agriculture'),('technology','Technology'),('trade','Trade'),('infrastructure','Infrastructure'),('company','Company')]
+    title      = models.CharField(max_length=200)
+    slug       = models.SlugField(unique=True)
+    category   = models.CharField(max_length=30, choices=CATS, default='company')
+    summary    = models.TextField(max_length=300)
+    body       = models.TextField(blank=True)
+    image_url  = models.URLField(blank=True)
+    is_published = models.BooleanField(default=True)
+    published_at = models.DateTimeField(auto_now_add=True)
+    class Meta: ordering=['-published_at']
+    def __str__(self): return self.title

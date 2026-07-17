@@ -27,6 +27,7 @@ urlpatterns = [
     path('agriculture/order/success/<str:order_number>/', views.agri_order_success, name='agri_order_success'),
     path('agriculture/order/track/', views.agri_order_track, name='agri_order_track'),
     # SEO
+    path('newsletter/', views.newsletter_subscribe, name='newsletter_subscribe'),
     path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
     path('robots.txt', views.robots_txt, name='robots_txt'),
 ]

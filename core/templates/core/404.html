@@ -1,15 +1,17 @@
-{{% extends 'core/base.html' %}}
-{{% block title %}}Page Not Found — EGV{{% endblock %}}
-{{% block content %}}
+{% extends 'core/base.html' %}
+{% block title %}Page Not Found — EGV{% endblock %}
+{% block content %}
 <div class="error-pg">
   <div class="error-inner">
-    <div class="error-num">404</div>
-    <h1 class="error-h">Page Not Found</h1>
+    <div class="error-illustration">🌾</div>
+    <div class="error-code">404</div>
+    <h1 class="error-h">This page got lost in the field.</h1>
     <p class="error-p">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
     <div class="error-btns">
-      <a href="/" class="btn btn-dark btn-lg">Go to Homepage</a>
-      <a href="/contact/" class="btn btn-outline btn-lg">Contact Us</a>
+      <a href="{% url 'home' %}" class="btn btn-green btn-lg">Back to Home</a>
+      <a href="{% url 'agri_shop' %}" class="btn btn-outline btn-lg">Visit Shop</a>
+      <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Contact Us</a>
     </div>
   </div>
 </div>
-{{% endblock %}}
+{% endblock %}

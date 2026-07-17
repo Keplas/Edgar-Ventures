@@ -1,41 +1,84 @@
 {% extends 'core/base.html' %}
-{% block title %}Careers at EGV — Edgar Global Ventures Ltd{% endblock %}
+{% block title %}Careers at EGV — Join Our Team Across East Africa{% endblock %}
 {% block content %}
-
 <div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Home</a> <span style="opacity:.4">&#8250;</span> <span style="color:rgba(255,255,255,.6)">Join Our Team</span></div>
-    <div class="page-hero-eyebrow">Edgar Global Ventures</div>
-    <h1>Join Our Team</h1>
-    <p>Build your career at Edgar Global Ventures. We hire talented people across technology, agriculture, trade and infrastructure.</p>
+  <div class="page-hero-inner" style="position:relative;z-index:2">
+    <div class="breadcrumb"><a href="/">Home</a><span style="opacity:.4">›</span><span style="color:rgba(255,255,255,.6)">Careers</span></div>
+    <div class="page-hero-eyebrow">We Are Hiring</div>
+    <h1>Build Your Career<br>Across East Africa.</h1>
+    <p>Join a diverse team delivering technology, agriculture, trade and infrastructure solutions that matter.</p>
   </div>
 </div>
 
-<section style="background:var(--parchment);padding:80px">
+<section style="background:var(--white);padding:80px">
   <div style="max-width:var(--max-w);margin:0 auto">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px">
-      <div>
-        <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">Why Work at EGV</div>
-        <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.2vw,40px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px">Grow your career across East Africa.</h2>
-        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:24px">We offer meaningful work across four dynamic sectors &mdash; impacting farmers, businesses and communities. Join a team building the future of East Africa.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="color:var(--harvest);font-weight:900">&#10003;</span> Competitive salaries benchmarked to East African market</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="color:var(--harvest);font-weight:900">&#10003;</span> Cross-sector exposure and professional development</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="color:var(--harvest);font-weight:900">&#10003;</span> Meaningful impact on farmers and communities</div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--charcoal)"><span style="color:var(--harvest);font-weight:900">&#10003;</span> Collaborative, inclusive workplace culture</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:72px">
+      <div class="reveal-left">
+        <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:16px">Why EGV</div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(26px,3.2vw,42px);font-weight:700;color:var(--charcoal);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px">Work that makes<br>a real difference.</h2>
+        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:24px">At EGV you will work across multiple disciplines — technology, farming, commerce and construction — gaining rare breadth of experience while making a tangible impact on East African communities.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:var(--parchment);border-radius:12px;padding:20px;border:1px solid var(--border)">
+            <div style="font-size:24px;margin-bottom:8px">💰</div>
+            <div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:4px">COMPETITIVE PAY</div>
+            <p style="font-size:13px;color:var(--muted)">Salaries benchmarked to East African market rates and reviewed annually</p>
+          </div>
+          <div style="background:var(--parchment);border-radius:12px;padding:20px;border:1px solid var(--border)">
+            <div style="font-size:24px;margin-bottom:8px">📈</div>
+            <div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:4px">GROWTH PATH</div>
+            <p style="font-size:13px;color:var(--muted)">Cross-sector exposure and structured professional development programmes</p>
+          </div>
+          <div style="background:var(--parchment);border-radius:12px;padding:20px;border:1px solid var(--border)">
+            <div style="font-size:24px;margin-bottom:8px">🌍</div>
+            <div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:4px">REAL IMPACT</div>
+            <p style="font-size:13px;color:var(--muted)">Work that directly helps farmers, businesses and communities thrive</p>
+          </div>
+          <div style="background:var(--parchment);border-radius:12px;padding:20px;border:1px solid var(--border)">
+            <div style="font-size:24px;margin-bottom:8px">🤝</div>
+            <div style="font-family:var(--font-accent);font-size:11px;font-weight:700;color:var(--charcoal);margin-bottom:4px">GREAT CULTURE</div>
+            <p style="font-size:13px;color:var(--muted)">Collaborative, inclusive and merit-based workplace culture</p>
+          </div>
         </div>
       </div>
-      <div style="border-radius:16px;overflow:hidden">
-        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop" alt="Careers at EGV" style="width:100%;display:block">
+      <div class="reveal-right" style="border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.12)">
+        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=700&h=600&fit=crop" alt="EGV Team" style="width:100%;display:block">
       </div>
     </div>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center">
-      <div style="font-size:36px;margin-bottom:16px">&#128236;</div>
-      <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--charcoal);margin-bottom:12px">Send a Speculative Application</h3>
-      <p style="color:var(--muted);max-width:520px;margin:0 auto 24px;line-height:1.75">We hire on an ongoing basis. Send your CV to <a href="mailto:careers@egv.co.ug" style="color:var(--harvest);font-weight:600">careers@egv.co.ug</a> and we will be in touch when a suitable role opens.</p>
-      <a href="{% url 'contact' %}" class="btn btn-green">Contact Us</a>
+
+    <!-- Open roles -->
+    <div class="t-eyebrow" style="color:var(--harvest);margin-bottom:20px">Open Positions</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:56px">
+      <div style="background:var(--parchment);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px" class="reveal">
+        <div><div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:4px">Agronomist / Field Extension Officer</div><div style="font-size:13px;color:var(--muted)">Agriculture Division &bull; Full-time &bull; Kampala + field travel</div></div>
+        <a href="{% url 'contact' %}" class="btn btn-green btn-sm">Apply Now</a>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px" class="reveal">
+        <div><div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:4px">Software Developer (Django / Python)</div><div style="font-size:13px;color:var(--muted)">Technology Division &bull; Full-time &bull; Kampala</div></div>
+        <a href="{% url 'contact' %}" class="btn btn-green btn-sm">Apply Now</a>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px" class="reveal">
+        <div><div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:4px">Trade Facilitation Officer</div><div style="font-size:13px;color:var(--muted)">Trade Division &bull; Full-time &bull; Kampala</div></div>
+        <a href="{% url 'contact' %}" class="btn btn-green btn-sm">Apply Now</a>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px" class="reveal">
+        <div><div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--charcoal);margin-bottom:4px">Site Engineer / Civil Works Supervisor</div><div style="font-size:13px;color:var(--muted)">Infrastructure Division &bull; Contract &bull; Various Uganda locations</div></div>
+        <a href="{% url 'contact' %}" class="btn btn-green btn-sm">Apply Now</a>
+      </div>
+    </div>
+
+    <!-- Spontaneous application -->
+    <div style="background:var(--midnight);border-radius:20px;padding:48px;text-align:center" class="reveal">
+      <div style="font-size:40px;margin-bottom:16px">📬</div>
+      <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:#fff;margin-bottom:12px">Don't see your role listed?</h3>
+      <p style="color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 28px;line-height:1.75;font-size:15px">Send your CV and a short cover note to <a href="mailto:careers@egv.co.ug" style="color:var(--harvest-2);font-weight:600">careers@egv.co.ug</a>. We review applications on a rolling basis and will contact you when a matching role opens.</p>
+      <a href="{% url 'contact' %}" class="btn btn-green btn-lg">Get in Touch</a>
     </div>
   </div>
 </section>
-
+{% endblock %}
+{% block extra_js %}
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>ro.observe(el));
+</script>
 {% endblock %}
